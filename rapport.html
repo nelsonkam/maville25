@@ -601,13 +601,13 @@
             <h2 class="team-title">Équipe #25</h2>
             <ul class="bare-list members">
                 <li class="member">
-                    <img class="member-pic" src="" alt="" >
+                    <img class="member-pic" src="img/naromba.jpeg" alt="Photo Naromba" >
                     <div class="member-identification">
-                        <span class="member-name">Francois LABONTE</span>
-                        <span class="member-id">2014069</span>
+                        <span class="member-name">NAROMBA CONDÉ </span>
+                        <span class="member-id">20251772</span>
                     </div> 
-                    <span>Discord: @franck</span>
-                    <a href="mailto:prenom.nom@umontreal.ca">prenom.nom@umontreal.ca</a>
+                    <span>Discord: @naromba</span>
+                    <a href="mailto:naromba.conde@umontreal.ca">naromba.conde@umontreal.ca</a>
                     <span class="member-role">Chargé de...</span>
                 </li>
                 <li class="member">
@@ -711,12 +711,29 @@
 
                 <h3 class="subsection-title">Glossaire</h3>
                 <dl class="glossary">
-                    <dt class="glossary-term">Terme 1</dt>
-                    <dd class="glossary-def">Definition Debitis vel incidunt quaerat vitae iure, amet voluptatem commodi neque perferendis, asperiores facilis fugit! Dicta possimus aperiam officiis recusandae ipsum magni dignissimos?</dd>
-                    <dt class="glossary-term">Terme 2</dt>
-                    <dd class="glossary-def">Definition Culpa assumenda pariatur doloremque accusamus obcaecati reiciendis saepe sapiente, nihil adipisci quo architecto amet veniam vero delectus ullam dolorem unde quidem? Debitis.</dd>
-                    <dt class="glossary-term">Terme 3</dt>
-                    <dd class="glossary-def">Definition Alias sequi officia tempore maiores placeat omnis eum quo totam quia fuga? Officia repellendus odio ducimus dolores error dolorem hic a beatae.</dd>
+                    <dt class="glossary-term"> Application MaVille </dt>
+                    <dd class="glossary-def">Outil numérique proposé pour améliorer la communication des activités et des travaux prévus dans la ville de Montréal, visant à réduire les perturbations <br>pour les résidents.</dd>
+                    <dt class="glossary-term">Authentification </dt>
+                    <dd class="glossary-def">Processus par lequel un utilisateur fournit ses identifiants (nom d'utilisateur et mot de passe) pour accéder à l'application.</dd>
+                    <dt class="glossary-term">Chantier</dt>
+                    <dd class="glossary-def">Zone où des travaux de construction, de rénovation ou d'entretien sont effectués, pouvant affecter la circulation et l'accès aux services.</dd>
+                    <dt class="glossary-term">Résident</dt>
+                    <dd class="glossary-def">Citoyen vivant dans la ville, utilisateur potentiel de l'application qui peut consulter les travaux en cours et soumettre des signalements.</dd>
+                    <dt class="glossary-term">Intervenant</dt>
+                    <dd class="glossary-def">Professionnel ou agent responsable de la gestion des travaux dans la ville, chargé de soumettre des projets de travaux et de mettre à jour les informations des chantiers.</dd>
+                    <dt class="glossary-term">Travaux publics</dt>
+                    <dd class="glossary-def">Travaux réalisés par la ville ou ses partenaires pour améliorer les infrastructures publiques, comme les routes, les ponts, et les réseaux de services.</dd>
+                    <dt class="glossary-term">Travaux privés</dt>
+                    <dd class="glossary-def">Travaux réalisés par des entreprises ou des particuliers sur des propriétés privées, souvent nécessitant des autorisations de la Ville.</dd>
+                    <dt class="glossary-term">Notification personnalisée</dt>
+                    <dd class="glossary-def"> Message envoyé aux utilisateurs de l'application concernant des travaux ou des événements spécifiques, en fonction de leurs préférences et de leur localisation.</dd>
+                    <dt class="glossary-term">Requête de travail</dt>
+                    <dd class="glossary-def">Demande soumise par un résident ou un intervenant pour signaler un problème ou proposer un nouveau projet de travaux à la Ville.</dd>
+                    <dt class="glossary-term">Signalement</dt>
+                    <dd class="glossary-def">Action par laquelle un résident informe la Ville d'un problème ou d'une entrave liée aux travaux, permettant une réponse rapide.</dd>
+                    <dt class="glossary-term">Menu principal</dt>
+                    <dd class="glossary-def">Interface de l'application affichant les options disponibles pour l'utilisateur après l'authentification, permettant de naviguer vers différentes fonctionnalités de l'application.</dd>
+                
                 </dl>
 
                 <h3 class="subsection-title">Persona (optionnel)</h3>
@@ -777,10 +794,10 @@
                 <div class="scenario" id="cu-1">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
-                            <strong>CU:</strong> Créer une séance
+                            <strong>CU:</strong> Connexion 
                         </h4>
                         <p class="cu-goal">
-                            <strong>Objectif:</strong> Un professionnel souhaite donner une séance d'un service au GYM
+                            <strong>Objectif:</strong> Un utilisateur souhaite accéder a l'application 
                         </p>
                         
                         <hr>
@@ -788,61 +805,58 @@
                         <div class="cu-part">
                             <h5 class="cu-part-title">Acteurs</h5>
                             <ul class="bare-list cu-actors">
-                                <li class="cu-actor">Professionnel (Principal)</li>
-                                <li class="cu-actor">Agent (Secondaire)</li>
+                                <li class="cu-actor">Résident , Intervenant (Principal)</li>
+                                <li class="cu-actor">Le system (Secondaire)</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Préconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Le professionnel a un compte et est présent au GYM.</li>
+                                <li class="dash">L'utiisateur a un compte actif</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Postconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun</li>
+                                <li class="dash">L'utilisateur a accès au menu</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part cu-part--notes">
                             <h5 class="cu-part-title">Notes</h5>
-                            <p class="cu-notes">Notes additionnelles et hypothèses</p>
+                            <p class="cu-notes">En supposant ici que chaque utilsateur à un compte</p>
                         </div>
                     </div>
                     <div class="scenario-main">
                         <h5 class="scenario-main-title">Scénario principal</h5>
                         <ol class="scenario-main-steps">
-                            <li class="scenario-main-step">Le professionnel se présente à l’accueil et donne son numéro.</li>
-                            <li class="scenario-main-step">L’agent entre le numéro dans le système.</li>
-                            <li class="scenario-main-step">Le système valide le numéro du membre.</li>
-                            <li class="scenario-main-step">Le professionnel indique à l’agent le service qu’il souhaite fournir.</li>
-                            <li class="scenario-main-step">L’agent <a href="#cu-2">consulte le Répertoire des services</a> pour trouver le code de service.</li>
-                            <li class="scenario-main-step">L’agent demande au professionnel le reste des informations requises.</li>
-                            <li class="scenario-main-step">L’agent entre les données dans le système.</li>
-                            <li class="scenario-main-step">Le système affiche les détails de la séance nouvellement créée.</li>
+                            <li class="scenario-main-step">L'utilisateur saisit ses identifiants (nom d'utilisateur et mot de passe).</li>
+                            <li class="scenario-main-step">Le système vérifie les identifiants.</li>
+                            <li class="scenario-main-step">Si les identifiants sont valides, l'utilisateur accède au menu principal.</li>
+                            <li class="scenario-main-step">Le système affiche le menu principal.</li>
+                            
                         </ol>
 
                         <div class="scenario-alt">
                             <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
                             <ol class="bare-list scenario-alt-steps">
-                                <li class="scenario-alt-step" value="4">
-                                    Le compte est suspendu.
+                                <li class="scenario-alt-step" value="1">
+                                    L'utisateur n'a pas de compte.
                                     <ol class="bare-list">
-                                        <li value="4">Le système affiche Compte suspendu à l'écran</li>
-                                        <li value="4">Le scénario se termine</li>
+                                        <li value="1">Le système affiche un message indiquant que le compte est inactif ou n'existe pas.</li>
+                                        <li value="1">Le système propose une option pour créer un compte ou contacter le support.</li>
                                     </ol>
                                 </li>
                             </ol>
                             <ol class="bare-list scenario-alt-steps">
-                                <li class="scenario-alt-step" value="6">
-                                    Le service souhaité n'est pas offert chez GYM.
+                                <li class="scenario-alt-step" value="3">
+                                    Authentification échoue
                                     <ol class="bare-list">
-                                        <li value="6">L'agent ne trouve pas le code pour le service demandé.</li>
-                                        <li value="6">L'agent informe le professionnel de la non-disponibilité du service.</li>
-                                        <li value="6">Le scénario se termine.</li>
+                                        <li value="3">e système affiche un message d'erreur.</li>
+                                        <li value="3">Le système propose une option de réinitialisation du mot de passe.</li>
+                                        <li value="3">L'utilisateur peut choisir de réinitialiser le mot de passe ou réessayer.</li>
                                     </ol>
                                 </li>
                             </ol>
@@ -853,53 +867,326 @@
                 <div class="scenario" id="cu-2">
                     <div class="scenario-meta">
                         <h4 class="cu-name">
-                            <strong>CU:</strong> Consulter le répertoire des services
+                            <strong>CU:</strong> Consulter les travaux
                         </h4>
                         <p class="cu-goal">
-                            <strong>Objectif:</strong> Obtenir la liste des services et séances offerts et disponibles
+                            <strong>Objectif:</strong> visualiser les travaux en cours ou à venir.
                         </p>
                         
                         <hr>
-
+    
                         <div class="cu-part">
                             <h5 class="cu-part-title">Acteurs</h5>
                             <ul class="bare-list cu-actors">
-                                <li class="cu-actor">Agent (Principal)</li>
+                                <li class="cu-actor">Résident ou Intervenant (Principal)</li>
+                                <li class="cu-actor">Le system (Secondaire)</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Préconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun.</li>
+                                <li class="dash"> L'utilisateur est connecté à l'application.</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part">
                             <h5 class="cu-part-title">Postconditions</h5>
                             <ul class="bare-list cu-conditions">
-                                <li class="dash">Aucun</li>
+                                <li class="dash">L'utilisateur voit les travaux disponibles.</li>
                             </ul>
                         </div>
                         
                         <div class="cu-part cu-part--notes">
                             <h5 class="cu-part-title">Notes</h5>
-                            <p class="cu-notes">Notes additionnelles et hypothèses</p>
+                            <p class="cu-notes">En supposant que les travaux sont régulièrement mis à jour.</p>
                         </div>
                     </div>
                     <div class="scenario-main">
                         <h5 class="scenario-main-title">Scénario principal</h5>
                         <ol class="scenario-main-steps">
-                            <li class="scenario-main-step">L’agent ouvre le Répertoire des services.</li>
-                            <li class="scenario-main-step">Le système affiche la liste des services offerts par GYM ainsi que toutes les séances disponibles durant la journée.</li>
+                            <li class="scenario-main-step">L'utilisateur choisit l'option de consultation des travaux.</li>
+                            <li class="scenario-main-step">Le système affiche les travaux en cours ou à venir.</li>
+                            <li class="scenario-main-step">L'utilisateur peut filtrer les travaux par type ou localisation.</li>
+                            <li class="scenario-main-step">Le système affiche les travaux filtrés.</li>
                         </ol>
-
+    
                         <div class="scenario-alt">
                             <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
-                            <p>Aucun</p>
+                            <ol class="bare-list scenario-alt-steps">
+                                <li class="scenario-alt-step" value="2">
+                                    Aucune information disponible 
+                                    <ol class="bare-list">
+                                        <li value="2">Le système affiche un message indiquant qu'aucun travail n'est prévu.</li>
+                                    </ol>
+                                </li>
+                            </ol>
                         </div>
                     </div>
                 </div>
+
+            <div class="scenario" id="cu-3">
+                <div class="scenario-meta">
+                    <h4 class="cu-name">
+                        <strong>CU:</strong> Soumettre une requête
+                    </h4>
+                    <p class="cu-goal">
+                        <strong>Objectif:</strong> Un utilisateur souhaite soumettre une requête de travail.
+
+                    </p>
+                    
+                    <hr>
+
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Acteurs</h5>
+                        <ul class="bare-list cu-actors">
+                            <li class="cu-actor"> Résident (Principal)</li>
+                            <li class="cu-actor">Le system (Secondaire)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Préconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'utilisateur est connecté à l'application.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Postconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">La requête est soumise et enregistrée.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part cu-part--notes">
+                        <h5 class="cu-part-title">Notes</h5>
+                        <p class="cu-notes"> Remplir tous les champs obligatoires.</p>
+                    </div>
+                </div>
+                <div class="scenario-main">
+                    <h5 class="scenario-main-title">Scénario principal</h5>
+                    <ol class="scenario-main-steps">
+                        <li class="scenario-main-step">L'utilisateur choisit l'option de soumission d'une requête.</li>
+                        <li class="scenario-main-step">L'utilisateur remplit le formulaire de requête.</li>
+                        <li class="scenario-main-step">L'utilisateur valide et soumet la requête.</li>
+                        <li class="scenario-main-step">Le système enregistre la requête et affiche un message de confirmation.
+                        </li>
+                    </ol>
+
+                    <div class="scenario-alt">
+                        <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                Champs obligatoires manquants :
+                                <ol class="bare-list">
+                                    <li value="3">Le système affiche un message d'erreur.</li>
+                                    <li value="3">Le système indiquent qu'il ya deschamps manquants dans le formulaire.</li>
+                                    <li value="3">L'utilisateur remplit les champs manquants et soumet à nouveau.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="scenario" id="cu-4">
+                <div class="scenario-meta">
+                    <h4 class="cu-name">
+                        <strong>CU:</strong> Soumettre un nouveau projet
+                    </h4>
+                    <p class="cu-goal">
+                        <strong>Objectif:</strong> Un intervenant souhaite proposer un nouveau projet de travaux.
+                    </p>
+                    
+                    <hr>
+
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Acteurs</h5>
+                        <ul class="bare-list cu-actors">
+                            <li class="cu-actor">Intervenant (Principal)</li>
+                            <li class="cu-actor">Système (Secondaire)34ew</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Préconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'intervenant est connecté à l'application.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Postconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">Le projet est soumis et enregistré.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part cu-part--notes">
+                        <h5 class="cu-part-title">Notes</h5>
+                        <p class="cu-notes">Toutes les informations du projet doivent être fournies.</p>
+                    </div>
+                </div>
+                <div class="scenario-main">
+                    <h5 class="scenario-main-title">Scénario principal</h5>
+                    <ol class="scenario-main-steps">
+                        <li class="scenario-main-step">L'intervenant accède au menu principal après authentification.</li>
+                        <li class="scenario-main-step">L'intervenant choisit l'option "Soumettre un nouveau projet.</li>
+                        <li class="scenario-main-step">L'intervenant remplit les informations du projet.</li>
+                        <li class="scenario-main-step">Le système valide les informations.</li>
+                        <li class="scenario-main-step">Si toutes les informations sont correctes, le projet est enregistré avec succès.</li>
+                        <li class="scenario-main-step">Le système affiche un message de confirmation.</li>
+                        <li class="scenario-main-step">L'intervenant retourne au menu principal.</li>
+                    </ol>
+
+                    <div class="scenario-alt">
+                        <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                Informations manquantes ou incorrectes 
+                                <ol class="bare-list">
+                                    <li value="3">Le système affiche un message d'erreur.</li>
+                                    <li value="3">L'intervenant corrige les informations manquantes ou incorrectes.</li>
+                                    <li value="3">Le scénario reprend à l'étape de validation des informations.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+
+             <div class="scenario" id="cu-5">
+                <div class="scenario-meta">
+                    <h4 class="cu-name">
+                        <strong>CU:</strong> Mettre à jour les informations de chantier
+
+
+                    </h4>
+                    <p class="cu-goal">
+                        <strong>Objectif:</strong> Un intervenant souhaite mettre à jour les informations d'un chantier.
+                    </p>
+                    
+                    <hr>
+
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Acteurs</h5>
+                        <ul class="bare-list cu-actors">
+                            <li class="cu-actor">Intervenant (Principal)</li>
+                            <li class="cu-actor">Système (Secondaire)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Préconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'intervenant est connecté à l'application et a accès aux informations du chantier.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Postconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash"> Les informations du chantier sont mises à jour.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part cu-part--notes">
+                        <h5 class="cu-part-title">Notes</h5>
+                        <p class="cu-notes">Les modifications doivent être vérifiées pour éviter les erreurs.</p>
+                    </div>
+                </div>
+                <div class="scenario-main">
+                    <h5 class="scenario-main-title">Scénario principal</h5>
+                    <ol class="scenario-main-steps">
+                        <li class="scenario-main-step">L'intervenant se connecte à l'application.</li>
+                        <li class="scenario-main-step">L'intervenant sélectionne le chantier à mettre à jour.</li>
+                        <li class="scenario-main-step">L'intervenant modifie les informations du chantier.</li>
+                        <li class="scenario-main-step">L'intervenant enregistre les modifications.
+                        </li>
+                        <li class="scenario-main-step">Le système affiche un message de confirmation que les informations ont été mises à jour.</li>
+                    </ol>
+
+                    <div class="scenario-alt">
+                        <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="4">
+                                Mise à jour échoue : 
+                                <ol class="bare-list">
+                                    <li value="4">Le système affiche un message d'erreur.</li>
+                                    <li value="4">Le système propose de réessayer plus tard.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+
+             <div class="scenario" id="cu-6">
+                <div class="scenario-meta">
+                    <h4 class="cu-name">
+                        <strong>CU:</strong> Réception de notifications
+                    </h4>
+                    <p class="cu-goal">
+                        <strong>Objectif:</strong> Un utilisateur souhaite recevoir des notifications personnalisées.
+                    </p>
+                    
+                    <hr>
+
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Acteurs</h5>
+                        <ul class="bare-list cu-actors">
+                            <li class="cu-actor">Résident ou Intervenant (Principal)</li>
+                            <li class="cu-actor">Résident ou Intervenant (Principal), Système (Secondaire)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Préconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'utilisateur est connecté à l'application et a configuré ses préférences de notification.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Postconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'utilisateur reçoit des alertes selon ses paramètres définis.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part cu-part--notes">
+                        <h5 class="cu-part-title">Notes</h5>
+                        <p class="cu-notes">Les notifications doivent être pertinentes et en temps réel.</p>
+                    </div>
+                </div>
+                <div class="scenario-main">
+                    <h5 class="scenario-main-title">Scénario principal</h5>
+                    <ol class="scenario-main-steps">
+                        <li class="scenario-main-step">L'utilisateur paramètre ses préférences de notification dans l'application.</li>
+                        <li class="scenario-main-step">Le système enregistre les paramètres.</li>
+                        <li class="scenario-main-step">L'utilisateur reçoit des alertes en fonction des paramètres définis.
+                        </li>
+                    </ol>
+
+                    <div class="scenario-alt">
+                        <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="3">
+                                Notifications ne s'affichent pas : 
+                                <ol class="bare-list">
+                                    <li value="3">Le système vérifie les paramètres de l'application.</li>
+                                    <li value="3">Le système suggère à l'utilisateur de vérifier les paramètres de <br>
+                                         notification de son appareil.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
 
                   
                 <h3 class="subsection-title">Diagramme d'activités</h3>
@@ -918,46 +1205,174 @@
 
                 <div>
                     <h3 class="subsection-title">Risques</h3>
+                    <style>
+                        .risks li {
+                            margin-bottom: 15px; /* Ajuste la valeur selon l'espace désiré */
+                        }
+                    </style>
+                    
                     <ol class="risks">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>
+                            <strong>Risques d'une mauvaise utilisation</strong>
+                            <ul>
+                                <li>Mauvaise communication d'informations, entraînant confusion et frustrations.</li>
+                                <li>Signalements inappropriés surchargeant le système et retardant la résolution de vrais problèmes.</li>
+                                <li>Interface peu intuitive décourageant l'inscription et l'utilisation de l'application.</li>
+                                <li>Comptes frauduleux manipulant les informations ou soumettant des requêtes inappropriées.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Risques d'une bonne utilisation</strong>
+                            <ul>
+                                <li>Trop de notifications submergeant les utilisateurs, incitant à ignorer les alertes importantes.</li>
+                                <li>Dépendance à l'application, négligeant d'autres sources d'information.</li>
+                                <li>Mauvais traitement des données personnelles, posant des problèmes de confidentialité.</li>
+                                <li>Attentes élevées des résidents en matière de réactivité des intervenants.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Risques d'une non-utilisation</strong>
+                            <ul>
+                                <li>Manque d'information sur les travaux, nuisant à la mobilité et à l'accès aux services.</li>
+                                <li>Insatisfaction générale parmi les citoyens.</li>
+                                <li>Inefficacité des travaux due à une mauvaise coordination.</li>
+                                <li>Perte de participation citoyenne dans la planification participative.</li>
+                            </ul>
+                        </li>
                     </ol>
+                    
                 </div>
 
                 <div>
                     <h3 class="subsection-title">Besoins non-fonctionnelles</h3>
                     <ol class="nf-requirements">
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
-                        <li></li>
+                        <li>Performance optimale avec un temps de chargement minimum.</li>
+                        <li>Gérer un nombre croissant d'utilisateurs et de données.</li>
+                        <li>Sécurité des données personnelles.</li>
+                        <li>Accessibilité conforme aux normes pour tous les utilisateurs.</li>
+                        <li>Compatibilité sur divers appareils et navigateurs.</li>
+                        <li>Fiabilité avec une disponibilité.</li>
+                        <li>Facilité d'utilisation.</li>
+                        <li>Maintenance facile.</li>
+                        <li>Documentation complète.</li>
+                        <li>Support technique réactif pour assistance aux utilisateurs.</li>
                     </ol>
+                    
                 </div>
                 
                 <div>
                     <h3 class="subsection-title">Besoins matériels</h3>
-                    <p>
-                        <em>Description et justification des ressourcs nécessaires pour le projet...</em>
-                    </p>
+<p>
+    <em>Description et justification des ressources nécessaires pour le projet :</em>
+</p>
+<ol class="material-needs">
+    <li>
+        <strong>Outils de stockage :</strong>
+        <ul>
+            <li>
+                <strong>Description :</strong> Des serveurs dédiés ou des solutions cloud (comme Google Cloud) pour héberger l'application <br>
+                et les bases de données.
+            </li>
+            <li>
+                <strong>Justification :</strong> Une bonne infrastructure est nécessaire pour gérer les utilisateurs, les projets et les données <br> 
+                en temps réel, en garantissant une disponibilité élevée et une sécurité des données.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Systèmes de sauvegarde :</strong>
+        <ul>
+            <li>
+                <strong>Description :</strong> Disques durs externes et/ou services de sauvegarde cloud.
+            </li>
+            <li>
+                <strong>Justification :</strong> Garantir la continuité des opérations en cas de perte de données ou de défaillance système.<br>
+                 Les sauvegardes régulières protègent les informations.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Équipements réseau :</strong>
+        <ul>
+            <li>
+                <strong>Description :</strong> Routeurs, switchs, et pare-feux.
+            </li>
+            <li>
+                <strong>Justification :</strong> Assurer une connexion réseau sécurisée et rapide pour le transfert de données entre l'application<br>
+                 et les utilisateurs. Une bonne infrastructure réseau est essentielle pour éviter les interruptions de service.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Dispositifs utilisateurs :</strong>
+        <ul>
+            <li>
+                <strong>Description :</strong> Ordinateurs, tablettes, et smartphones.
+            </li>
+            <li>
+                <strong>Justification :</strong> Les utilisateurs (résidents et intervenants) devront accéder à l'application via divers appareils. <br>
+                 L'application doit être compatible avec plusieurs systèmes d'exploitation pour maximiser l'accessibilité.
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Équipement de développement :</strong>
+        <ul>
+            <li>
+                <strong>Description :</strong> Ordinateurs et logiciels de développement pour l'équipe technique.
+            </li>
+            <li>
+                <strong>Justification :</strong> Les développeurs auront besoin de matériel performant pour coder, tester et déployer l'application efficacement.
+            </li>
+        </ul>
+    </li>
+</ol>
+
                 </div>
 
                 <div>
                     <h3 class="subsection-title">Solution de stockage</h3>
-                    <p>
-                        <em>Description de votre solution de stockage...</em>
-                    </p>
+<p>
+    <em>Description de la solution de stockage :</em>
+</p>
+<ol class="storage-solution">
+    <li>
+        <strong>Solution proposée :</strong> Utilisation de services de stockage cloud (ex: Google Cloud Storage).
+    </li>
+    <li>
+        <strong>Description :</strong> Les données de l'application (données utilisateur, informations sur les travaux, fichiers de sauvegarde) seront stockées <br>
+        dans le cloud pour garantir une accessibilité 24/7. Les services cloud offrent également des options de sauvegarde intégrées, réduisant ainsi <br>
+         le risque de perte de données.
+    </li>
+    <li>
+        <strong>Justification :</strong> Le cloud permet d'évoluer facilement en fonction de la croissance des utilisateurs et des données, tout en maintenant des coûts <br>
+         opérationnels réduits. De plus, les solutions cloud sont souvent plus sécurisées que les systèmes locaux, avec des protections contre les accès <br>
+          non autorisés.
+    </li>
+</ol>
+
                 </div>
 
                 <div>
                     <h3 class="subsection-title">Solution d'intégration</h3>
+<p>
+    <em>Description de la solution d'intégration :</em>
+</p>
+<ol class="integration-solution">
+    <li>
+        <strong>Solution proposée :</strong> Utilisation d'API RESTful pour l'intégration entre les différents composants de l'application.
+    </li>
+    <li>
+        <strong>Description :</strong> L'application sera conçue avec une architecture modulaire, permettant l'intégration facile de différents services (par exemple, <br> 
+        notifications, gestion des utilisateurs, systèmes de signalement). Les API RESTful permettront la communication entre le front-end et le back-end, ainsi que <br>
+         l'intégration avec d'autres systèmes si nécessaire.
+    </li>
+    <li>
+        <strong>Justification :</strong> Cette approche facilite le développement collaboratif, la maintenance, et l'évolution de l'application à long terme. <br>
+         En utilisant des API standardisées, il sera plus facile d'ajouter des fonctionnalités ou d'intégrer de nouveaux services à l'avenir.
+    </li>
+</ol>
 
-                    <p>
-                        <em>Description de votre solution d'intégration...</em>
-                    </p>
                 </div>
             </section>
 
