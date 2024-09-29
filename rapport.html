@@ -777,16 +777,37 @@
                     </li>
                 </ul>
              
-                <h3 class="subsection-title">Cas d'utilisation</h3>
+                <h3 class="subsection-title">Cas d'utilisation</h3>  <!--IIIIIIIIICCCCCCCCIIIIIIIIIIIIIIIII-->
                 <div class="use-case">
-                    <img class="use-case-diagram" src="images/use_case_diagram.svg" alt="Diagramme de cas d'utilisation">
+                    <img class="use-case-diagram" src="img/CU.png" alt="Diagramme de cas d'utilisation">
+                </div>
+                <div>
                     <p class="use-case-notes">
                         <em>
                             Notes à propos du diagramme <br>
-                            - choix des acteurs <br>
-                            - choix des relations
                         </em>
                     </p>
+                    <ul>
+                        <li>
+                            <strong>Choix des acteurs</strong>
+                            <ul>
+                                <li><strong>Résident</strong> : Utilisateur qui interagit avec l'application pour obtenir des informations sur les travaux et soumettre des requêtes.</li>
+                                <li><strong>Intervenant</strong> : Un professionnel ou une entreprise responsable de la planification, de l'exécution et de la gestion des travaux <br> publics et privés. 
+                                    Ils interagissent avec l'application pour consulter les requêtes de travail, soumettre de nouveaux projets, 
+                                    <br> et mettre à jour les informations sur les chantiers en cours.</li>
+                                <li><strong>Système (Application)</strong> : L'entité qui gère les interactions entre les utilisateurs et les fonctionnalités de l'application.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Choix des relations</strong>
+                            <ul>
+                                <li><strong>Include</strong> : AUCUN POUR L'INSTANT</li>  <!--IIIIIIIIICICCCCCCICICICICICICCICI-->
+                                <li><strong>Extend</strong> : AUCUN POUR L'INSTANT</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    
                 </div>
 
                 <h3 class="subsection-title">Scénarios</h3>
@@ -1006,7 +1027,7 @@
                         <h5 class="cu-part-title">Acteurs</h5>
                         <ul class="bare-list cu-actors">
                             <li class="cu-actor">Intervenant (Principal)</li>
-                            <li class="cu-actor">Système (Secondaire)34ew</li>
+                            <li class="cu-actor">Système (Secondaire)</li>
                         </ul>
                     </div>
                     
@@ -1124,7 +1145,6 @@
                 </div>
             </div>
 
-
              <div class="scenario" id="cu-6">
                 <div class="scenario-meta">
                     <h4 class="cu-name">
@@ -1140,7 +1160,7 @@
                         <h5 class="cu-part-title">Acteurs</h5>
                         <ul class="bare-list cu-actors">
                             <li class="cu-actor">Résident ou Intervenant (Principal)</li>
-                            <li class="cu-actor">Résident ou Intervenant (Principal), Système (Secondaire)</li>
+                            <li class="cu-actor"> Système (Secondaire)</li>
                         </ul>
                     </div>
                     
@@ -1188,16 +1208,104 @@
                 </div>
             </div>
 
+            <div class="scenario" id="cu-7">
+                <div class="scenario-meta">
+                    <h4 class="cu-name">
+                        <strong>CU:</strong> Consulter la liste des requêtes de travail 
+                    </h4>
+                    <p class="cu-goal">
+                        <strong>Objectif:</strong> Un intervenant souhaite consulter la liste des requêtes de travail.
+                    </p>
+                    
+                    <hr>
+
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Acteurs</h5>
+                        <ul class="bare-list cu-actors">
+                            <li class="cu-actor">Intervenant (Principal)</li>
+                            <li class="cu-actor"> Système (Secondaire)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Préconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'utilisateur est connecté à l'application.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part">
+                        <h5 class="cu-part-title">Postconditions</h5>
+                        <ul class="bare-list cu-conditions">
+                            <li class="dash">L'intervenant a accès à la liste des requêtes de travail</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="cu-part cu-part--notes">
+                        <h5 class="cu-part-title">Notes</h5>
+                        <p class="cu-notes">Les requêtes de travail sont régulièrement mises à jour dans l'application par les résidents ou d'autres intervenants.</p>
+                    </div>
+                </div>
+                <div class="scenario-main">
+                    <h5 class="scenario-main-title">Scénario principal</h5>
+                    <ol class="scenario-main-steps">
+                        <li class="scenario-main-step">L'intervenant se connecte à l'application.</li>
+                        <li class="scenario-main-step">L'intervenant sélectionne l'option "Consulter les requêtes de travail".</li>
+                        <li class="scenario-main-step">L'intervenant peut filtrer les requêtes par type de travail, date, ou localisation.</li>
+                        <li class="scenario-main-step">L'application affiche la liste des requêtes de travail disponibles.</li>
+                        <li class="scenario-main-step">L'intervenant peut visualiser les détails de chaque requête et soumettre sa candidature pour la réaliser.</li>
+                    </ol>
+
+                    <div class="scenario-alt">
+                        <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+                        <ol class="bare-list scenario-alt-steps">
+                            <li class="scenario-alt-step" value="4">
+                                Si aucune requête n'est trouvée
+                                <ol class="bare-list">
+                                    <li value="4">L'application affiche un message indiquant : "Aucune requête de travail n'est disponible actuellement."</li>
+                                    <li value="4">L'intervenant a la possibilité de revenir au menu principal ou de consulter d'autres sections de l'application.</li>
+                                </ol>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
                   
                 <h3 class="subsection-title">Diagramme d'activités</h3>
                 <div class="activity">
-                    <h4>Titre du diagramme 1</h4>
-                    <img class="activity-diagram" src="images/activity_diagram.svg" alt="Diagramme d'activités">
+                    <h4>Diagramme d'activité pour : Connexion</h4>
+                    <img class="activity-diagram" src="img/conexion.png" alt="Diagramme d'activités">
                 </div>
                 <div class="activity">
-                    <h4>Titre du diagramme 2</h4>
-                    <img class="activity-diagram" src="images/activity_diagram.svg" alt="Diagramme d'activités">
+                    <h4>Diagramme d'activité pour : Consulter travaux</h4>
+                    <img class="activity-diagram" src="img/consulter_travaux.png" alt="Diagramme d'activités">
                 </div>
+                
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Soumettre une requête</h4>
+                    <img class="activity-diagram" src="img/soumettre_requette.png" alt="Diagramme d'activités">
+                </div>
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Soumettre un nouveau projet</h4>
+                    <img class="activity-diagram" src="img/Soumettre_nouveau_projet.png" alt="Diagramme d'activités">
+                </div>
+                
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Mettre à jour les informations de chantier</h4>
+                    <img class="activity-diagram" src="img/MAJ_info_chantier.jpg" alt="Diagramme d'activités">
+                </div>
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Réception de notifications</h4>
+                    <img class="activity-diagram" src="img/Réception_notifications.jpg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Consulter la liste des requêtes de travail</h4>
+                    <img class="activity-diagram" src="img/Consulter_liste_requêtes .jpg" alt="Diagramme d'activités">
+                </div>
+                
+
             </section>
 
             <section class="main-section">
