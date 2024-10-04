@@ -692,9 +692,75 @@
                     </em>
                 </p>
                 <h3 class="subsection-title">Échéancier</h3>
-                <p>
-                    <em>Présentation de l'échéancier et la distribution des taches (au moins pour le devoir 1)</em>
-                </p>
+                <ul class="bare-list nav-item-details" style="color: black;">
+                    <li>
+                        <ul>
+                            <li>Tâche 1: Introduction 
+                                <ul>
+                                    <li>Personne : Naromba CONDE - Heures travaillées : 5 MIN</li>
+                                </ul>
+                            </li>
+                            <li>Tâche 2: Echéancier
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 15 MIN</li>
+                                </ul>
+                            </li>
+                            <li>Tâche 3: Glossaire
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 1 </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 4: Cas d'utilisation / Scénario
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 4</li>
+                                </ul>
+                            </li>
+                            <li>Tâche 5: Diagramme de cas d'utilisation
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 2</li>
+                                </ul>
+                            </li>
+                            <li>Tâche 6: Diagrammes d'activités
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 9 </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 7: Risques
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 30MIN </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 8: Besoins non fonctionnels
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 45MIN </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 9: Besoin matériel
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 45MIN </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 9: Stockage
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 15MIN </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 9: Intégration
+                                <ul>
+                                    <li>Naromba CONDE - Heures travaillées : 15MIN </li>
+                                </ul>
+                            </li>
+                            <li>Tâche 9: Prototype
+                                <ul>
+                                    <li>Personne :  - Heures travaillées : </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                
+
 
                 <h3 class="subsection-title">Hypothèses (optionnel)</h3>
                 <p>
@@ -1077,7 +1143,7 @@
                     </div>
                 </div>
             </div>
-
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
 
              <div class="scenario" id="cu-5">
                 <div class="scenario-meta">
@@ -1148,7 +1214,7 @@
              <div class="scenario" id="cu-6">
                 <div class="scenario-meta">
                     <h4 class="cu-name">
-                        <strong>CU:</strong> Réception de notifications
+                        <strong>CU:</strong> Gestion des notifications
                     </h4>
                     <p class="cu-goal">
                         <strong>Objectif:</strong> Un utilisateur souhaite recevoir des notifications personnalisées.
@@ -1208,6 +1274,7 @@
                 </div>
             </div>
 
+          
             <div class="scenario" id="cu-7">
                 <div class="scenario-meta">
                     <h4 class="cu-name">
@@ -1270,7 +1337,435 @@
                     </div>
                 </div>
             </div>
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
 
+
+
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
+
+<div class="scenario" id="cu-8">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong>  Modifier son profil utilisateur
+
+
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> L'utilisateur souhaite mettre à jour ses informations de profil (nom, adresse, mot de passe).
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Intervenant (Principal)</li>
+                <li class="cu-actor">Résident (Principal)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'utilisateur est connecté à l'application.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash"> Les informations du profil utilisateur sont mises à jour.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Le système doit s'assurer que toutes les informations modifiées sont valides avant de procéder à la mise à jour.</p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">L'utilisateur se connecte à l'application.</li>
+            <li class="scenario-main-step">L'utilisateur sélectionne l'option "Modifier mon profil".</li>
+            <li class="scenario-main-step">L'utilisateur modifie les informations (nom, adresse, mot de passe, etc.).</li>
+            <li class="scenario-main-step">L'utilisateur enregistre les modifications.</li>
+            <li class="scenario-main-step">Le système confirme la mise à jour du profil.</li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="4">
+                    Champs obligatoires manquants
+                    <ol class="bare-list">
+                        <li value="4">L'utilisateur tente d'enregistrer les modifications sans remplir tous les champs obligatoires.</li>
+                        <li value="4">Le système détecte les champs manquants et affiche un message d'erreur.</li>
+                        <li value="4">Le système met en évidence les champs obligatoires non remplis.</li>
+                        <li value="4">L'utilisateur remplit les champs manquants.</li>
+                        <li value="4">L'utilisateur soumet à nouveau les modifications.
+                        </li>
+                        <li value="4">Le système enregistre les informations mises à jour et confirme la modification.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+ <div class="scenario" id="cu-9">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong> Faire une planification participative (Avant les travaux - Préférences d'horaires)
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> Un utilisateur souhaite donner ses préférences sur les horaires des travaux dans son quartier.
+        </p>
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Résident (Principal)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'utilisateur est connecté à l'application et les travaux dans son quartier sont prévus.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">Les préférences horaires du résident sont enregistrées dans le système.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Les préférences doivent être fournies avant le début des travaux pour qu'elles puissent être prises en compte.</p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+            <li class="scenario-main-step">Le résident sélectionne l'option "Planification participative" dans le menu.</li>
+            <li class="scenario-main-step">Le système affiche la liste des travaux prévus dans le quartier du résident.</li>
+            <li class="scenario-main-step">Le résident saisit ses plages horaires préférées pour les travaux.</li>
+            <li class="scenario-main-step">Le résident valide et enregistre ses préférences.</li>
+            <li class="scenario-main-step">Le système enregistre les préférences du résident.</li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="2">
+                    Aucune réponse fournie : 
+                    <ol class="bare-list">
+                        <li value="2">Le résident a la possibilité de participer à la planification mais choisit d'ignorer l'option ou de ne pas soumettre de préférence.</li>
+                        <li value="2">Le système enregistre l'absence de réponse et applique les plages horaires standards pour les travaux.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<div class="scenario" id="cu-10">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong> Permettre une planification participative (Après les travaux - Avis sur les travaux)
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> Un résident souhaite donner son avis sur le déroulement des travaux et sur l'intervenant une fois les travaux terminés.
+        </p>
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Intervenant (Principal)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">Les travaux dans le quartier du résident sont terminés.
+
+                </li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'avis du résident sur les travaux et l'intervenant est enregistré dans le système.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Le retour du résident doit être pris en compte pour évaluer la satisfaction et la qualité des travaux réalisés.</p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+            <li class="scenario-main-step">Le résident sélectionne l'option "Donner un avis" dans le menu.</li>
+            <li class="scenario-main-step">Le résident rédige son avis sur les travaux (qualité, déroulement) et l'intervenant.</li>
+            <li class="scenario-main-step">Le résident valide et enregistre son avis.</li>
+            <li class="scenario-main-step">Le système enregistre l'avis et le transmet à l'intervenant.</li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="2">
+                    Aucun avis fourni 
+                    <ol class="bare-list">
+                        <li value="2">Le système enregistre l'absence d'avis et les travaux sont archivés sans retour du résident.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
+
+<div class="scenario" id="cu-11">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong> Consulter les préférences des autres résidents du quartier
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> Un résident souhaite consulter les préférences d'horaires des autres résidents dans son quartier
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Résident (Principal)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'utilisateur est connecté à l'application et les autres résidents du quartier ont soumis leurs préférences.
+
+                </li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">Le résident peut voir les plages horaires préférées des autres résidents du quartier.
+                </li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Le résident ne peut voir que les tendances générales (par exemple, les horaires les plus demandés).</p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">Le résident se connecte à l'application.</li>
+            <li class="scenario-main-step">Le résident sélectionne l'option "Consulter les préférences des autres résidents" dans le menu de planification participative.</li>
+            <li class="scenario-main-step">Le système affiche un résumé des plages horaires préférées par les autres résidents.</li>
+            <li class="scenario-main-step">Le résident peut utiliser ces informations pour ajuster ses propres préférences d'horaires si nécessaire.
+            </li>
+            <li class="scenario-main-step">Le résident valide et quitte l'interface de consultation.</li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="4">
+                    Mise à jour échoue : 
+                    <ol class="bare-list">
+                        <li value="4">Le résident consulte l'option, mais aucun autre résident n'a soumis de préférence pour les travaux.</li>
+                        <li value="4">Le système affiche un message indiquant : "Aucune préférence d'horaire n'a encore été soumise dans votre quartier."</li>
+                        <li value="4">Le résident retourne au menu principal.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+ <div class="scenario" id="cu-12">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong> S'inscrire comme résident
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> Un utilisateur souhaite créer un compte résident 
+        </p>
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Résident ou Intervenant (Principal)</li>
+                <li class="cu-actor"> Système (Secondaire)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'utilisateur n'a pas de compte existant dans l'application.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">Le compte est créé et l'utilisateur est redirigé vers la page de connexion.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Le système doit valider toutes les informations saisies avant de créer un compte. Les utilisateurs doivent s'assurer que leur adresse courriel est unique et valide.</p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">L'utilisateur accède à la page d'accueil de l'application.</li>
+            <li class="scenario-main-step">L'utilisateur sélectionne l'option "S'inscrire".            </li>
+            <li class="scenario-main-step">L'utilisateur choisit "Inscription comme résident". </li>
+            <li class="scenario-main-step">L'utilisateur saisit les informations requises . </li>
+            <li class="scenario-main-step">Le système valide les informations saisies.</li>
+            <li class="scenario-main-step">Le compte est créé.  </li>
+            <li class="scenario-main-step">L'utilisateur reçoit un message de confirmation et est redirigé vers le menu principal.
+            </li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="6">
+                    Champs obligatoires manquants :                    <ol class="bare-list">
+                        <li value="6">L'utilisateur soumet le formulaire avec des champs obligatoires manquants.</li>
+                        <li value="6">Le système affiche un message d'erreur et indique les champs manquants. </li>
+                        <li value="6">L'utilisateur remplit les champs manquants et soumet à nouveau le formulaire. </li>
+                    </ol>
+                    
+                </li>
+                <li class="scenario-alt-step" value="6"></li>
+                Date de naissance invalide :
+                    <ol class="bare-list">
+                        <li value="6">L'utilisateur saisit une date de naissance indiquant qu'il a moins de 16 ans.                        </li>
+                        <li value="6">Le système affiche un message d'erreur indiquant que l'utilisateur doit avoir plus de 16 ans pour s'inscrire.</li>
+                    </ol>
+                    
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+<div class="scenario" id="cu-13">
+    <div class="scenario-meta">
+        <h4 class="cu-name">
+            <strong>CU:</strong> S'inscrire comme intervenant
+        </h4>
+        <p class="cu-goal">
+            <strong>Objectif:</strong> Un utilisateur souhaite créer un compte intervenant
+        </p>
+        
+        <hr>
+
+        <div class="cu-part">
+            <h5 class="cu-part-title">Acteurs</h5>
+            <ul class="bare-list cu-actors">
+                <li class="cu-actor">Intervenant (Principal)</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Préconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">L'utilisateur n'a pas de compte existant.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part">
+            <h5 class="cu-part-title">Postconditions</h5>
+            <ul class="bare-list cu-conditions">
+                <li class="dash">Le compte intervenant est créé et l'utilisateur est redirigé vers le menu principal.</li>
+            </ul>
+        </div>
+        
+        <div class="cu-part cu-part--notes">
+            <h5 class="cu-part-title">Notes</h5>
+            <p class="cu-notes">Les informations doivent être complètes et valides avant la création du compte.
+            </p>
+        </div>
+    </div>
+    <div class="scenario-main">
+        <h5 class="scenario-main-title">Scénario principal</h5>
+        <ol class="scenario-main-steps">
+            <li class="scenario-main-step">L'utilisateur accède à la page d'accueil de l'application.</li>
+            <li class="scenario-main-step">L'utilisateur sélectionne l'option "S'inscrire".</li>
+            <li class="scenario-main-step">L'utilisateur choisit "Inscription comme intervenant".</li>
+            <li class="scenario-main-step">L'utilisateur saisit les informations requises </li>
+            <li class="scenario-main-step">L'utilisateur soumet le formulaire d'inscription.</li>
+            <li class="scenario-main-step">Le système valide les informations saisies. </li>
+            <li class="scenario-main-step">Le compte est créé. </li>
+            <li class="scenario-main-step">L'utilisateur reçoit un message de confirmation et est redirigé vers le menu principal.</li>
+        </ol>
+
+        <div class="scenario-alt">
+            <h5 class="scenario-alt-title">Scénarios alternatifs</h5>
+            <ol class="bare-list scenario-alt-steps">
+                <li class="scenario-alt-step" value="6">
+                    Champs obligatoires manquants :
+                    <ol class="bare-list">
+                        <li value="6">L'utilisateur soumet le formulaire avec des champs obligatoires manquants.</li>
+                        <li value="6">Le système affiche un message d'erreur et indique les champs manquants.</li>
+                        <li value="6">L'utilisateur remplit les champs manquants et soumet à nouveau le formulaire.</li>
+                    </ol>
+                </li>
+                <li class="scenario-alt-step" value="4"></li>
+                Identifiant de la ville invalide :
+                    <ol class="bare-list">
+                        <li value="4">L'utilisateur saisit un identifiant de ville qui ne correspond pas au format requis.</li>
+                        <li value="4">Le système affiche un message d'erreur indiquant que l'identifiant doit être un code à 8 chiffres valide.</li>
+                    </ol>
+                </li>
+            </ol>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
                   
                 <h3 class="subsection-title">Diagramme d'activités</h3>
                 <div class="activity">
@@ -1296,7 +1791,7 @@
                     <img class="activity-diagram" src="img/MAJ_info_chantier.jpg" alt="Diagramme d'activités">
                 </div>
                 <div class="activity">
-                    <h4>Diagramme d'activité pour : Réception de notifications</h4>
+                    <h4>Diagramme d'activité pour : Gestion des notifications</h4>
                     <img class="activity-diagram" src="img/Réception_notifications.jpg" alt="Diagramme d'activités">
                 </div>
 
@@ -1305,7 +1800,7 @@
                     <img class="activity-diagram" src="img/Consulter_liste_requêtes .jpg" alt="Diagramme d'activités">
                 </div>
                 
-
+<!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
             </section>
 
             <section class="main-section">
