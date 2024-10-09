@@ -18,7 +18,7 @@ public class MaVille {
         String menu = """
                         1. CONNECTION
                         2. QUITTER
-                        Choix:""";
+                        Choix: """;
 
         System.out.print(logo + "\n" + menu);
         choix = scanner.nextByte();
@@ -45,19 +45,19 @@ public class MaVille {
         System.out.print(prompt);
         utilisateur = scanner.next();
 
-        System.out.println(utilisateur);
-
         prompt = "MOT DE PASSE: ";
         System.out.print(prompt);
         motDePasse = scanner.next();
 
         if(motDePasse.equals("maVille25")){
             switch(utilisateur){
-                case "citoyen": menuCitoyen();
-                break;
+                case "citoyen": 
+                    menuCitoyen(utilisateur);
+                    break;
     
-                case "intervenant": menuIntervenant();
-                break;
+                case "intervenant": 
+                    menuIntervenant(utilisateur);
+                    break;
             }
         }
         else{
@@ -67,7 +67,7 @@ public class MaVille {
 
     }
 
-    public void menuCitoyen(){
+    public void menuCitoyen(String utilisateur){
 
         String menu = """
                 1. S'inscrire comme résident
@@ -131,7 +131,7 @@ public class MaVille {
     }
 
 
-    public void menuIntervenant(){
+    public void menuIntervenant(String utilisateur){
 
         String menu = """
             1. S'inscrire comme intervenant
