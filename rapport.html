@@ -794,50 +794,12 @@
                 
                 </dl>
 
-                <h3 class="subsection-title">Persona (optionnel)</h3>
 
-                <ul class="bare-list personas">
-                    <li class="persona">
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                            <span class="persona-name">Bob &ndash; <em>Comptable</em></span>
-                            <div class="persona-stat">
-                                <span class="persona-type persona-type--pp" title="Pratico-pratique">PP</span>
-                                <span class="persona-market">40%</span>
-                            </div>
-                        </div>
-                        <span class="persona-info">Homme célibataire de 42 ans vivant au Canada</span>
-                        <div class="persona-goal">
-                            <h4 class="persona-title">Buts</h4>
-                            <ul class="bare-list">
-                                <li class="check">But principal</li>
-                                <li class="check">But secondaire</li>
-                                <li class="check">Avantages</li>
-                            </ul>
-                        </div>
-                    </li>
-                    <li class="persona">
-                        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
-                            <span class="persona-name">Eva &ndash; <em>Pharmacienne</em></span>
-                            <div class="persona-stat">
-                                <span class="persona-type persona-type--eco" title="Ecolo">ECO</span>
-                                <span class="persona-market">20%</span>
-                            </div>
-                        </div>
-                        <span class="persona-info">Femme mariée de 34 ans vivant au Canada</span>
-                        <div class="persona-goal">
-                            <h4 class="persona-title">Buts</h4>
-                            <ul class="bare-list">
-                                <li class="check">But principal</li>
-                                <li class="check">But secondaire</li>
-                                <li class="check">Avantages</li>
-                            </ul>
-                        </div>
-                    </li>
-                </ul>
-             
+
+        
                 <h3 class="subsection-title">Cas d'utilisation</h3>  <!--IIIIIIIIICCCCCCCCIIIIIIIIIIIIIIIII-->
                 <div class="use-case">
-                    <img class="use-case-diagram" src="img/CU.png" alt="Diagramme de cas d'utilisation">
+                    <img class="use-case-diagram" src="img/diagramme_cu.svg" alt="Diagramme de cas d'utilisation">
                 </div>
                 <div>
                     <p class="use-case-notes">
@@ -859,8 +821,11 @@
                         <li>
                             <strong>Choix des relations</strong>
                             <ul>
-                                <li><strong>Include</strong> : AUCUN POUR L'INSTANT</li>  <!--IIIIIIIIICICCCCCCICICICICICICCICI-->
-                                <li><strong>Extend</strong> : AUCUN POUR L'INSTANT</li>
+                                <li><strong>Include</strong> : Pour planifier un projet de travaux, il faut trouver un horaire qui conviendrait a la majorité des résidents, 
+                                    il faut aussi pouvoir prendre en compte l'avis des residents sur les travaux passés pour ne pas commettre plusieurs fois les mêmes erreurs. 
+                                Il est donc normal que les cas d'utilisation comme "choisir une plage horaire", "donner son avis" et "consulter les preferences" incluent l'activite de 
+                            "planifier des projets de travaux"</li> 
+                    
                             </ul>
                         </li>
                     </ul>
@@ -1765,35 +1730,52 @@
                 <h3 class="subsection-title">Diagramme d'activités</h3>
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Connexion</h4>
-                    <img class="activity-diagram" src="img/conexion.png" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/connection.svg" alt="Diagramme d'activités">
                 </div>
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Consulter travaux</h4>
-                    <img class="activity-diagram" src="img/consulter_travaux.png" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/consulter_travaux.svg" alt="Diagramme d'activités">
                 </div>
                 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Soumettre une requête</h4>
-                    <img class="activity-diagram" src="img/soumettre_requette.png" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/soumettre_requete.svg" alt="Diagramme d'activités">
                 </div>
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Soumettre un nouveau projet</h4>
-                    <img class="activity-diagram" src="img/Soumettre_nouveau_projet.png" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/soumettre_nouveau_projet.svg" alt="Diagramme d'activités">
                 </div>
                 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Mettre à jour les informations de chantier</h4>
-                    <img class="activity-diagram" src="img/MAJ_info_chantier.jpg" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/maj_info_chantier.svg" alt="Diagramme d'activités">
                 </div>
                 <div class="activity">
-                    <h4>Diagramme d'activité pour : Gestion des notifications</h4>
-                    <img class="activity-diagram" src="img/Réception_notifications.jpg" alt="Diagramme d'activités">
+                    <h4>Diagramme d'activité pour : Personaliser ses notifications</h4>
+                    <img class="activity-diagram" src="img/personaliser_ses_notifications.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Modifier les paramètres de son profil utilisateur</h4>
+                    <img class="activity-diagram" src="img/modifier_profil_utilisateur.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Participer à une planification des travaux</h4>
+                    <img class="activity-diagram" src="img/planification _participative.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Donner son avis sur le déroulement des travaux</h4>
+                    <img class="activity-diagram" src="img/donner_son_avis.svg" alt="Diagramme d'activités">
                 </div>
 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Consulter la liste des requêtes de travail</h4>
-                    <img class="activity-diagram" src="img/Consulter_liste_requêtes .jpg" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/consulter_liste_requêtes.svg" alt="Diagramme d'activités">
                 </div>
+
+               
                 
 <!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii--><!--iiiiiiiiiiiiciccccccccciiiiiiiiii-->
             </section>
