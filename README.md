@@ -16,7 +16,7 @@ Pour télécharger la dernière version du répertoire GitHub, utiliser la comma
 
 
 ## Prototype
-Un prototype écrit en Java est disponible. Il démontre l'interface du côté des résidents et du côté des intervenants. Quelques cas d'utilisation seront simulés pour les intervenants dans ce prototype.
+Un prototype écrit en Java est disponible. Il démontre l'interface du côté des résidents et du côté des intervenants. Le cas d'utilisation "Consulter les travaux en cours" est démontré.
 
 ```
     ===== Accès à l'interface résident =====

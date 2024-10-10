@@ -124,7 +124,7 @@ public class MaVille {
         switch(choix){
             case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
                 prnt("----- Fonctionnalité non-disponible -----");
-                prnt("*Appuyer sur <o> + <Entrée> pour revenir au menu citoyen*");
+                prnt("\n*Appuyer sur <o> + <Entrée> pour revenir au menu citoyen*");
                 scanner.next();
                 menuCitoyen(utilisateur);
                 break;
@@ -173,10 +173,16 @@ public class MaVille {
         switch(choix){
             case 1: case 3: case 4:
                 prnt("----- Fonctionnalité non-disponible -----");
+                prnt("\n*Appuyer sur <o> + <Entrée> pour revenir au menu citoyen*");
+                scanner.next();
+                menuIntervenant(utilisateur);
                 break;
 
             case 2:
                 consulterRequeteTravaux();
+                prnt("\n*Appuyer sur <o> + <Entrée> pour revenir au menu intervenant*");
+                scanner.next();
+                menuIntervenant(utilisateur);
                 break;
 
             case 5:
@@ -220,6 +226,8 @@ public class MaVille {
         listeTravaux.add(tr3);
 
         System.out.println(listeTravaux.toString());
+
+        
     }
 
     // Point d'entrée principal du programme
@@ -247,7 +255,7 @@ class Travaux {
 
     @Override
     public String toString() {
-        return String.format("Travaux: %s | Début: %s | Fin: %s | Lieu: %s | Entreprise: %s", 
+        return String.format("\n" + "Travaux: %s | Début: %s | Fin: %s | Lieu: %s | Entreprise: %s", 
                              description, dateDebut, dateFin, localisation, entrepreneur);
     }
 }

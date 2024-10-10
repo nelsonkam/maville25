@@ -142,7 +142,7 @@
     ><rect x="0" y="0" clip-path="url(#clipPath2)" fill="none" width="73" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(291,2)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="7" xml:space="preserve" y="24" clip-path="url(#clipPath3)" stroke="none"
+    ><text x="10" xml:space="preserve" y="24" clip-path="url(#clipPath3)" stroke="none"
       >Connexion</text
     ></g
     ><g font-size="11px" transform="translate(312,92)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
@@ -158,10 +158,10 @@
     ><rect x="0" y="0" clip-path="url(#clipPath5)" fill="none" width="60" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(158,92)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="4" xml:space="preserve" y="17" clip-path="url(#clipPath6)" stroke="none"
+    ><text x="6" xml:space="preserve" y="17" clip-path="url(#clipPath6)" stroke="none"
       >Affichage</text
-      ><text x="16" xml:space="preserve" y="31" clip-path="url(#clipPath6)" stroke="none"
-      >du ...</text
+      ><text x="8" xml:space="preserve" y="32" clip-path="url(#clipPath6)" stroke="none"
+      >du menu</text
     ></g
     ><g font-size="11px" transform="translate(412,92)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><rect x="0" y="0" clip-path="url(#clipPath5)" width="60" rx="15" ry="15" height="40" stroke="none"
@@ -180,9 +180,9 @@
     ><rect x="0" y="0" clip-path="url(#clipPath7)" fill="none" width="163" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(107,174)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="20" xml:space="preserve" y="17" clip-path="url(#clipPath8)" stroke="none"
+    ><text x="25" xml:space="preserve" y="17" clip-path="url(#clipPath8)" stroke="none"
       >Sélection "Planification</text
-      ><text x="46" xml:space="preserve" y="31" clip-path="url(#clipPath8)" stroke="none"
+      ><text x="50" xml:space="preserve" y="32" clip-path="url(#clipPath8)" stroke="none"
       >participative"</text
     ></g
     ><g font-size="11px" transform="translate(98,264)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
@@ -192,9 +192,9 @@
     ><rect x="0" y="0" clip-path="url(#clipPath9)" fill="none" width="180" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(98,264)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="11" xml:space="preserve" y="17" clip-path="url(#clipPath10)" stroke="none"
+    ><text x="18" xml:space="preserve" y="17" clip-path="url(#clipPath10)" stroke="none"
       >Affichage des travaux prévus</text
-      ><text x="21" xml:space="preserve" y="31" clip-path="url(#clipPath10)" stroke="none"
+      ><text x="28" xml:space="preserve" y="32" clip-path="url(#clipPath10)" stroke="none"
       >dans quartier du résident</text
     ></g
     ><g font-size="11px" transform="translate(98,354)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
@@ -204,10 +204,10 @@
     ><rect x="0" y="0" clip-path="url(#clipPath9)" fill="none" width="180" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(98,354)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="30" xml:space="preserve" y="17" clip-path="url(#clipPath10)" stroke="none"
-      >Saisie des préférences</text
-      ><text x="21" xml:space="preserve" y="31" clip-path="url(#clipPath10)" stroke="none"
-      >d'horaire pour les travaux</text
+    ><text x="11" xml:space="preserve" y="17" clip-path="url(#clipPath10)" stroke="none"
+      >Saisie des préférences d'horaire</text
+      ><text x="50" xml:space="preserve" y="32" clip-path="url(#clipPath10)" stroke="none"
+      >pour les travaux</text
     ></g
     ><g font-size="11px" transform="translate(400,354)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
     ><path d="M10 7.5 L17 20 L10 32.5 L3 20 Z" stroke="none" clip-path="url(#clipPath11)"
@@ -222,9 +222,9 @@
     ><rect x="0" y="0" clip-path="url(#clipPath12)" fill="none" width="166" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(107,444)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="30" xml:space="preserve" y="17" clip-path="url(#clipPath13)" stroke="none"
+    ><text x="35" xml:space="preserve" y="17" clip-path="url(#clipPath13)" stroke="none"
       >Enregistrement des</text
-      ><text x="48" xml:space="preserve" y="31" clip-path="url(#clipPath13)" stroke="none"
+      ><text x="53" xml:space="preserve" y="32" clip-path="url(#clipPath13)" stroke="none"
       >informations</text
     ></g
     ><g font-size="11px" transform="translate(337,444)" fill-opacity="1" fill="rgb(122,207,245)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="rgb(122,207,245)" stroke-opacity="1"
@@ -234,17 +234,17 @@
     ><rect x="0" y="0" clip-path="url(#clipPath14)" fill="none" width="147" rx="15" ry="15" height="40"
     /></g
     ><g font-size="11px" transform="translate(337,444)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="10" xml:space="preserve" y="17" clip-path="url(#clipPath15)" stroke="none"
-      >Application de l'horaire</text
-      ><text x="15" xml:space="preserve" y="31" clip-path="url(#clipPath15)" stroke="none"
-      >par défaut pour les ...</text
+    ><text x="8" xml:space="preserve" y="17" clip-path="url(#clipPath15)" stroke="none"
+      >Application de l'horaire par</text
+      ><text x="17" xml:space="preserve" y="32" clip-path="url(#clipPath15)" stroke="none"
+      >défaut pour les travaux</text
     ></g
     ><g font-size="11px" transform="translate(178,544)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
     ><circle r="6.6667" clip-path="url(#clipPath16)" cx="10" cy="10" stroke="none"
       /><circle stroke-linecap="butt" clip-path="url(#clipPath16)" fill="none" stroke-linejoin="round" r="10" cx="10" cy="10" stroke-miterlimit="0"
     /></g
     ><g font-size="11px" transform="translate(337,394)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke="black" stroke-opacity="1"
-    ><text x="5" xml:space="preserve" y="11" clip-path="url(#clipPath17)" stroke="none"
+    ><text x="10" xml:space="preserve" y="12" clip-path="url(#clipPath17)" stroke="none"
       >Aucune préférence saisie</text
     ></g
     ><g stroke-linecap="butt" font-size="11px" transform="translate(-19,-28)" fill-opacity="1" fill="black" text-rendering="geometricPrecision" image-rendering="optimizeQuality" font-family="sans-serif" stroke-linejoin="round" stroke="black" stroke-opacity="1"
@@ -322,7 +322,7 @@
     /></g
     ><g font-size="8px" fill-opacity="1" fill="rgb(120,120,120)" text-rendering="geometricPrecision" image-rendering="optimizeQuality" stroke="rgb(120,120,120)" stroke-opacity="1"
     ><text x="0" xml:space="preserve" y="10" stroke="none"
-      >Visual Paradigm Standard(Naromba(University of Montreal))</text
+      >Visual Paradigm Standard(Huu Khoa Le(University of Montreal))</text
     ></g
   ></g
 ></svg
