@@ -1,12 +1,20 @@
 import java.util.Scanner;
 import java.util.ArrayList;
 
+// Prototype de "MaVille, équipe 25"
+// Ce programme démarre une application en ligne de commande et affiche des menus
+// différents selon la connexion de l'utilisateur (citoyen ou intervenant).
+// Plus tard, une intégration de base de données et des modules supplémentaires seront ajoutés.1
+
 public class MaVille {
 
+    // Scanner pour lire les entrées de l'utilisateur
     public Scanner scanner = new Scanner(System.in);
-    public byte choix = 0;
+    public byte choix = 0; // Variable pour stocker le choix de menu de l'utilisateur
 
+    // Menu principal affiché au démarrage
     public void menuAccueil(){
+        // Logo en ASCII
         String logo = """
             ...........................................................        
             *.##...##..........##..##..######..##......##......######.*
@@ -16,60 +24,74 @@ public class MaVille {
             *.##...##..##..##....##....######..######..######..######.*
             ...........................................................""";
 
+        // Menu principal avec options
         String menu = """
-                        1. CONNECTION
+                        1. CONNEXION
                         2. QUITTER
                         Choix: """;
 
         System.out.print(logo + "\n" + menu);
-        choix = scanner.nextByte();
+        
+        // Validation de l'entrée de l'utilisateur pour éviter des erreurs de type
+        try {
+            choix = scanner.nextByte(); 
+        } catch (Exception e) {
+            System.out.println("Erreur : entrée invalide. Veuillez entrer un numéro.");
+            scanner.next(); // Pour vider le scanner de l'entrée non valide
+            menuAccueil(); // Retour au menu d'accueil
+            return;
+        }
 
+        // Gestion des choix de l'utilisateur
         switch(choix){
             case 1:
                 authentification();
                 break;
             case 2:
-                System.exit(0);
+                System.exit(0); // Quitte l'application
 
             default:
                 System.out.print("----- Choix invalide. Veuillez recommencer ---\n");
                 menuAccueil();
         }
     }
-    
-    public void authentification(){
-        String utilisateur = "";
-        String motDePasse = "";
-        String prompt = "";
 
-        prompt = "UTILISATEUR: ";
-        System.out.print(prompt);
+    // Fonction pour authentifier l'utilisateur
+    public void authentification(){
+        String utilisateur = ""; // Nom d'utilisateur
+        String motDePasse = "";  // Mot de passe
+
+        System.out.print("UTILISATEUR: ");
         utilisateur = scanner.next();
 
-        prompt = "MOT DE PASSE: ";
-        System.out.print(prompt);
+        System.out.print("MOT DE PASSE: ");
         motDePasse = scanner.next();
 
-        if(motDePasse.equals("maVille25")){
+        // Vérification du mot de passe
+        if(motDePasse.equals("maVille25")){ 
             switch(utilisateur.toLowerCase()){
                 case "citoyen": 
                     menuCitoyen(utilisateur);
                     break;
-    
+
                 case "intervenant": 
                     menuIntervenant(utilisateur);
                     break;
+
+                default:
+                    System.out.println("Utilisateur non reconnu. Veuillez recommencer.");
+                    authentification();
             }
         }
         else{
             System.out.println("----- LA COMBINAISON UTILISATEUR/MOT DE PASSE EST INVALIDE. VEUILLEZ RECOMMENCER. ----");
-            authentification();
+            authentification(); // Recommence l'authentification
         }
 
     }
 
+    // Menu spécifique pour les citoyens
     public void menuCitoyen(String utilisateur){
-
         String menu = """
                 1. S'inscrire comme résident
                 2. Consulter les travaux en cours ou à venir
@@ -86,73 +108,26 @@ public class MaVille {
 
                 CHOIX: """;
 
-        System.out.println("-----BIENVENUE " + utilisateur + "-----");
+        System.out.println("----- BIENVENUE " + utilisateur + " -----");
         System.out.print(menu);
-        choix = scanner.nextByte();
 
+        try {
+            choix = scanner.nextByte();
+        } catch (Exception e) {
+            System.out.println("Erreur : entrée invalide.");
+            scanner.next();
+            menuCitoyen(utilisateur);
+            return;
+        }
+
+        // Gestion des options du menu citoyen
         switch(choix){
-            case 1:
-                prnt("----- S'inscrire comme résident ----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
+            case 1: case 2: case 3: case 4: case 5: case 6: case 7: case 8: case 9:
+                prnt("----- Fonctionnalité non-disponible -----");
+                prnt("*Appuyer sur <o> + <Entrée> pour revenir au menu citoyen*");
                 scanner.next();
                 menuCitoyen(utilisateur);
                 break;
-
-            case 2:
-                prnt("----- Consulter les travaux en cours ou à venir -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 3:
-                prnt("----- Rechercher des travaux -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 4:
-                prnt("----- Gérer les notifications personnalisées -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 5:
-                prnt("----- Choisir une plage horaire pour les travaux -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 6:
-                prnt("----- Donner son avis sur le déroulement des travaux -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 7:
-                prnt("----- Consulter les préférences des autres résidents -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 8:
-                prnt("----- Soumettre une requête de travail -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;
-
-            case 9:
-                prnt("----- Signaler un problème à la ville -----");
-                prnt("*FONCTIONNALITÉ NON-DISPONIBLE* \n *Appuyer <o> et <Entrée> pour revenir au menu citoyen*");
-                scanner.next();
-                menuCitoyen(utilisateur);
-                break;        
                 
             case 10:
                 menuCitoyen(utilisateur);
@@ -161,10 +136,14 @@ public class MaVille {
             case 11:
                 menuAccueil();
                 break;
+
+            default:
+                System.out.println("Choix invalide. Veuillez recommencer.");
+                menuCitoyen(utilisateur);
         }
     }
 
-
+    // Menu spécifique pour les intervenants
     public void menuIntervenant(String utilisateur){
 
         String menu = """
@@ -178,65 +157,97 @@ public class MaVille {
 
             CHOIX: """;
 
-        System.out.println("-----BIENVENUE " + utilisateur + "-----");
+        System.out.println("----- BIENVENUE " + utilisateur + " -----");
         System.out.print(menu);
-        choix = scanner.nextByte();
 
+        try {
+            choix = scanner.nextByte();
+        } catch (Exception e) {
+            System.out.println("Erreur : entrée invalide.");
+            scanner.next();
+            menuIntervenant(utilisateur);
+            return;
+        }
+
+        // Gestion des options du menu intervenant
         switch(choix){
-            case 1:
-                prnt("----- S'inscrire comme intervenant ----");
+            case 1: case 3: case 4:
+                prnt("----- Fonctionnalité non-disponible -----");
                 break;
 
             case 2:
-                prnt("----- Consulter la liste des requêtes de travail -----");
                 consulterRequeteTravaux();
-                break;
-
-            case 3:
-                prnt("----- Soumettre un nouveau projet de travaux -----");
-                break;
-
-            case 4:
-                prnt("----- Mettre à jour les informations d'un chantier -----");
                 break;
 
             case 5:
                 menuIntervenant(utilisateur);
                 break;
 
-
             case 6:
                 menuAccueil();
                 break;
+
+            default:
+                System.out.println("Choix invalide. Veuillez recommencer.");
+                menuIntervenant(utilisateur);
         }
     }
 
-    public void prnt(String a){
-        System.out.println(a);
+    // Méthode utilitaire pour afficher un message
+    public void prnt(String message){
+        System.out.println(message);
     }
 
+    // Consultation des requêtes de travaux (juste un exemple)
     public void consulterRequeteTravaux(){
-        /* Type de travaux, date début, date fin, localisation */
-        
+        // Création de la liste des travaux avec des objets fictifs
         ArrayList<Travaux> listeTravaux = new ArrayList<>();
 
-        Travaux tr1 = new Travaux("Réfection Aqueduc", "2024-11-01", "2024-12-30", "Boulevard René-Levesque entre  rue Saint-Denis et rue Sainte-Élisabeth", "Pomerleau");
+        Travaux tr1 = new Travaux("Réfection Aqueduc", "2024-11-01", "2024-12-30", 
+                                  "Boulevard René-Levesque entre rue Saint-Denis et rue Sainte-Élisabeth", 
+                                  "Pomerleau");
         
-        Travaux tr2 = new Travaux("Réparation trottoir", "2024-05-01", "2025-01-31", "Rue Beaubien entre rue Casgrain et Avenue De Gaspé", "ROXBORO Excavation");
+        Travaux tr2 = new Travaux("Réparation trottoir", "2024-05-01", "2025-01-31", 
+                                  "Rue Beaubien entre rue Casgrain et Avenue De Gaspé", 
+                                  "ROXBORO Excavation");
 
-        Travaux tr3 = new Travaux("Patchage nid de poule", "2024-10-01", "2025-10-31", "Avenue Du Parc entre rue Laurier Ouest et rue Saint-Viateur","Bob le Bricoleur");
+        Travaux tr3 = new Travaux("Patchage nid de poule", "2024-10-01", "2025-10-31", 
+                                  "Avenue Du Parc entre rue Laurier Ouest et rue Saint-Viateur",
+                                  "Bob le Bricoleur");
 
         listeTravaux.add(tr1);
         listeTravaux.add(tr2);
         listeTravaux.add(tr3);
 
         System.out.println(listeTravaux.toString());
-
-        
     }
 
+    // Point d'entrée principal du programme
     public static void main(String[] args){
         MaVille maVille = new MaVille();
         maVille.menuAccueil();
+    }
+}
+
+// Classe Travaux pour représenter un chantier
+class Travaux {
+    private String description;
+    private String dateDebut;
+    private String dateFin;
+    private String localisation;
+    private String entrepreneur;
+
+    public Travaux(String description, String dateDebut, String dateFin, String localisation, String entrepreneur) {
+        this.description = description;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.localisation = localisation;
+        this.entrepreneur = entrepreneur;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Travaux: %s | Début: %s | Fin: %s | Lieu: %s | Entreprise: %s", 
+                             description, dateDebut, dateFin, localisation, entrepreneur);
     }
 }
