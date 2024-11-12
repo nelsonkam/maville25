@@ -431,6 +431,7 @@
             height: 100%;
             width: auto;
             min-height: 800px;
+            max-width: 1000px;
             min-width: 600px;
             border-radius: 4px;
             background-color: #d5d5d5;
@@ -553,6 +554,7 @@
             display: block;
             min-height: 600px;
             min-width: 600px;
+            max-width: 1000px;
             height: 100%;
             width: auto;
             background-color: #d5d5d5;
@@ -815,13 +817,13 @@
                                     Ils interagissent avec l'application pour consulter les requêtes de travail, soumettre de nouveaux projets, 
                                     <br> et mettre à jour les informations sur les chantiers en cours.</li>
                                 <li><strong>Système (Application)</strong> : L'entité qui gère les interactions entre les utilisateurs et les fonctionnalités de l'application.</li>
-                                <li><strong>Ville de Montréal</strong> : Entité qui interagit indirectement avec l'application en recevant les problèmes signalés par les citoyens.</li>
                             </ul> <br>
                         </li>
                         <li>
                             <strong>Choix des relations</strong>
                             <ul>
-                                <li><strong>Include</strong> : Pour planifier un projet de travaux, il faut trouver un horaire qui conviendrait a la majorité des résidents, 
+                                <li><strong>Include</strong> : La relation include  relie l'authentification à presque tous les cas d'utilisation. <br>
+                                    Également, pour planifier un projet de travaux, il faut trouver un horaire qui conviendrait a la majorité des résidents, 
                                     il faut aussi pouvoir prendre en compte l'avis des residents sur les travaux passés pour ne pas commettre plusieurs fois les mêmes erreurs. 
                                 Il est donc normal que les cas d'utilisation comme "choisir une plage horaire", "donner son avis" et "consulter les preferences" incluent l'activite de 
                             "planifier des projets de travaux"</li> 
@@ -1732,6 +1734,12 @@
                     <h4>Diagramme d'activité pour : Connexion</h4>
                     <img class="activity-diagram" src="img/connection.svg" alt="Diagramme d'activités">
                 </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Navigation du menu principal</h4>
+                    <img class="activity-diagram" src="img/navigation_menu_principal.svg" alt="Diagramme d'activités">
+                </div>
+
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Consulter travaux</h4>
                     <img class="activity-diagram" src="img/consulter_travaux.svg" alt="Diagramme d'activités">
@@ -1766,11 +1774,6 @@
                 </div>
 
                 <div class="activity">
-                    <h4>Diagramme d'activité pour : Donner son avis sur le déroulement des travaux</h4>
-                    <img class="activity-diagram" src="img/donner_son_avis.svg" alt="Diagramme d'activités">
-                </div>
-
-                <div class="activity">
                     <h4>Diagramme d'activité pour : Consulter la liste des requêtes de travail</h4>
                     <img class="activity-diagram" src="img/consulter_liste_requêtes.svg" alt="Diagramme d'activités">
                 </div>
@@ -1786,9 +1789,48 @@
                 </div>
 
                 <div class="activity">
-                    <h4>Diagramme d'activité pour : Consulter les préférences des autres résidents du quartier</h4>
-                    <img class="activity-diagram" src="img/consulter_preferences.svg" alt="Diagramme d'activités">
+                    <h4>Diagramme d'activité pour : Confirmation de la candidature d'un intervenant</h4>
+                    <img class="activity-diagram" src="img/confirmer_candidature_intervenant.svg" alt="Diagramme d'activités">
                 </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Consultation des entraves</h4>
+                    <img class="activity-diagram" src="img/consulter_entrave.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Gestion des conflits de préférences des résidents</h4>
+                    <img class="activity-diagram" src="img/gestion_conflits_pref_res.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Mise à jour des informations de travaux par un intervenant</h4>
+                    <img class="activity-diagram" src="img/maj_info_projet_intervenant.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Recherche de travaux par un résident</h4>
+                    <img class="activity-diagram" src="img/recherche_travaux_resident.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Retrait d'une candidature pour un intervenant</h4>
+                    <img class="activity-diagram" src="img/retrait_candidature_intervenant.svg" alt="Diagramme d'activités">
+                </div>
+
+                <div class="activity">
+                    <h4>Diagramme d'activité pour : Soumission d'une candidature pour un intervenant</h4>
+                    <img class="activity-diagram" src="img/soumission_candidature_intervenant.svg" alt="Diagramme d'activités">
+                </div>
+
+
+
+
+
+
+
+
+
 
                
                 
