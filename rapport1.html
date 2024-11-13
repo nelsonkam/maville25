@@ -757,8 +757,95 @@
             <section class="main-section">
                 <h2 id="requirements" class="section-title">Exigences</h2>
                 <p>
-                    Après de nombreuses rencontres avec le client et une familiarisation avec les activités de recyclage et compostage, 
-                    nous avons préparé un glossaire rassemblant les termes et expressions clés caractérisant l'environnement.
+                    <ol>
+                        <li>
+                            <strong>Exigence 1 : Inscription et Connexion</strong>
+                            <ul>
+                                <li><em>Description</em> : Les résidents et les intervenants peuvent s'inscrire et se connecter à l'application.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Résidents : Inscription avec nom, date de naissance (≥16 ans), courriel unique, mot de passe, adresse résidentielle.</li>
+                                        <li>Intervenants : Inscription avec nom, courriel unique, mot de passe, type d'intervenant, code de la ville à 8 chiffres.</li>
+                                        <li>Connexion pour tous via courriel et mot de passe.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 2 : Consultation des Travaux et Entraves</strong>
+                            <ul>
+                                <li><em>Description</em> : Les résidents peuvent consulter les travaux en cours ou prévus, ainsi que les entraves routières.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Filtrer les travaux par quartier, type ou rue.</li>
+                                        <li>Rechercher les entraves liées aux travaux.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 3 : Notifications Personnalisées</strong>
+                            <ul>
+                                <li><em>Description</em> : Les résidents reçoivent des notifications sur les travaux affectant leur quartier.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Gestion des préférences : Activer/désactiver les notifications pour des rues ou quartiers spécifiques.</li>
+                                        <li>Possibilité de mettre à jour les préférences à tout moment.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 4 : Participation Citoyenne</strong>
+                            <ul>
+                                <li><em>Description</em> : Les résidents peuvent participer à la planification des travaux et soumettre des requêtes.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Planification participative : Indiquer les plages horaires préférées pour les travaux.</li>
+                                        <li>Requêtes de travaux résidentiels : Soumission, suivi et interaction avec les intervenants.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 5 : Gestion des Projets par les Intervenants</strong>
+                            <ul>
+                                <li><em>Description</em> : Les intervenants peuvent gérer leurs projets et candidatures.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Soumission et mise à jour des projets.</li>
+                                        <li>Candidatures sur requêtes : Soumission, retrait et confirmation après sélection.</li>
+                                        <li>Gestion des conflits avec les préférences des résidents.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 6 : Intégration avec les APIs de la Ville de Montréal</strong>
+                            <ul>
+                                <li><em>Description</em> : L'application récupère les informations sur les travaux et entraves via les APIs officielles.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Mise à jour régulière des données pour assurer leur fraîcheur.</li>
+                                        <li>Gestion des erreurs en cas d'indisponibilité des APIs.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Exigence 7 : Navigation Intuitive</strong>
+                            <ul>
+                                <li><em>Description</em> : L'application offre une navigation simple et efficace.</li>
+                                <li><em>Détails</em> :
+                                    <ul>
+                                        <li>Menus clairs avec limitation à 3 niveaux d'imbrication.</li>
+                                        <li>Possibilité de retour au menu principal à tout moment.</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
                 </p>
 
                 <h3 class="subsection-title">Glossaire</h3>
@@ -1805,17 +1892,17 @@
 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Mise à jour des informations de travaux par un intervenant</h4>
-                    <img class="activity-diagram" src="img/Maj_Info_Projet_Intervenant.svg" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/maj_info_projet_intervenant.svg" alt="Diagramme d'activités">
                 </div>
 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Recherche de travaux par un résident</h4>
-                    <img class="activity-diagram" src="img/Recherche_travaux_resident.svg" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/recherche_travaux_resident.svg" alt="Diagramme d'activités">
                 </div>
 
                 <div class="activity">
                     <h4>Diagramme d'activité pour : Retrait d'une candidature pour un intervenant</h4>
-                    <img class="activity-diagram" src="img/Retrait_Candidature_Intervenant.svg" alt="Diagramme d'activités">
+                    <img class="activity-diagram" src="img/retrait_candidature_intervenant.svg" alt="Diagramme d'activités">
                 </div>
 
                 <div class="activity">
@@ -1823,6 +1910,164 @@
                     <img class="activity-diagram" src="img/Soumission_Candidature_Intervenant .svg" alt="Diagramme d'activités">
                 </div>
 
+
+                <section id="conception">
+                    <h2>Conception</h2>
+                    <p>Nous avons opté pour une <strong>architecture en couches</strong> adaptée pour une application en ligne de commande. Cette architecture sépare l'application en couches distinctes, chacune ayant une responsabilité spécifique.</p>
+                    
+                    <ol>
+                        <li>
+                            <strong>Utilisateurs de l'Application</strong>
+                            <ul>
+                                <li>Résidents</li>
+                                <li>Intervenants</li>
+                                <li>Moyen de communication : Interface CLI</li>
+                            </ul>
+                        </li>
+                
+                        <li>
+                            <strong>Couche Présentation</strong>
+                            <ul>
+                                <li>Interface utilisateur en ligne de commande (CLI)</li>
+                                <li>Gestion des entrées utilisateur</li>
+                                <li>Affichage des menus et informations</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Couche Logique</strong>
+                            <ul>
+                                <li>Traitement des données</li>
+                                <li>Modules principaux :
+                                    <ul>
+                                        <li>Module d'Authentification</li>
+                                        <li>Gestionnaire de Travaux</li>
+                                        <li>Module de Notifications</li>
+                                        <li>Gestionnaire de Requêtes</li>
+                                        <li>Gestion des Préférences</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Couche Accès aux Données</strong>
+                            <ul>
+                                <li>Interaction avec le système de stockage</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Système de Stockage</strong>
+                            <ul>
+                                <li>Base de Données SQLite</li>
+                                <li>Stockage des données persistantes de l'application</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Couche Intégration</strong>
+                            <ul>
+                                <li>Communication avec les services externes (APIs de la Ville de Montréal)</li>
+                                <li>Récupération et traitement des données externes</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Services Externes (APIs)</strong>
+                            <ul>
+                                <li>APIs de la Ville de Montréal :
+                                    <ul>
+                                        <li>Liste des travaux en cours</li>
+                                        <li>Liste des entraves causées par les travaux en cours</li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                    
+                    <h3>Illustration de l'Architecture</h3>
+                    <img src="img/Architecture.svg" alt="Diagramme de l'Architecture de l'Application ">
+                    
+                    <h3>Communications entre les Composantes</h3>
+                    <ul>
+                        <li><strong>Utilisateurs (Résidents et Intervenants)</strong> interagissent avec l'application via l'<strong>Interface CLI</strong>.</li>
+                        <li>La <strong>Couche Présentation</strong> transmet les entrées à la <strong>Couche Logique Métier</strong>.</li>
+                        <li>La <strong>Couche Logique </strong> applique les règles et fait appel à la <strong>Couche Accès aux Données</strong> si nécessaire.</li>
+                        <li>La <strong>Couche Accès aux Données</strong> interagit avec la <strong>Base de Données SQLite</strong>.</li>
+                        <li>La <strong>Couche Intégration</strong> communique avec les <strong>Services Externes (APIs)</strong> pour récupérer les données.</li>
+                        <li>Les données externes sont traitées et stockées dans la base de données pour être utilisées par l'application.</li>
+                    </ul>
+                </section>
+
+                <section id="diagramme_de_classe">
+                    <h2>Diagramme de Classes</h2>
+                    
+                    <h3>Illustration du Diagramme de Classes</h3>
+                    <img src="img/Diagramme de classes1.svg" alt="Diagramme de Classes MaVille" >
+                    
+                    <h3>Explication des Classes</h3>
+                    <ul>
+                        <li>
+                            <strong>Utilisateur</strong> : Classe de base pour tous les utilisateurs de l'application.
+                            <ul>
+                                <li><em>Attributs</em> : id, nom, email, mot_de_passe</li>
+                                <li><em>Méthodes</em> : seConnecter(), seDeconnecter()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Résident</strong> : Hérite de <em>Utilisateur</em>, ajoute preferences et méthode soumettreRequete().
+                            <ul>
+                                <li><em>Attributs supplémentaires</em> : preferences</li>
+                                <li><em>Méthodes</em> : soumettreRequete()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Intervenant</strong> : Hérite de <em>Utilisateur</em>, gère des projets de travaux.
+                            <ul>
+                                <li><em>Attributs supplémentaires</em> : projets</li>
+                                <li><em>Méthodes</em> : soumettreProjet()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Projet</strong> : Représente les projets de travaux soumis par les intervenants.
+                            <ul>
+                                <li><em>Attributs</em> : id, titre, description, date_debut, date_fin, statut</li>
+                                <li><em>Méthodes</em> : modifier(), valider()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>RequeteTravail</strong> : Représente les requêtes de travaux soumises par les résidents.
+                            <ul>
+                                <li><em>Attributs</em> : id, titre, description, date_debut_voulue</li>
+                                <li><em>Méthodes</em> : suivre()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Notification</strong> : Gère les notifications envoyées aux utilisateurs concernant les mises à jour et événements.
+                            <ul>
+                                <li><em>Attributs</em> : id, type, message, date</li>
+                                <li><em>Méthodes</em> : envoyer()</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <h3>Relations entre les Classes</h3>
+                    <ul>
+                        <li>
+                            <strong>Héritage :</strong>
+                            <ul>
+                                <li>Résident et Intervenant héritent de Utilisateur.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Associations :</strong>
+                            <ul>
+                                <li>Un Intervenant gère plusieurs Projet.</li>
+                                <li>Un Résident soumet plusieurs RequeteTravail.</li>
+                                <li>Un Utilisateur (Résident ou Intervenant) reçoit plusieurs Notification.</li>
+                                <li>RequeteTravail et Projet peuvent générer plusieurs Notification.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </section>
+                
+                
 
 
 
@@ -1850,50 +2095,129 @@
                     
                     <ol class="risks">
                         <li>
-                            <strong>Risques d'une mauvaise utilisation</strong>
+                            <strong>Risque 1 : Disponibilité des APIs Externes</strong>
                             <ul>
-                                <li>Mauvaise communication d'informations, entraînant confusion et frustrations.</li>
-                                <li>Signalements inappropriés surchargeant le système et retardant la résolution de vrais problèmes.</li>
-                                <li>Interface peu intuitive décourageant l'inscription et l'utilisation de l'application.</li>
-                                <li>Comptes frauduleux manipulant les informations ou soumettant des requêtes inappropriées.</li>
+                                <li><em>Risque</em> : Les APIs de la Ville de Montréal peuvent être indisponibles, entraînant des données manquantes ou obsolètes pour les utilisateurs.</li>
+                                <li><em>Solution</em> : Mettre en cache les données récupérées, surveiller la disponibilité des APIs, gérer les erreurs avec des messages clairs.</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Risques d'une bonne utilisation</strong>
+                            <strong>Risque 2 : Conflits de Calendrier entre les Travaux</strong>
                             <ul>
-                                <li>Trop de notifications submergeant les utilisateurs, incitant à ignorer les alertes importantes.</li>
-                                <li>Dépendance à l'application, négligeant d'autres sources d'information.</li>
-                                <li>Mauvais traitement des données personnelles, posant des problèmes de confidentialité.</li>
-                                <li>Attentes élevées des résidents en matière de réactivité des intervenants.</li>
+                                <li><em>Risque</em> : Des travaux simultanés peuvent causer des perturbations accrues pour les résidents.</li>
+                                <li><em>Solution</em> : Détecter automatiquement les conflits lors de la planification, coordonner les intervenants, informer les résidents.</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Risques d'une non-utilisation</strong>
+                            <strong>Risque 3 : Problèmes de Sécurité liés à l'Authentification</strong>
                             <ul>
-                                <li>Manque d'information sur les travaux, nuisant à la mobilité et à l'accès aux services.</li>
-                                <li>Insatisfaction générale parmi les citoyens.</li>
-                                <li>Inefficacité des travaux due à une mauvaise coordination.</li>
-                                <li>Perte de participation citoyenne dans la planification participative.</li>
+                                <li><em>Risque</em> : Les comptes utilisateurs pourraient être compromis en raison de failles de sécurité.</li>
+                                <li><em>Solution</em> : Imposer des mots de passe forts, stocker les mots de passe de manière sécurisée, utiliser l'authentification à deux facteurs.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Risque 4 : Dégradation des Performances</strong>
+                            <ul>
+                                <li><em>Risque</em> : L'application pourrait être lente ou indisponible en cas de forte affluence.</li>
+                                <li><em>Solution</em> : Optimiser le code, utiliser la mise en cache, concevoir une architecture scalable, effectuer des tests de charge.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Risque 5 : Non-Respect des Préférences des Résidents</strong>
+                            <ul>
+                                <li><em>Risque</em> : Les résidents pourraient être insatisfaits si leurs préférences ne sont pas prises en compte.</li>
+                                <li><em>Solution</em> : Vérifier systématiquement les conflits avec les préférences, communiquer avec les résidents, permettre le feedback.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Risque 6 : Fuite de Données Personnelles</strong>
+                            <ul>
+                                <li><em>Risque</em> : Les informations sensibles des utilisateurs pourraient être exposées en cas de faille de sécurité.</li>
+                                <li><em>Solution</em> : Chiffrer les données sensibles, contrôler strictement les accès, respecter les réglementations en vigueur.</li>
                             </ul>
                         </li>
                     </ol>
                     
+                    
                 </div>
+
+                
 
                 <div>
                     <h3 class="subsection-title">Besoins non-fonctionnels</h3>
-                    <ol class="nf-requirements">
-                        <li>Performance optimale avec un temps de chargement minimum.</li>
-                        <li>Gérer un nombre croissant d'utilisateurs et de données.</li>
-                        <li>Sécurité des données personnelles.</li>
-                        <li>Accessibilité conforme aux normes pour tous les utilisateurs.</li>
-                        <li>Compatibilité sur divers appareils et navigateurs.</li>
-                        <li>Fiabilité avec une disponibilité en tout temps.</li>
-                        <li>Facilité d'utilisation.</li>
-                        <li>Maintenance facile.</li>
-                        <li>Documentation complète.</li>
-                        <li>Support technique réactif pour assistance aux utilisateurs.</li>
-                    </ol>
+<ol>
+    <li>
+        <strong>Exigence Non Fonctionnelle 1 : Performance</strong>
+        <ul>
+            <li><em>Description</em> : L'application doit être rapide et réactive.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Temps de réponse : Actions courantes en moins de 2 secondes.</li>
+                    <li>Scalabilité : Gestion efficace de nombreux utilisateurs simultanés.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Exigence Non Fonctionnelle 2 : Sécurité</strong>
+        <ul>
+            <li><em>Description</em> : Les données des utilisateurs doivent être protégées.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Protection des données : Stockage sécurisé des informations personnelles.</li>
+                    <li>Mots de passe sécurisés : Utilisation de hachage sécurisé.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Exigence Non Fonctionnelle 3 : Fiabilité</strong>
+        <ul>
+            <li><em>Description</em> : L'application doit être fiable et disponible.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Disponibilité : Système opérationnel au moins 99,5 % du temps.</li>
+                    <li>Récupération rapide : Gestion efficace des pannes.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Exigence Non Fonctionnelle 4 : Utilisabilité</strong>
+        <ul>
+            <li><em>Description</em> : L'application doit être facile à utiliser.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Interface conviviale : Facilité d'utilisation, même en mode texte.</li>
+                    <li>Accessibilité : Conformité aux normes pour les utilisateurs ayant des limitations.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Exigence Non Fonctionnelle 5 : Maintenabilité</strong>
+        <ul>
+            <li><em>Description</em> : Le système doit être facile à maintenir et à faire évoluer.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Code structuré : Facilitation de la maintenance et des évolutions.</li>
+                    <li>Modularité : Ajout de fonctionnalités sans impact majeur.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+    <li>
+        <strong>Exigence Non Fonctionnelle 6 : Compatibilité</strong>
+        <ul>
+            <li><em>Description</em> : L'application doit fonctionner sur plusieurs plateformes.</li>
+            <li><em>Détails</em> :
+                <ul>
+                    <li>Multi-plateforme : Compatibilité avec Windows, macOS et Linux.</li>
+                </ul>
+            </li>
+        </ul>
+    </li>
+</ol>
                     
                 </div>
                 
@@ -1972,21 +2296,51 @@
 <p>
     <em>Description de la solution de stockage :</em>
 </p>
-<ol class="storage-solution">
+<ol>
     <li>
-        <strong>Solution proposée :</strong> Utilisation de services de stockage cloud (ex: Google Cloud Storage).
-    </li>
-    <li>
-        <strong>Description :</strong> Les données de l'application (données utilisateur, informations sur les travaux, fichiers de sauvegarde) seront stockées <br>
-        dans le cloud pour garantir une accessibilité 24/7. Les services cloud offrent également des options de sauvegarde intégrées, réduisant ainsi <br>
-         le risque de perte de données.
-    </li>
-    <li>
-        <strong>Justification :</strong> Le cloud permet d'évoluer facilement en fonction de la croissance des utilisateurs et des données, tout en maintenant des coûts <br>
-         opérationnels réduits. De plus, les solutions cloud sont souvent plus sécurisées que les systèmes locaux, avec des protections contre les accès <br>
-          non autorisés.
+        <strong>Solutions de Stockage</strong>
+        <ul>
+            <li><em>Choix de la base de données</em> :
+                <ul>
+                    <li>Utilisation de la base de données relationnelle SQLite.</li>
+                    <li>Raisons du choix :
+                        <ul>
+                            <li>Légèreté et simplicité d'utilisation.</li>
+                            <li>Pas besoin d'un serveur de base de données séparé.</li>
+                            <li>Bonne intégration avec de nombreux langages.</li>
+                            <li>Portabilité grâce au stockage dans un simple fichier.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><em>Données stockées</em> :
+                <ul>
+                    <li>Utilisateurs : informations de connexion, préférences, coordonnées.</li>
+                    <li>Projets : détails des projets soumis par les intervenants.</li>
+                    <li>Requêtes de travaux : soumises par les résidents.</li>
+                    <li>Candidatures : des intervenants aux requêtes des résidents.</li>
+                    <li>Notifications : préférences et historique des notifications envoyées.</li>
+                    <li>Préférences des résidents : plages horaires préférées.</li>
+                </ul>
+            </li>
+            <li><em>Gestion des données</em> :
+                <ul>
+                    <li>Mise en place de schémas relationnels pour gérer les relations entre les données.</li>
+                    <li>Validation des données lors de l'entrée pour assurer leur intégrité.</li>
+                    <li>Purge régulière des données obsolètes pour maintenir les performances.</li>
+                </ul>
+            </li>
+            <li><em>Sécurité des données</em> :
+                <ul>
+                    <li>Stockage sécurisé des informations sensibles.</li>
+                    <li>Utilisation de hachage sécurisé pour les mots de passe.</li>
+                    <li>Contrôles d'accès pour protéger les données contre les accès non autorisés.</li>
+                </ul>
+            </li>
+        </ul>
     </li>
 </ol>
+
 
                 </div>
 
@@ -1995,18 +2349,53 @@
 <p>
     <em>Description de la solution d'intégration :</em>
 </p>
-<ol class="integration-solution">
+<ol>
     <li>
-        <strong>Solution proposée :</strong> Utilisation d'API RESTful pour l'intégration entre les différents composants de l'application.
-    </li>
-    <li>
-        <strong>Description :</strong> L'application sera conçue avec une architecture modulaire, permettant l'intégration facile de différents services (par exemple, <br> 
-        notifications, gestion des utilisateurs, systèmes de signalement). Les API RESTful permettront la communication entre le front-end et le back-end, ainsi que <br>
-         l'intégration avec d'autres systèmes si nécessaire.
-    </li>
-    <li>
-        <strong>Justification :</strong> Cette approche facilite le développement collaboratif, la maintenance, et l'évolution de l'application à long terme. <br>
-         En utilisant des API standardisées, il sera plus facile d'ajouter des fonctionnalités ou d'intégrer de nouveaux services à l'avenir.
+        <strong>Solutions d'Intégration</strong>
+        <ul>
+            <li><em>Intégration des services externes (APIs de la Ville de Montréal)</em> :
+                <ul>
+                    <li><em>Récupération des données</em> :
+                        <ul>
+                            <li>Appels réguliers aux APIs pour obtenir les dernières informations sur les travaux et les entraves.</li>
+                            <li>Gestion des erreurs en cas d'indisponibilité des APIs, avec des messages clairs aux utilisateurs.</li>
+                        </ul>
+                    </li>
+                    <li><em>Stockage des données récupérées</em> :
+                        <ul>
+                            <li>Stockage dans des tables dédiées de la base de données locale.</li>
+                            <li>Mise en cache pour réduire les dépendances en temps réel et améliorer les performances.</li>
+                        </ul>
+                    </li>
+                    <li><em>Mise à jour et synchronisation</em> :
+                        <ul>
+                            <li>Mises à jour incrémentielles pour optimiser les ressources.</li>
+                            <li>Validation et nettoyage des données avant intégration pour assurer leur fiabilité.</li>
+                        </ul>
+                    </li>
+                    <li><em>Utilisation des données</em> :
+                        <ul>
+                            <li>Consultation par les utilisateurs via la base de données locale pour un accès rapide.</li>
+                            <li>Notifications automatiques en fonction des changements pertinents pour les utilisateurs concernés.</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li><em>Gestion des données récupérées</em> :
+                <ul>
+                    <li>Historique limité : Conserver les données sur une période définie pour éviter l'accumulation excessive.</li>
+                    <li>Purge régulière : Mise en place de routines de nettoyage pour supprimer les données obsolètes.</li>
+                    <li>Sécurité des données : Protection contre les accès non autorisés et respect des réglementations.</li>
+                </ul>
+            </li>
+            <li><em>Avantages de cette approche</em> :
+                <ul>
+                    <li>Résilience : Fonctionnalité maintenue même si les APIs sont indisponibles.</li>
+                    <li>Performances optimisées : Accès rapide aux données locales sans attente des services externes.</li>
+                    <li>Contrôle des données : Possibilité de personnaliser et d'enrichir les données selon les besoins de l'application.</li>
+                </ul>
+            </li>
+        </ul>
     </li>
 </ol>
 
