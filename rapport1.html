@@ -2004,6 +2004,13 @@
                     <h3>Explication des Classes</h3>
                     <ul>
                         <li>
+                            <strong>MaVille</strong> : Classe principale qui coordonne les différentes entités de l'application.
+                            <ul>
+                                <li><em>Attributs</em> : instance, utilisateurs, projets, requetes, notifications</li>
+                                <li><em>Méthodes</em> : demarrer(), arreter(), gererUtilisateur(), gererProjet()</li>
+                            </ul>
+                        </li>
+                        <li>
                             <strong>Utilisateur</strong> : Classe de base pour tous les utilisateurs de l'application.
                             <ul>
                                 <li><em>Attributs</em> : id, nom, email, mot_de_passe</li>
@@ -2011,31 +2018,31 @@
                             </ul>
                         </li>
                         <li>
-                            <strong>Résident</strong> : Hérite de <em>Utilisateur</em>, ajoute preferences et méthode soumettreRequete().
+                            <strong>Résident</strong> : Hérite de <em>Utilisateur</em>, ajoute des attributs et méthodes spécifiques.
                             <ul>
-                                <li><em>Attributs supplémentaires</em> : preferences</li>
-                                <li><em>Méthodes</em> : soumettreRequete()</li>
+                                <li><em>Attributs supplémentaires</em> : date_naissance, telephone, adresse_residentielle, preferences</li>
+                                <li><em>Méthodes</em> : soumettreRequete(), consulterTravaux(), recevoirNotification()</li>
                             </ul>
                         </li>
                         <li>
-                            <strong>Intervenant</strong> : Hérite de <em>Utilisateur</em>, gère des projets de travaux.
+                            <strong>Intervenant</strong> : Hérite de <em>Utilisateur</em>, gère des projets de travaux et les requêtes.
                             <ul>
-                                <li><em>Attributs supplémentaires</em> : projets</li>
-                                <li><em>Méthodes</em> : soumettreProjet()</li>
+                                <li><em>Attributs supplémentaires</em> : type, identifiant_ville, projets</li>
+                                <li><em>Méthodes</em> : soumettreProjet(), consulterRequetesTravail(), recevoirNotification()</li>
                             </ul>
                         </li>
                         <li>
                             <strong>Projet</strong> : Représente les projets de travaux soumis par les intervenants.
                             <ul>
-                                <li><em>Attributs</em> : id, titre, description, date_debut, date_fin, statut</li>
+                                <li><em>Attributs</em> : id, titre, description, type_travail, quartiers_affectes, rues_affectees, date_debut, date_fin, horaire_travaux, statut</li>
                                 <li><em>Méthodes</em> : modifier(), valider()</li>
                             </ul>
                         </li>
                         <li>
                             <strong>RequeteTravail</strong> : Représente les requêtes de travaux soumises par les résidents.
                             <ul>
-                                <li><em>Attributs</em> : id, titre, description, date_debut_voulue</li>
-                                <li><em>Méthodes</em> : suivre()</li>
+                                <li><em>Attributs</em> : id, titre, description, type_travail, quartier, date_debut_voulue</li>
+                                <li><em>Méthodes</em> : suivre(), cloturer()</li>
                             </ul>
                         </li>
                         <li>
@@ -2043,6 +2050,70 @@
                             <ul>
                                 <li><em>Attributs</em> : id, type, message, date</li>
                                 <li><em>Méthodes</em> : envoyer()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Quartier</strong> : Représente un quartier de Montréal.
+                            <ul>
+                                <li><em>Attributs</em> : id, nom</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Rue</strong> : Représente une rue de Montréal.
+                            <ul>
+                                <li><em>Attributs</em> : id, nom</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Preferences</strong> : Gère les préférences de notification des résidents.
+                            <ul>
+                                <li><em>Attributs</em> : resident_id, quartier_preferences, rue_preferences</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>TypeTravail</strong> : Représente les différents types de travaux.
+                            <ul>
+                                <li><em>Attributs</em> : id, nom</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Candidature</strong> : Représente une candidature d'un intervenant à une requête de travail.
+                            <ul>
+                                <li><em>Attributs</em> : id, intervenant_id, requete_travail_id, date_debut, date_fin</li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Contrôleurs -->
+                        <li>
+                            <strong>AuthController</strong> : Gère l'authentification des utilisateurs.
+                            <ul>
+                                <li><em>Méthodes</em> : login(), logout()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>ProjetController</strong> : Gère les opérations liées aux projets.
+                            <ul>
+                                <li><em>Méthodes</em> : creerProjet(), mettreAJourProjet(), validerProjet()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>RequeteTravailController</strong> : Gère les requêtes de travaux des résidents.
+                            <ul>
+                                <li><em>Méthodes</em> : soumettreRequete(), suivreRequete(), cloturerRequete()</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>NotificationController</strong> : Gère l'envoi des notifications.
+                            <ul>
+                                <li><em>Méthodes</em> : envoyerNotification()</li>
+                            </ul>
+                        </li>
+                        
+                        <!-- Vue -->
+                        <li>
+                            <strong>CLIView</strong> : Gère l'interface en ligne de commande pour l'utilisateur.
+                            <ul>
+                                <li><em>Méthodes</em> : afficherMenu(), recevoirCommande(), afficherInformations()</li>
                             </ul>
                         </li>
                     </ul>
@@ -2058,10 +2129,24 @@
                         <li>
                             <strong>Associations :</strong>
                             <ul>
+                                <li>MaVille gère plusieurs Utilisateur, Projet, RequeteTravail, et Notification.</li>
                                 <li>Un Intervenant gère plusieurs Projet.</li>
                                 <li>Un Résident soumet plusieurs RequeteTravail.</li>
                                 <li>Un Utilisateur (Résident ou Intervenant) reçoit plusieurs Notification.</li>
                                 <li>RequeteTravail et Projet peuvent générer plusieurs Notification.</li>
+                                <li>RequeteTravail peut avoir plusieurs Candidature.</li>
+                                <li>TypeTravail est associé à Projet et RequeteTravail.</li>
+                                <li>Quartier et Rue sont associés aux Projet et RequeteTravail.</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <strong>Relations MVC :</strong>
+                            <ul>
+                                <li>AuthController interagit avec Utilisateur.</li>
+                                <li>ProjetController interagit avec Projet.</li>
+                                <li>RequeteTravailController interagit avec RequeteTravail.</li>
+                                <li>NotificationController interagit avec Notification.</li>
+                                <li>CLIView interagit avec AuthController, ProjetController, RequeteTravailController, et NotificationController.</li>
                             </ul>
                         </li>
                     </ul>
