@@ -10,8 +10,8 @@ public class ConstructionWork {
 
     public ConstructionWork() {}
 
-    public ConstructionWork(String id, String boroughId, String currentStatus, 
-                          String reasonCategory, String submitterCategory, String organizationName) {
+    public ConstructionWork(String id, String boroughId, String currentStatus,
+                            String reasonCategory, String submitterCategory, String organizationName) {
         this.id = id;
         this.boroughId = boroughId;
         this.currentStatus = currentStatus;

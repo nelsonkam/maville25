@@ -2,10 +2,9 @@ package api.controllers;
 
 import api.services.ConstructionWorkService;
 import io.javalin.http.Context;
-import api.MontrealApiClient;
 import models.ConstructionWork;
+
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class ConstructionWorkController {
     private final ConstructionWorkService constructionWorkService;
