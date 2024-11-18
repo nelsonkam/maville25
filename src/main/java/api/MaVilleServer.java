@@ -40,6 +40,14 @@ public class MaVilleServer {
         app.get("/construction-works", constructionWorkController::getCurrentWorks);
         app.get("/road-impacts", roadImpactController::getRoadImpacts);
 
+        WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
+        WorkRequestService workRequestService = new WorkRequestService(workRequestRepo);
+        WorkRequestController workRequestController = new WorkRequestController(workRequestService, JSON_MAPPER);
+
+        app.post("/work-requests", workRequestController::submitRequest);
+        app.get("/work-requests/resident/{email}", workRequestController::getResidentRequests);
+        app.get("/work-requests", workRequestController::getAllRequests);
+
         return app;
     }
 

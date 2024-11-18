@@ -68,6 +68,19 @@ public class DatabaseManager {
                     city_identifier TEXT NOT NULL
                 )
             """);
+
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS work_requests (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT NOT NULL,
+                    description TEXT NOT NULL,
+                    work_type TEXT NOT NULL,
+                    desired_start_date TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    resident_email TEXT NOT NULL,
+                    FOREIGN KEY (resident_email) REFERENCES residents(email) ON DELETE CASCADE
+                )
+            """);
         }
     }
 
@@ -76,6 +89,7 @@ public class DatabaseManager {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("DELETE FROM residents");
             stmt.execute("DELETE FROM intervenants");
+            stmt.execute("DELETE FROM work_requests");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to clear tables", e);
         }
