@@ -3,6 +3,7 @@ package api;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import models.ConstructionWork;
+import models.RoadImpact;
 
 import java.net.URI;
 import java.net.http.HttpClient;
@@ -55,5 +56,42 @@ public class MontrealApiClient {
         return works;
     }
 
+    public List<RoadImpact> getRoadImpacts(String workId, String streetName) throws Exception {
+        StringBuilder url = new StringBuilder(API_URL + "?resource_id=" + IMPACTS_RESOURCE_ID);
 
+        if (workId != null) {
+            url.append("&q=").append(workId);
+        }
+
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(url.toString()))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("API request failed with status: " + response.statusCode());
+        }
+
+        JsonNode root = jsonMapper.readTree(response.body());
+        JsonNode records = root.path("result").path("records");
+
+        List<RoadImpact> impacts = new ArrayList<>();
+        for (JsonNode record : records) {
+            RoadImpact impact = new RoadImpact(
+                    record.path("id_request").asText(),
+                    record.path("streetid").asText(),
+                    record.path("shortname").asText(),
+                    record.path("streetimpacttype").asText()
+            );
+
+            if (streetName == null ||
+                    impact.getStreetName().toLowerCase().contains(streetName.toLowerCase())) {
+                impacts.add(impact);
+            }
+        }
+
+        return impacts;
+    }
 }

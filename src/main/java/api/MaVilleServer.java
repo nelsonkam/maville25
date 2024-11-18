@@ -19,12 +19,13 @@ public class MaVilleServer {
         ResidentService residentService = new ResidentService(residentRepo);
         IntervenantService intervenantService = new IntervenantService(intervenantRepo);
         ConstructionWorkService constructionWorkService = new ConstructionWorkService();
+        RoadImpactService roadImpactService = new RoadImpactService();
 
         ResidentController residentController = new ResidentController(residentService, JSON_MAPPER);
         IntervenantController intervenantController = new IntervenantController(intervenantService, JSON_MAPPER);
 
         ConstructionWorkController constructionWorkController = new ConstructionWorkController(constructionWorkService);
-
+        RoadImpactController roadImpactController = new RoadImpactController(roadImpactService);
 
         Javalin app = Javalin.create();
 
@@ -37,6 +38,7 @@ public class MaVilleServer {
         app.get("/intervenants", intervenantController::getAllIntervenants);
 
         app.get("/construction-works", constructionWorkController::getCurrentWorks);
+        app.get("/road-impacts", roadImpactController::getRoadImpacts);
 
         return app;
     }
