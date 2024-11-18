@@ -69,6 +69,7 @@ public class DatabaseManager {
                 )
             """);
 
+            // Create work_requests table
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS work_requests (
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -89,7 +90,6 @@ public class DatabaseManager {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("DELETE FROM residents");
             stmt.execute("DELETE FROM intervenants");
-            stmt.execute("DELETE FROM work_requests");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to clear tables", e);
         }
