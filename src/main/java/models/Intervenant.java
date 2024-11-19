@@ -1,4 +1,4 @@
-package main.java.models;
+package models;
 
 public class Intervenant extends User {
     private String password;
