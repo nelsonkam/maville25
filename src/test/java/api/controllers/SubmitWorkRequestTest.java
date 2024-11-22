@@ -1,41 +1,54 @@
 package api.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+
+import models.Resident;
 import models.WorkRequest;
-import api.services.WorkRequestService;
-import api.repositories.WorkRequestRepository;
-import api.DatabaseManager;
-
+import io.javalin.testtools.JavalinTest;
 import java.time.LocalDate;
-import java.util.List;
-import static org.mockito.Mockito.*;
-import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import static org.junit.jupiter.api.Assertions.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
-import java.util.List;
-
-public class SubmitWorkRequestTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class SubmitWorkRequestTest extends BaseControllerTest {
+    private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
+        .registerModule(new JavaTimeModule());
     @Test
     public void testSubmitWorkRequest() {
+        JavalinTest.test(createTestApp(), (server, client) -> {
+            // Création d'un résident fictif
+            Resident resident = new Resident(
+                "Marie Curie",
+                LocalDate.now().minusYears(35),
+                "marie.curie@example.com",
+                "mot_de_passe_test",
+                "514-321-9876",
+                "456 Rue Exemple"
+            );
 
-        // Créer une requête fictive
-        WorkRequest mockRequest = new WorkRequest("New Work", "Work Description", "Type1", LocalDate.now(),
-                "resident@example.com");
+            String residentJson = JSON_MAPPER.writeValueAsString(resident);
+            client.post("/residents", residentJson);
 
-        // Simuler le comportement du repository
-        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
-        Mockito.doNothing().when(mockRepository).save(Mockito.any(WorkRequest.class));
+             // Création d'une requête de travaux fictive
+             WorkRequest workRequest = new WorkRequest(
+                "Remplacement lampadaires",
+                "Lampadaires cassés sur la rue",
+                "Éclairage public",
+                LocalDate.now().plusDays(15),
+                "marie.curie@example.com"
+            );
+            String workRequestJson = JSON_MAPPER.writeValueAsString(workRequest);
 
-        // Utiliser le service avec le mock
-        WorkRequestService service = new WorkRequestService(mockRepository);
-        service.submitRequest(mockRequest);
+             // Soumission de la requête
+             var response = client.post("/work-requests", workRequestJson);
+             assertEquals(201, response.code());
 
-        // Vérifier que la méthode save a été appelée
-        Mockito.verify(mockRepository, Mockito.times(1)).save(mockRequest);
+
+        });
+
+     
     }
 
 }

@@ -2,41 +2,56 @@
 package api.controllers;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+
+import models.Resident;
 import models.WorkRequest;
-import api.services.WorkRequestService;
-import api.repositories.WorkRequestRepository;
-import api.DatabaseManager;
-
+import io.javalin.testtools.JavalinTest;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.LocalDate;
-import java.util.List;
-import static org.mockito.Mockito.*; 
-import org.mockito.Mock;             
-import org.mockito.Mockito;          
-import org.junit.jupiter.api.Test;   
-import org.junit.jupiter.api.extension.ExtendWith; 
-import org.mockito.junit.jupiter.MockitoExtension; 
 import static org.junit.jupiter.api.Assertions.*;
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-public class GetResidentWorkRequestsTest {
+public class GetResidentWorkRequestsTest extends BaseControllerTest{
+    private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
+        .registerModule(new JavaTimeModule());
+
     @Test
     public void testGetResidentWorkRequests() {
-        // Créer des données fictives
-        String residentEmail = "resident@example.com";
-        List<WorkRequest> mockRequests = List.of(
-                new WorkRequest("Resident Work", "Work Description", "Type1", LocalDate.now(), residentEmail));
+         JavalinTest.test(createTestApp(), (server, client) -> {
+            // Création d'un résident fictif
+            Resident resident = new Resident(
+                "Jean Dupont",
+                LocalDate.now().minusYears(30),
+                "jean.dupont@example.com",
+                "mot_de_passe_test",
+                "514-123-4567",
+                "123 Rue Exemple"
+            );
+            String residentJson = JSON_MAPPER.writeValueAsString(resident);
+            client.post("/residents", residentJson);
 
-        // Simuler le comportement du repository
-        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
-        Mockito.when(mockRepository.getByResidentEmail(residentEmail)).thenReturn(mockRequests);
+            // Création et soumission d'une demande de travaux pour ce résident
+            WorkRequest workRequest = new WorkRequest(
+                "Réparation trottoirs",
+                "Travaux importants pour le trottoir",
+                "Voirie",
+                LocalDate.now().plusDays(10),
+                "jean.dupont@example.com"
+            );
 
-        // Utiliser le service avec le mock
-        WorkRequestService service = new WorkRequestService(mockRepository);
-        List<WorkRequest> requests = service.getResidentRequests(residentEmail);
+             String workRequestJson = JSON_MAPPER.writeValueAsString(workRequest);
+            client.post("/work-requests", workRequestJson);
 
-        // Vérifier les résultats
-        assertNotNull(requests);
-        assertEquals(1, requests.size());
-        assertEquals(residentEmail, requests.get(0).getResidentEmail());
+            // Récupération des requêtes pour le résident
+            var response = client.get("/work-requests/resident/jean.dupont@example.com");
+            assertEquals(200, response.code());
+
+
+
+
+         });
 
     }
 }

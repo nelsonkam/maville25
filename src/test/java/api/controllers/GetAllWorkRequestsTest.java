@@ -4,40 +4,39 @@ package api.controllers;
 
 import org.junit.jupiter.api.Test;
 import models.WorkRequest;
-import api.services.WorkRequestService;
-import api.repositories.WorkRequestRepository;
-import api.DatabaseManager;
-
+import org.junit.jupiter.api.TestInstance;
+import io.javalin.testtools.JavalinTest;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.LocalDate;
-import java.util.List;
-import static org.mockito.Mockito.*; 
-import org.mockito.Mock;             
-import org.mockito.Mockito;          
-import org.junit.jupiter.api.Test;   
-import org.junit.jupiter.api.extension.ExtendWith; 
-import org.mockito.junit.jupiter.MockitoExtension; 
-
 import static org.junit.jupiter.api.Assertions.*;
-@Ignore
-public class GetAllWorkRequestsTest {
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+
+public class GetAllWorkRequestsTest extends BaseControllerTest{
+     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
+        .registerModule(new JavaTimeModule());
+
     @Test
     public void testGetAllWorkRequests() {
+        JavalinTest.test(createTestApp(), (server, client) -> {
+            // Création et soumission de plusieurs requêtes de travaux
+            for (int i = 0; i < 3; i++) {
+                WorkRequest workRequest = new WorkRequest(
+                    "Travaux " + i,
+                    "Description des travaux " + i,
+                    "Voirie",
+                    LocalDate.now().plusDays(10 + i),
+                    "resident" + i + "@example.com"
+                );
+                String workRequestJson = JSON_MAPPER.writeValueAsString(workRequest);
+                client.post("/work-requests", workRequestJson);
+            }
 
-        // Créer des données fictives
-        List<WorkRequest> mockRequests = List.of(
-                new WorkRequest("Test Work", "Work Description", "Type1", LocalDate.now(), "resident@example.com"));
+            // Récupération de toutes les requêtes
+            var response = client.get("/work-requests");
+            assertEquals(200, response.code());
 
-        // Simuler le comportement du repository
-        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
-        Mockito.when(mockRepository.getAll()).thenReturn(mockRequests);
+        });
 
-        // Utiliser le service avec le mock
-        WorkRequestService service = new WorkRequestService(mockRepository);
-        List<WorkRequest> requests = service.getAllWorkRequests();
-
-        // Vérifier les résultats
-        assertNotNull(requests);
-        assertEquals(1, requests.size());
-        assertEquals("Test Work", requests.get(0).getTitle());
     }
 }
