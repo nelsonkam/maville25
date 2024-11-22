@@ -8,6 +8,7 @@ import api.services.WorkRequestService;
 import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -15,12 +16,22 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GetAllWorkRequestsTest {
     @Test
     public void testGetAllWorkRequests() {
-        // Préparer un contrôleur avec des données existantes
-        WorkRequestService service = new WorkRequestService(new WorkRequestRepository(DatabaseManager.getInstance()));
+
+        // Créer des données fictives
+        List<WorkRequest> mockRequests = List.of(
+                new WorkRequest("Test Work", "Work Description", "Type1", LocalDate.now(), "resident@example.com"));
+
+        // Simuler le comportement du repository
+        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
+        Mockito.when(mockRepository.getAll()).thenReturn(mockRequests);
+
+        // Utiliser le service avec le mock
+        WorkRequestService service = new WorkRequestService(mockRepository);
         List<WorkRequest> requests = service.getAllWorkRequests();
 
-        // Vérifier les resultats
-        assertNotNull(requests); // Vérifier que la liste n'est pas nulle
-        assertTrue(requests.size() > 0); // Vérifier que la liste n'est pas vide
+        // Vérifier les résultats
+        assertNotNull(requests);
+        assertEquals(1, requests.size());
+        assertEquals("Test Work", requests.get(0).getTitle());
     }
 }

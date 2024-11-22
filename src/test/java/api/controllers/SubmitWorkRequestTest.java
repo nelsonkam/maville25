@@ -1,6 +1,5 @@
 package api.controllers;
 
-
 import org.junit.jupiter.api.Test;
 import models.WorkRequest;
 import api.services.WorkRequestService;
@@ -17,18 +16,21 @@ import java.util.List;
 public class SubmitWorkRequestTest {
     @Test
     public void testSubmitWorkRequest() {
-        // Preparer unec noivelle requete de travaux
-        WorkRequest request = new WorkRequest("New Title", "New Description", "Type1", LocalDate.now(),
+
+        // Créer une requête fictive
+        WorkRequest mockRequest = new WorkRequest("New Work", "Work Description", "Type1", LocalDate.now(),
                 "resident@example.com");
-        WorkRequestService service = new WorkRequestService(new WorkRequestRepository(DatabaseManager.getInstance()));
 
-        // Soumettre la requete
-        service.submitRequest(request);
+        // Simuler le comportement du repository
+        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
+        Mockito.doNothing().when(mockRepository).save(Mockito.any(WorkRequest.class));
 
-        // Verifier qu'elle a été ajoutée
-        List<WorkRequest> requests = service.getResidentRequests("resident@example.com");
-        assertTrue(requests.stream().anyMatch(r -> r.getTitle().equals("New Title"))); // Vérifie que la requête a été
-                                                                                       // ajoutée
+        // Utiliser le service avec le mock
+        WorkRequestService service = new WorkRequestService(mockRepository);
+        service.submitRequest(mockRequest);
+
+        // Vérifier que la méthode save a été appelée
+        Mockito.verify(mockRepository, Mockito.times(1)).save(mockRequest);
     }
 
 }

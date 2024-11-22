@@ -7,6 +7,7 @@ import api.services.WorkRequestService;
 import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -14,19 +15,23 @@ import static org.junit.jupiter.api.Assertions.*;
 public class GetResidentWorkRequestsTest {
     @Test
     public void testGetResidentWorkRequests() {
-        // Préparer les données pour un residents
+        // Créer des données fictives
         String residentEmail = "resident@example.com";
-        WorkRequestService service = new WorkRequestService(new WorkRequestRepository(DatabaseManager.getInstance()));
+        List<WorkRequest> mockRequests = List.of(
+                new WorkRequest("Resident Work", "Work Description", "Type1", LocalDate.now(), residentEmail));
 
-        // Pour un resident donné, récupérer toutes les requêtes de travaux
+        // Simuler le comportement du repository
+        WorkRequestRepository mockRepository = Mockito.mock(WorkRequestRepository.class);
+        Mockito.when(mockRepository.getByResidentEmail(residentEmail)).thenReturn(mockRequests);
+
+        // Utiliser le service avec le mock
+        WorkRequestService service = new WorkRequestService(mockRepository);
         List<WorkRequest> requests = service.getResidentRequests(residentEmail);
 
-        // Vérifier les resultats
-        assertNotNull(requests); // Vérifier que la liste n'est pas nulle
-        for (WorkRequest request : requests) {
-            assertEquals(residentEmail, request.getResidentEmail()); // Vérifier que toutes les requêtes appartiennent
-                                                                     // au même résident
-        }
+        // Vérifier les résultats
+        assertNotNull(requests);
+        assertEquals(1, requests.size());
+        assertEquals(residentEmail, requests.get(0).getResidentEmail());
 
     }
 }
