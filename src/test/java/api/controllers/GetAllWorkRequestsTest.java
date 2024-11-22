@@ -1,10 +1,11 @@
 //Test pour récupérer toutes les requêtes de travaux 
 //(Afficher la liste de toutes les requêtes de travaux )
+package api.controllers;
 
 import org.junit.jupiter.api.Test;
 import models.WorkRequest;
-import services.WorkRequestService;
-import repositories.WorkRequestRepository;
+import api.services.WorkRequestService;
+import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
 import java.util.List;

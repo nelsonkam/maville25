@@ -1,10 +1,10 @@
+package api.controllers;
 
-//Test pour soumettre une nouvelle requête de travaux
 
 import org.junit.jupiter.api.Test;
 import models.WorkRequest;
-import services.WorkRequestService;
-import repositories.WorkRequestRepository;
+import api.services.WorkRequestService;
+import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
 import java.time.LocalDate;
@@ -23,7 +23,7 @@ public class SubmitWorkRequestTest {
         WorkRequestService service = new WorkRequestService(new WorkRequestRepository(DatabaseManager.getInstance()));
 
         // Soumettre la requete
-        service.submiRequest(request);
+        service.submitRequest(request);
 
         // Verifier qu'elle a été ajoutée
         List<WorkRequest> requests = service.getResidentRequests("resident@example.com");
