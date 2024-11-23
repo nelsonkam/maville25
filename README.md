@@ -34,7 +34,9 @@ java -jar MaVille.jar
     Utilisateur: intervenant
     Mot de passe: maVille25
 ```
-### Residents Table
+
+
+### Residents
 | Nom            | Email | Date de naissanece | Telephone    | Adresse                               |
 |----------------|--------|--------------------|--------------|---------------------------------------|
 | Jean Tremblay  | jean.tremblay@email.com | 1980-05-15         | 514-555-0101 | 123 Rue Saint-Denis, Montréal         |
@@ -43,6 +45,7 @@ java -jar MaVille.jar
 | Sophie Dubois  | sophie.dubois@email.com | 1988-03-25         | 514-555-0104 | 321 Rue Sherbrooke, Montréal          |
 | Lucas Bergeron | lucas.bergeron@email.com | 1995-07-12         | 514-555-0105 | 654 Avenue du Parc, Montréal          |
 
+Mot de passe: `password123` (pour tous les comptes)
 ### Intervenants
 | Nom                        | Email | Type | ID       |
 |----------------------------|--------|------|----------|
@@ -51,6 +54,7 @@ java -jar MaVille.jar
 | Aqueduc Expert             | contact@aqueducexpert.com | Entrepreneur privé | 23456789 |
 | Signalisation Montréal     | ops@signalmtl.com | Entrepreneur privé | 34567890 |
 | Services Municipaux MTL    | services@mtl.ca | Entreprise publique | 45678901 |
+Mot de passe: `password123` (pour tous les comptes)
 
 ### Requete de travail
 | Titre                 | Description | Type             | Date       | Statut      | Email du resident       |
