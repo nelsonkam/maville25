@@ -54,6 +54,7 @@ Mot de passe: `password123` (pour tous les comptes)
 | Aqueduc Expert             | contact@aqueducexpert.com | Entrepreneur privé | 23456789 |
 | Signalisation Montréal     | ops@signalmtl.com | Entrepreneur privé | 34567890 |
 | Services Municipaux MTL    | services@mtl.ca | Entreprise publique | 45678901 |
+
 Mot de passe: `password123` (pour tous les comptes)
 
 ### Requete de travail
