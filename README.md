@@ -10,7 +10,35 @@ Un rapport en format web est disponible sur le répertoire GitHub pour plus de d
 Pour télécharger la dernière version du répertoire GitHub, utiliser la commande suivante:
 
 ```
-    git clone https://github.com/sidaliterkmane/maville25.git
+    git clone https://github.com/nelsonkam/maville25.git
+```
+
+Exécuter les commandes suivantes pour lancer l'application:
+
+Pour Mac
+```
+    mvn clean install
+
+    --Pour lancer l'interface en ligne de commande:
+    mvn exec:java -Dexec.mainClass="cli.MaVilleCLI"
+
+    --Dans un terminal séparé, initier la connection au serveur:
+    mvn exec:java -Dexec.mainClass="api.MaVilleServer"
+
+
+```
+
+Pour Windows
+```
+    mvn clean install
+
+    --Pour lancer l'interface en ligne de commande:
+    mvn exec:java -D exec.mainClass="cli.MaVilleCLI"
+
+    --Dans un terminal séparé, initier la connection au serveur:
+    mvn exec:java -D exec.mainClass="api.MaVilleServer"
+
+
 ```
 
 
