@@ -14,28 +14,6 @@ Pour télécharger la dernière version du répertoire GitHub, utiliser la comma
 ```
 
 
-
-## Prototype
-Un prototype écrit en Java est disponible. Il démontre l'interface du côté des résidents et du côté des intervenants. Le cas d'utilisation "Consulter les travaux en cours" est démontré.
-
-Pour exécuter le fichier .jar, utiliser la commande suivante dans un terminal:
-```
-java -jar MaVille.jar
-```
-
-```
-    ===== Accès à l'interface résident =====
-    Utilisateur: citoyen
-    Mot de passe: maVille25
-```
-
-```
-    ===== Accès à l'interface intervenant ======
-    Utilisateur: intervenant
-    Mot de passe: maVille25
-```
-
-
 ### Residents
 | Nom            | Email | Date de naissanece | Telephone    | Adresse                               |
 |----------------|--------|--------------------|--------------|---------------------------------------|
