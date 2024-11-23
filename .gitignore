@@ -1,3 +1,4 @@
 /target/
 .idea/
-maville.db*
+maville-test.db*
+.env

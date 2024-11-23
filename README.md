@@ -34,5 +34,30 @@ java -jar MaVille.jar
     Utilisateur: intervenant
     Mot de passe: maVille25
 ```
+### Residents Table
+| Nom            | Email | Date de naissanece | Telephone    | Adresse                               |
+|----------------|--------|--------------------|--------------|---------------------------------------|
+| Jean Tremblay  | jean.tremblay@email.com | 1980-05-15         | 514-555-0101 | 123 Rue Saint-Denis, Montréal         |
+| Marie Lavoie   | marie.lavoie@email.com | 1992-08-22         | 514-555-0102 | 456 Boulevard Saint-Laurent, Montréal |
+| Pierre Gagnon  | pierre.gagnon@email.com | 1975-11-30         | 514-555-0103 | 789 Avenue Mont-Royal, Montréal       |
+| Sophie Dubois  | sophie.dubois@email.com | 1988-03-25         | 514-555-0104 | 321 Rue Sherbrooke, Montréal          |
+| Lucas Bergeron | lucas.bergeron@email.com | 1995-07-12         | 514-555-0105 | 654 Avenue du Parc, Montréal          |
 
+### Intervenants
+| Nom                        | Email | Type | ID       |
+|----------------------------|--------|------|----------|
+| Construction Québec Inc.   | info@constructionqc.com | Entrepreneur privé | 12345678 |
+| Ville de Montréal - Voirie | voirie@montreal.ca | Entreprise publique | 87654321 |
+| Aqueduc Expert             | contact@aqueducexpert.com | Entrepreneur privé | 23456789 |
+| Signalisation Montréal     | ops@signalmtl.com | Entrepreneur privé | 34567890 |
+| Services Municipaux MTL    | services@mtl.ca | Entreprise publique | 45678901 |
+
+### Requete de travail
+| Titre                 | Description | Type             | Date       | Statut      | Email du resident       |
+|-----------------------|-------------|------------------|------------|-------------|-------------------------|
+| Réparation trottoir   | Trottoir endommagé devant le 123 Rue Saint-Denis | Voirie           | 2024-05-01 | PENDING     | jean.tremblay@email.com |
+| Fuite d'eau           | Fuite d'eau importante sur Boulevard Saint-Laurent | Aqueduc          | 2024-04-15 | IN_PROGRESS | marie.lavoie@email.com  |
+| Lampadaire défectueux | Lampadaire non fonctionnel depuis 2 semaines | Éclairage public | 2024-04-20 | PENDING     | pierre.gagnon@email.com |
+| Panneau stop manquant | Panneau stop disparu après accident | Signalisation    | 2024-04-10 | ASSIGNED    | marie.lavoie@email.com  |
+| Égout bouché          | Égout bouché causant des refoulements | Égouts           | 2024-05-15 | PENDING     | jean.tremblay@email.com |
 
