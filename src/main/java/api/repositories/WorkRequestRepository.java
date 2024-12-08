@@ -13,13 +13,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Cette classe gère les opérations de base de données pour les demandes de travaux.
+ */
 public class WorkRequestRepository {
     private final DatabaseManager db;
 
+    /**
+     * Constructeur de la classe WorkRequestRepository.
+     *
+     * @param db Le gestionnaire de base de données.
+     */
     public WorkRequestRepository(DatabaseManager db) {
         this.db = db;
     }
 
+    /**
+     * Enregistre une nouvelle demande de travaux dans la base de données.
+     *
+     * @param request La demande de travaux à enregistrer.
+     * @throws SQLException Si une erreur survient lors de l'enregistrement.
+     */
     public void save(WorkRequest request) throws SQLException {
         String sql = """
             INSERT INTO work_requests 
@@ -47,6 +61,13 @@ public class WorkRequestRepository {
         }
     }
 
+    /**
+     * Récupère les demandes de travaux d'un résident par email.
+     *
+     * @param email L'email du résident.
+     * @return La liste des demandes de travaux du résident.
+     * @throws SQLException Si une erreur survient lors de la récupération.
+     */
     public List<WorkRequest> findByResidentEmail(String email) throws SQLException {
         String sql = "SELECT * FROM work_requests WHERE resident_email = ?";
         List<WorkRequest> requests = new ArrayList<>();
@@ -63,6 +84,13 @@ public class WorkRequestRepository {
         return requests;
     }
 
+    /**
+     * Récupère les demandes de travaux d'un intervenant par email.
+     *
+     * @param email L'email de l'intervenant.
+     * @return La liste des demandes de travaux de l'intervenant.
+     * @throws SQLException Si une erreur survient lors de la récupération.
+     */
     public List<WorkRequest> findByIntervenantEmail(String email) throws SQLException {
         String sql = "SELECT * FROM work_requests WHERE intervenant_email = ?";
         List<WorkRequest> requests = new ArrayList<>();
@@ -79,6 +107,13 @@ public class WorkRequestRepository {
         return requests;
     }
 
+    /**
+     * Récupère une demande de travaux par son identifiant.
+     *
+     * @param id L'identifiant de la demande de travaux.
+     * @return Une option contenant la demande de travaux si elle existe, sinon une option vide.
+     * @throws SQLException Si une erreur survient lors de la récupération.
+     */
     public Optional<WorkRequest> findById(Long id) throws SQLException {
         String sql = "SELECT * FROM work_requests WHERE id = ?";
         
@@ -94,6 +129,12 @@ public class WorkRequestRepository {
         return Optional.empty();
     }
 
+    /**
+     * Met à jour une demande de travaux dans la base de données.
+     *
+     * @param request La demande de travaux à mettre à jour.
+     * @throws SQLException Si une erreur survient lors de la mise à jour.
+     */
     public void update(WorkRequest request) throws SQLException {
         String sql = """
             UPDATE work_requests 
@@ -115,6 +156,13 @@ public class WorkRequestRepository {
         }
     }
 
+    /**
+     * Mappe un ResultSet à un objet WorkRequest.
+     *
+     * @param rs Le ResultSet à mapper.
+     * @return L'objet WorkRequest mappé.
+     * @throws SQLException Si une erreur survient lors du mapping.
+     */
     private WorkRequest mapResultSetToWorkRequest(ResultSet rs) throws SQLException {
         WorkRequest request = new WorkRequest();
         request.setId(rs.getLong("id"));
@@ -127,6 +175,13 @@ public class WorkRequestRepository {
         return request;
     }
 
+    /**
+     * Vérifie si un résident existe par email.
+     *
+     * @param email L'email du résident.
+     * @return true si le résident existe, false sinon.
+     * @throws SQLException Si une erreur survient lors de la vérification.
+     */
     public boolean residentExists(String email) throws SQLException {
         String sql = "SELECT 1 FROM residents WHERE email = ?";
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
@@ -136,6 +191,12 @@ public class WorkRequestRepository {
         }
     }
 
+    /**
+     * Récupère toutes les demandes de travaux.
+     *
+     * @return La liste de toutes les demandes de travaux.
+     * @throws SQLException Si une erreur survient lors de la récupération.
+     */
     public List<WorkRequest> findAll() throws SQLException {
         String sql = "SELECT * FROM work_requests";
         List<WorkRequest> requests = new ArrayList<>();

@@ -7,26 +7,40 @@ import models.WorkRequest;
 
 import java.time.LocalDate;
 
+/**
+ * Cette classe gère les requêtes HTTP pour les demandes de travaux.
+ */
 public class WorkRequestController {
     private final WorkRequestService workRequestService;
     private final ObjectMapper jsonMapper;
 
+    /**
+     * Constructeur de la classe WorkRequestController.
+     *
+     * @param workRequestService Le service de gestion des demandes de travaux.
+     * @param jsonMapper Le mapper JSON pour la sérialisation/désérialisation.
+     */
     public WorkRequestController(WorkRequestService workRequestService, ObjectMapper jsonMapper) {
         this.workRequestService = workRequestService;
         this.jsonMapper = jsonMapper;
     }
 
+    /**
+     * Soumet une demande de travaux.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void submitRequest(Context ctx) {
         try {
             WorkRequest request = jsonMapper.readValue(ctx.body(), WorkRequest.class);
             
-            // Validate work request
+            // Valide la demande de travaux
             if (request.getDesiredStartDate().isBefore(LocalDate.now())) {
                 ctx.status(400).result("Date must be in the future");
                 return;
             }
 
-            // Validate work type
+            // Valide le type de travaux
             if (!isValidWorkType(request.getWorkType())) {
                 ctx.status(400).result("Invalid work type");
                 return;
@@ -43,6 +57,11 @@ public class WorkRequestController {
         }
     }
 
+    /**
+     * Récupère les demandes de travaux d'un résident.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void getResidentRequests(Context ctx) {
         try {
             String email = ctx.pathParam("email");
@@ -57,6 +76,11 @@ public class WorkRequestController {
         }
     }
 
+    /**
+     * Récupère toutes les demandes de travaux.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void getAllRequests(Context ctx) {
         try {
             var requests = workRequestService.getAllWorkRequests();
@@ -66,6 +90,12 @@ public class WorkRequestController {
         }
     }
 
+    /**
+     * Vérifie si le type de travaux est valide.
+     *
+     * @param workType Le type de travaux à vérifier.
+     * @return true si le type de travaux est valide, false sinon.
+     */
     private boolean isValidWorkType(String workType) {
         return workType != null && (
             workType.equals("Voirie") ||
@@ -76,6 +106,4 @@ public class WorkRequestController {
             workType.equals("Autre")
         );
     }
-
-
 }

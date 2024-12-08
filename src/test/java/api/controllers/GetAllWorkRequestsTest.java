@@ -1,5 +1,5 @@
-//Test pour récupérer toutes les requêtes de travaux 
-//(Afficher la liste de toutes les requêtes de travaux )
+// Test pour récupérer toutes les requêtes de travaux 
+// (Afficher la liste de toutes les requêtes de travaux)
 package api.controllers;
 
 import org.junit.jupiter.api.Test;
@@ -10,12 +10,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-public class GetAllWorkRequestsTest extends BaseControllerTest{
-     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
+/**
+ * Cette classe teste la récupération de toutes les requêtes de travaux.
+ */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class GetAllWorkRequestsTest extends BaseControllerTest {
+    private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
         .registerModule(new JavaTimeModule());
 
+    /**
+     * Teste la récupération de toutes les requêtes de travaux.
+     */
     @Test
     public void testGetAllWorkRequests() {
         JavalinTest.test(createTestApp(), (server, client) -> {
@@ -35,8 +41,6 @@ public class GetAllWorkRequestsTest extends BaseControllerTest{
             // Récupération de toutes les requêtes
             var response = client.get("/work-requests");
             assertEquals(200, response.code());
-
         });
-
     }
 }

@@ -12,16 +12,30 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.List;
 
+/**
+ * Cette classe gère les appels API pour l'application MaVille.
+ */
 public class ApiClient {
     private static final String API_BASE_URL = "http://localhost:7000";
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
             .registerModule(new JavaTimeModule());
     private final HttpClient httpClient;
 
+    /**
+     * Constructeur de la classe ApiClient.
+     * Initialise le client HTTP.
+     */
     public ApiClient() {
         this.httpClient = HttpClient.newHttpClient();
     }
 
+    /**
+     * Enregistre un résident via l'API.
+     *
+     * @param resident Le résident à enregistrer.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public void registerResident(Resident resident) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_BASE_URL + "/residents"))
@@ -35,6 +49,13 @@ public class ApiClient {
         }
     }
 
+    /**
+     * Enregistre un intervenant via l'API.
+     *
+     * @param intervenant L'intervenant à enregistrer.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public void registerIntervenant(Intervenant intervenant) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_BASE_URL + "/intervenants"))
@@ -48,6 +69,15 @@ public class ApiClient {
         }
     }
 
+    /**
+     * Authentifie un résident via l'API.
+     *
+     * @param email L'email du résident.
+     * @param password Le mot de passe du résident.
+     * @return Le résident authentifié.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public Resident loginResident(String email, String password) throws IOException, InterruptedException {
         LoginRequest loginRequest = new LoginRequest(email, password);
         HttpRequest request = HttpRequest.newBuilder()
@@ -63,6 +93,13 @@ public class ApiClient {
         return JSON_MAPPER.readValue(response.body(), Resident.class);
     }
 
+    /**
+     * Soumet une demande de travaux via l'API.
+     *
+     * @param request La demande de travaux à soumettre.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public void submitWorkRequest(WorkRequest request) throws IOException, InterruptedException {
         HttpRequest httpRequest = HttpRequest.newBuilder()
                 .uri(URI.create(API_BASE_URL + "/work-requests"))
@@ -76,6 +113,14 @@ public class ApiClient {
         }
     }
 
+    /**
+     * Récupère les demandes de travaux d'un résident via l'API.
+     *
+     * @param email L'email du résident.
+     * @return La liste des demandes de travaux du résident.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public List<WorkRequest> getResidentWorkRequests(String email) throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_BASE_URL + "/work-requests/resident/" + email))
@@ -93,6 +138,13 @@ public class ApiClient {
         );
     }
 
+    /**
+     * Récupère toutes les demandes de travaux via l'API.
+     *
+     * @return La liste de toutes les demandes de travaux.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public List<WorkRequest> getAllWorkRequests() throws IOException, InterruptedException {
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(API_BASE_URL + "/work-requests"))
@@ -110,6 +162,15 @@ public class ApiClient {
         );
     }
 
+    /**
+     * Récupère les entraves routières via l'API.
+     *
+     * @param workId L'ID du travail à filtrer (peut être null).
+     * @param streetName Le nom de la rue à filtrer (peut être null).
+     * @return La liste des entraves routières.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public List<RoadImpact> getRoadImpacts(String workId, String streetName) throws IOException, InterruptedException {
         StringBuilder url = new StringBuilder(API_BASE_URL + "/road-impacts");
         
@@ -140,6 +201,15 @@ public class ApiClient {
         );
     }
 
+    /**
+     * Récupère les travaux en cours via l'API.
+     *
+     * @param borough L'arrondissement à filtrer (peut être null).
+     * @param type Le type de travaux à filtrer (peut être null).
+     * @return La liste des travaux en cours.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public List<ConstructionWork> getCurrentWorks(String borough, String type) throws IOException, InterruptedException {
         StringBuilder url = new StringBuilder(API_BASE_URL + "/construction-works");
         
@@ -170,6 +240,15 @@ public class ApiClient {
         );
     }
 
+    /**
+     * Authentifie un intervenant via l'API.
+     *
+     * @param email L'email de l'intervenant.
+     * @param password Le mot de passe de l'intervenant.
+     * @return L'intervenant authentifié.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
     public Intervenant loginIntervenant(String email, String password) throws IOException, InterruptedException {
         LoginRequest loginRequest = new LoginRequest(email, password);
         HttpRequest request = HttpRequest.newBuilder()

@@ -9,11 +9,19 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import java.util.Scanner;
 
+/**
+ * Cette classe représente l'interface en ligne de commande (CLI) de l'application MaVille.
+ */
 public class MaVilleCLI {
     private static final Scanner scanner = new Scanner(System.in);
     private static final ApiClient apiClient = new ApiClient();
     private static User currentUser = null;
 
+    /**
+     * Point d'entrée principal de l'application MaVille (CLI).
+     *
+     * @param args Les arguments de la ligne de commande.
+     */
     public static void main(String[] args) {
         System.out.println("Bienvenue dans l'application MaVille (CLI)");
 
@@ -36,6 +44,11 @@ public class MaVilleCLI {
         }
     }
 
+    /**
+     * Affiche le menu d'authentification.
+     *
+     * @throws Exception Si une erreur survient lors de l'authentification.
+     */
     private static void showLoginMenu() throws Exception {
         System.out.println("\nMenu d'authentification:");
         System.out.println("1. Se connecter en tant que résident");
@@ -59,6 +72,11 @@ public class MaVilleCLI {
         }
     }
 
+    /**
+     * Authentifie un résident.
+     *
+     * @throws Exception Si une erreur survient lors de l'authentification.
+     */
     private static void loginResident() throws Exception {
         System.out.print("Email: ");
         String email = scanner.nextLine();
@@ -69,6 +87,11 @@ public class MaVilleCLI {
         System.out.println("Connexion réussie!");
     }
 
+    /**
+     * Authentifie un intervenant.
+     *
+     * @throws Exception Si une erreur survient lors de l'authentification.
+     */
     private static void loginIntervenant() throws Exception {
         System.out.print("Email: ");
         String email = scanner.nextLine();
@@ -79,6 +102,11 @@ public class MaVilleCLI {
         System.out.println("Connexion réussie!");
     }
 
+    /**
+     * Inscrit un nouveau résident.
+     *
+     * @throws Exception Si une erreur survient lors de l'inscription.
+     */
     private static void registerResident() throws Exception {
         System.out.print("Nom: ");
         String name = scanner.nextLine();
@@ -113,6 +141,11 @@ public class MaVilleCLI {
         System.out.println("Inscription réussie!");
     }
 
+    /**
+     * Inscrit un nouvel intervenant.
+     *
+     * @throws Exception Si une erreur survient lors de l'inscription.
+     */
     private static void registerIntervenant() throws Exception {
         System.out.print("Nom: ");
         String name = scanner.nextLine();
@@ -147,6 +180,9 @@ public class MaVilleCLI {
 
     private static final MenuHandler menuHandler = new MenuHandler(scanner, apiClient);
 
+    /**
+     * Gère le choix de l'utilisateur dans le menu.
+     */
     private static void handleUserChoice() {
         System.out.print("Choisissez une option: ");
         int choice = Integer.parseInt(scanner.nextLine());

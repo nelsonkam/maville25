@@ -12,6 +12,9 @@ import java.net.http.HttpResponse;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Cette classe gère les appels API à l'API de données ouvertes de Montréal pour récupérer des informations sur les travaux de construction et les impacts routiers.
+ */
 public class MontrealApiClient {
     private static final String API_URL = "https://donnees.montreal.ca/api/3/action/datastore_search";
     private static final String WORKS_RESOURCE_ID = "cc41b532-f12d-40fb-9f55-eb58c9a2b12b";
@@ -19,11 +22,21 @@ public class MontrealApiClient {
     private final HttpClient httpClient;
     private final ObjectMapper jsonMapper;
 
+    /**
+     * Constructeur de la classe MontrealApiClient.
+     * Initialise le client HTTP et le mapper JSON.
+     */
     public MontrealApiClient() {
         this.httpClient = HttpClient.newHttpClient();
         this.jsonMapper = new ObjectMapper();
     }
 
+    /**
+     * Récupère les travaux de construction en cours via l'API de Montréal.
+     *
+     * @return Une liste de travaux de construction.
+     * @throws Exception Si une erreur survient lors de la récupération des données.
+     */
     public List<ConstructionWork> getCurrentWorks() throws Exception {
         String url = API_URL + "?resource_id=" + WORKS_RESOURCE_ID;
         
@@ -56,6 +69,14 @@ public class MontrealApiClient {
         return works;
     }
 
+    /**
+     * Récupère les impacts routiers via l'API de Montréal.
+     *
+     * @param workId L'identifiant des travaux à filtrer (peut être null).
+     * @param streetName Le nom de la rue à filtrer (peut être null).
+     * @return Une liste d'impacts routiers.
+     * @throws Exception Si une erreur survient lors de la récupération des données.
+     */
     public List<RoadImpact> getRoadImpacts(String workId, String streetName) throws Exception {
         StringBuilder url = new StringBuilder(API_URL + "?resource_id=" + IMPACTS_RESOURCE_ID);
         

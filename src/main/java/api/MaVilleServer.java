@@ -10,11 +10,19 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.Javalin;
 
+/**
+ * Cette classe configure et démarre le serveur Javalin pour l'application MaVille.
+ */
 public class MaVilleServer {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
         .registerModule(new JavaTimeModule());
     private static DatabaseManager db = DatabaseManager.getInstance();
 
+    /**
+     * Crée et configure l'application Javalin.
+     *
+     * @return L'application Javalin configurée.
+     */
     public static Javalin createApp() {
         // Repositories
         ResidentRepository residentRepo = new ResidentRepository(db);
@@ -68,6 +76,11 @@ public class MaVilleServer {
         return app;
     }
 
+    /**
+     * Point d'entrée principal de l'application MaVilleServer.
+     *
+     * @param args Les arguments de la ligne de commande.
+     */
     public static void main(String[] args) {
         DatabaseManager db = DatabaseManager.getInstance();
 

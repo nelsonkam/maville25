@@ -9,15 +9,29 @@ import models.Resident;
 
 import java.util.stream.Collectors;
 
+/**
+ * Cette classe gère les requêtes HTTP pour les résidents.
+ */
 public class ResidentController {
     private final ResidentService residentService;
     private final ObjectMapper jsonMapper;
 
+    /**
+     * Constructeur de la classe ResidentController.
+     *
+     * @param residentService Le service de gestion des résidents.
+     * @param jsonMapper Le mapper JSON pour la sérialisation/désérialisation.
+     */
     public ResidentController(ResidentService residentService, ObjectMapper jsonMapper) {
         this.residentService = residentService;
         this.jsonMapper = jsonMapper;
     }
 
+    /**
+     * Enregistre un nouveau résident.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void register(Context ctx) {
         try {
             Resident newResident = jsonMapper.readValue(ctx.body(), Resident.class);
@@ -35,6 +49,11 @@ public class ResidentController {
         }
     }
 
+    /**
+     * Authentifie un résident.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void login(Context ctx) {
         try {
             LoginRequest login = jsonMapper.readValue(ctx.body(), LoginRequest.class);
@@ -47,6 +66,11 @@ public class ResidentController {
         }
     }
 
+    /**
+     * Récupère tous les résidents.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void getAllResidents(Context ctx) {
         try {
             var residents = residentService.getAllResidents()

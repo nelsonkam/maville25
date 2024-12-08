@@ -11,15 +11,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 
-public class GetResidentWorkRequestsTest extends BaseControllerTest{
+/**
+ * Cette classe teste la récupération de toutes les requêtes d'un résident.
+ */
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+public class GetResidentWorkRequestsTest extends BaseControllerTest {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
         .registerModule(new JavaTimeModule());
 
+    /**
+     * Teste la récupération de toutes les requêtes d'un résident.
+     */
     @Test
     public void testGetResidentWorkRequests() {
-         JavalinTest.test(createTestApp(), (server, client) -> {
+        JavalinTest.test(createTestApp(), (server, client) -> {
             // Création d'un résident fictif
             Resident resident = new Resident(
                 "Jean Dupont",
@@ -41,17 +47,12 @@ public class GetResidentWorkRequestsTest extends BaseControllerTest{
                 "jean.dupont@example.com"
             );
 
-             String workRequestJson = JSON_MAPPER.writeValueAsString(workRequest);
+            String workRequestJson = JSON_MAPPER.writeValueAsString(workRequest);
             client.post("/work-requests", workRequestJson);
 
             // Récupération des requêtes pour le résident
             var response = client.get("/work-requests/resident/jean.dupont@example.com");
             assertEquals(200, response.code());
-
-
-
-
-         });
-
+        });
     }
 }

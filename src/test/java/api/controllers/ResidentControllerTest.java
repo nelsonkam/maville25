@@ -13,6 +13,9 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Cette classe teste les requêtes HTTP pour les résidents.
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class ResidentControllerTest extends BaseControllerTest {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
@@ -20,8 +23,9 @@ public class ResidentControllerTest extends BaseControllerTest {
     private static final Faker faker = new Faker();
     private static final String TEST_PASSWORD = "testPassword123!";
 
-
-
+    /**
+     * Teste l'enregistrement d'un résident.
+     */
     @Test
     public void testResidentRegistration() {
         JavalinTest.test(createTestApp(), (server, client) -> {
@@ -60,6 +64,9 @@ public class ResidentControllerTest extends BaseControllerTest {
         });
     }
 
+    /**
+     * Teste la connexion d'un résident.
+     */
     @Test
     public void testResidentLogin() {
         JavalinTest.test(createTestApp(), (server, client) -> {
@@ -92,6 +99,9 @@ public class ResidentControllerTest extends BaseControllerTest {
         });
     }
 
+    /**
+     * Teste la récupération de tous les résidents.
+     */
     @Test
     public void testGetAllResidents() {
         JavalinTest.test(createTestApp(), (server, client) -> {

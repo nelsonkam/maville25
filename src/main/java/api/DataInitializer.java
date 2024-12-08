@@ -5,13 +5,26 @@ import java.sql.PreparedStatement;
 import java.time.LocalDate;
 import java.sql.Date;
 
+/**
+ * Cette classe initialise les données de la base de données pour l'application MaVille.
+ */
 public class DataInitializer {
     private final DatabaseManager db;
 
+    /**
+     * Constructeur de la classe DataInitializer.
+     *
+     * @param db Le gestionnaire de base de données.
+     */
     public DataInitializer(DatabaseManager db) {
         this.db = db;
     }
 
+    /**
+     * Initialise les données dans la base de données.
+     *
+     * @throws Exception Si une erreur survient lors de l'initialisation des données.
+     */
     public void initializeData() throws Exception {
         Connection conn = db.getConnection();
 
@@ -51,6 +64,18 @@ public class DataInitializer {
         conn.close();
     }
 
+    /**
+     * Insère un résident dans la base de données.
+     *
+     * @param conn La connexion à la base de données.
+     * @param name Le nom du résident.
+     * @param email L'email du résident.
+     * @param password Le mot de passe du résident.
+     * @param dob La date de naissance du résident.
+     * @param phone Le numéro de téléphone du résident.
+     * @param address L'adresse du résident.
+     * @throws Exception Si une erreur survient lors de l'insertion.
+     */
     private void insertResident(Connection conn, String name, String email, String password, LocalDate dob, String phone, String address) throws Exception {
         String sql = "INSERT INTO residents (name, email, password, date_of_birth, phone_number, address) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -64,6 +89,17 @@ public class DataInitializer {
         }
     }
 
+    /**
+     * Insère un intervenant dans la base de données.
+     *
+     * @param conn La connexion à la base de données.
+     * @param name Le nom de l'intervenant.
+     * @param email L'email de l'intervenant.
+     * @param password Le mot de passe de l'intervenant.
+     * @param type Le type d'intervenant.
+     * @param cityId L'identifiant de la ville de l'intervenant.
+     * @throws Exception Si une erreur survient lors de l'insertion.
+     */
     private void insertIntervenant(Connection conn, String name, String email, String password, String type, String cityId) throws Exception {
         String sql = "INSERT INTO intervenants (name, email, password, type, city_identifier) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -76,6 +112,19 @@ public class DataInitializer {
         }
     }
 
+    /**
+     * Insère une demande de travaux dans la base de données.
+     *
+     * @param conn La connexion à la base de données.
+     * @param id L'identifiant de la demande de travaux.
+     * @param title Le titre de la demande de travaux.
+     * @param description La description de la demande de travaux.
+     * @param workType Le type de travaux.
+     * @param startDate La date de début souhaitée pour les travaux.
+     * @param status Le statut de la demande de travaux.
+     * @param residentEmail L'email du résident ayant fait la demande.
+     * @throws Exception Si une erreur survient lors de l'insertion.
+     */
     private void insertWorkRequest(Connection conn, long id, String title, String description, String workType, LocalDate startDate, String status, String residentEmail) throws Exception {
         String sql = "INSERT INTO work_requests (id, title, description, work_type, desired_start_date, status, resident_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -90,6 +139,17 @@ public class DataInitializer {
         }
     }
 
+    /**
+     * Insère une candidature dans la base de données.
+     *
+     * @param conn La connexion à la base de données.
+     * @param workRequestId L'identifiant de la demande de travaux associée.
+     * @param intervenantEmail L'email de l'intervenant.
+     * @param status Le statut de la candidature.
+     * @param residentMessage Le message du résident (peut être null).
+     * @param confirmed Indique si la candidature est confirmée par l'intervenant.
+     * @throws Exception Si une erreur survient lors de l'insertion.
+     */
     private void insertCandidature(Connection conn, long workRequestId, String intervenantEmail, String status, String residentMessage, boolean confirmed) throws Exception {
         String sql = "INSERT INTO candidatures (work_request_id, intervenant_email, status, resident_message, confirmed_by_intervenant) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
@@ -102,6 +162,16 @@ public class DataInitializer {
         }
     }
 
+    /**
+     * Insère un projet dans la base de données.
+     *
+     * @param conn La connexion à la base de données.
+     * @param title Le titre du projet.
+     * @param description La description du projet.
+     * @param startDate La date de début souhaitée pour le projet.
+     * @param status Le statut du projet.
+     * @throws Exception Si une erreur survient lors de l'insertion.
+     */
     private void insertProject(Connection conn, String title, String description, LocalDate startDate, String status) throws Exception {
         String sql = "INSERT INTO projects (title, description, desired_start_date, status) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {

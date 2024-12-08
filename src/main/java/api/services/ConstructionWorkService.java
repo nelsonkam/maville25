@@ -6,13 +6,28 @@ import models.ConstructionWork;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * Cette classe fournit des services pour gérer les travaux de construction.
+ */
 public class ConstructionWorkService {
     private final MontrealApiClient montrealApiClient;
 
+    /**
+     * Constructeur de la classe ConstructionWorkService.
+     * Initialise le client API de Montréal.
+     */
     public ConstructionWorkService() {
         this.montrealApiClient = new MontrealApiClient();
     }
 
+    /**
+     * Récupère les travaux de construction en cours, filtrés par arrondissement et type.
+     *
+     * @param borough L'arrondissement à filtrer (peut être null ou vide).
+     * @param type Le type de travaux à filtrer (peut être null ou vide).
+     * @return Une liste de travaux de construction filtrés.
+     * @throws Exception Si une erreur survient lors de la récupération des données.
+     */
     public List<ConstructionWork> getCurrentWorks(String borough, String type) throws Exception {
         List<ConstructionWork> works = montrealApiClient.getCurrentWorks();
         

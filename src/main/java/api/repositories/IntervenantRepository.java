@@ -11,13 +11,27 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Cette classe gère les opérations de base de données pour les intervenants.
+ */
 public class IntervenantRepository {
     private final DatabaseManager db;
 
+    /**
+     * Constructeur de la classe IntervenantRepository.
+     *
+     * @param db Le gestionnaire de base de données.
+     */
     public IntervenantRepository(DatabaseManager db) {
         this.db = db;
     }
 
+    /**
+     * Enregistre un nouvel intervenant dans la base de données.
+     *
+     * @param intervenant L'intervenant à enregistrer.
+     * @throws RuntimeException Si une erreur survient lors de l'enregistrement.
+     */
     public void save(Intervenant intervenant) {
         String sql = "INSERT INTO intervenants (name, email, password, type, city_identifier) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
@@ -32,6 +46,13 @@ public class IntervenantRepository {
         }
     }
 
+    /**
+     * Trouve un intervenant par email.
+     *
+     * @param email L'email de l'intervenant.
+     * @return Un Optional contenant l'intervenant s'il est trouvé, sinon un Optional vide.
+     * @throws RuntimeException Si une erreur survient lors de la recherche.
+     */
     public Optional<Intervenant> findByEmail(String email) {
         try {
             String sql = "SELECT * FROM intervenants WHERE email = ?";
@@ -53,6 +74,12 @@ public class IntervenantRepository {
         }
     }
 
+    /**
+     * Récupère tous les intervenants.
+     *
+     * @return La liste de tous les intervenants.
+     * @throws RuntimeException Si une erreur survient lors de la récupération.
+     */
     public List<Intervenant> findAll() {
         try {
             String sql = "SELECT * FROM intervenants";

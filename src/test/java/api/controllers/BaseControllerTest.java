@@ -9,12 +9,21 @@ import org.junit.jupiter.api.BeforeEach;
 
 import java.io.File;
 
+/**
+ * Cette classe abstraite fournit des configurations de base pour les tests des contrôleurs.
+ */
 public abstract class BaseControllerTest {
+    /**
+     * Configure l'environnement de test avant tous les tests.
+     */
     @BeforeAll
     public void setUp() {
         System.setProperty("test.database", "true");
     }
 
+    /**
+     * Nettoie l'environnement de test après tous les tests.
+     */
     @AfterAll
     public void tearDown() {
         System.clearProperty("test.database");
@@ -26,11 +35,19 @@ public abstract class BaseControllerTest {
         }
     }
 
+    /**
+     * Vide les tables de la base de données avant chaque test.
+     */
     @BeforeEach
     public void clearDatabase() {
         DatabaseManager.getInstance().clearTables();
     }
 
+    /**
+     * Crée une instance de l'application Javalin pour les tests.
+     *
+     * @return L'application Javalin configurée pour les tests.
+     */
     Javalin createTestApp() {
         return MaVilleServer.createApp();
     }

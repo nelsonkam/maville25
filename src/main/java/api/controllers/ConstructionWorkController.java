@@ -6,13 +6,26 @@ import models.ConstructionWork;
 
 import java.util.List;
 
+/**
+ * Cette classe gère les requêtes HTTP pour les travaux de construction.
+ */
 public class ConstructionWorkController {
     private final ConstructionWorkService constructionWorkService;
 
+    /**
+     * Constructeur de la classe ConstructionWorkController.
+     *
+     * @param constructionWorkService Le service de gestion des travaux de construction.
+     */
     public ConstructionWorkController(ConstructionWorkService constructionWorkService) {
         this.constructionWorkService = constructionWorkService;
     }
 
+    /**
+     * Récupère les travaux de construction en cours.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void getCurrentWorks(Context ctx) {
         try {
             String borough = ctx.queryParam("borough");

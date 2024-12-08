@@ -9,15 +9,29 @@ import models.Intervenant;
 
 import java.util.stream.Collectors;
 
+/**
+ * Cette classe gère les requêtes HTTP pour les intervenants.
+ */
 public class IntervenantController {
     private final IntervenantService intervenantService;
     private final ObjectMapper jsonMapper;
 
+    /**
+     * Constructeur de la classe IntervenantController.
+     *
+     * @param intervenantService Le service de gestion des intervenants.
+     * @param jsonMapper Le mapper JSON pour la sérialisation/désérialisation.
+     */
     public IntervenantController(IntervenantService intervenantService, ObjectMapper jsonMapper) {
         this.intervenantService = intervenantService;
         this.jsonMapper = jsonMapper;
     }
 
+    /**
+     * Enregistre un nouvel intervenant.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void register(Context ctx) {
         try {
             Intervenant newIntervenant = jsonMapper.readValue(ctx.body(), Intervenant.class);
@@ -35,6 +49,11 @@ public class IntervenantController {
         }
     }
 
+    /**
+     * Authentifie un intervenant.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void login(Context ctx) {
         try {
             LoginRequest login = jsonMapper.readValue(ctx.body(), LoginRequest.class);
@@ -47,6 +66,11 @@ public class IntervenantController {
         }
     }
 
+    /**
+     * Récupère tous les intervenants.
+     *
+     * @param ctx Le contexte de la requête HTTP.
+     */
     public void getAllIntervenants(Context ctx) {
         try {
             var intervenants = intervenantService.getAllIntervenants()

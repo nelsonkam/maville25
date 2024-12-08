@@ -14,6 +14,9 @@ import java.time.LocalDate;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Cette classe teste le processus d'intégration des candidatures.
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class CandidatureProcessIntegrationTest extends BaseControllerTest {
 

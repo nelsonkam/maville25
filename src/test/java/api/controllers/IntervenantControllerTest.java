@@ -11,6 +11,9 @@ import org.junit.jupiter.api.TestInstance;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Cette classe teste les requêtes HTTP pour les intervenants.
+ */
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class IntervenantControllerTest extends BaseControllerTest {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
@@ -18,7 +21,9 @@ public class IntervenantControllerTest extends BaseControllerTest {
     private static final Faker faker = new Faker();
     private static final String TEST_PASSWORD = "testPassword123!";
 
-
+    /**
+     * Teste l'enregistrement d'un intervenant.
+     */
     @Test
     public void testIntervenantRegistration() {
         JavalinTest.test(createTestApp(), (server, client) -> {
@@ -55,6 +60,9 @@ public class IntervenantControllerTest extends BaseControllerTest {
         });
     }
 
+    /**
+     * Teste la connexion d'un intervenant.
+     */
     @Test
     public void testIntervenantLogin() {
         JavalinTest.test(createTestApp(), (server, client) -> {
@@ -86,6 +94,9 @@ public class IntervenantControllerTest extends BaseControllerTest {
         });
     }
 
+    /**
+     * Teste la récupération de tous les intervenants.
+     */
     @Test
     public void testGetAllIntervenants() {
         JavalinTest.test(createTestApp(), (server, client) -> {

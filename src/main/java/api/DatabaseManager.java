@@ -5,6 +5,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * Cette classe gère la connexion à la base de données et l'initialisation des tables pour l'application MaVille.
+ */
 public class DatabaseManager {
     private static final String DB_URL = System.getProperty("test.database") != null 
         ? "jdbc:sqlite:maville-test.db" 
@@ -12,10 +15,19 @@ public class DatabaseManager {
     private static DatabaseManager instance;
     private Connection connection;
     
+    /**
+     * Retourne la connexion à la base de données.
+     *
+     * @return La connexion à la base de données.
+     */
     public Connection getConnection() {
         return connection;
     }
 
+    /**
+     * Constructeur privé de la classe DatabaseManager.
+     * Initialise la connexion à la base de données et les tables.
+     */
     private DatabaseManager() {
         try {
             // Set connection properties to handle file permissions
@@ -35,6 +47,11 @@ public class DatabaseManager {
         }
     }
 
+    /**
+     * Retourne l'instance unique de DatabaseManager.
+     *
+     * @return L'instance unique de DatabaseManager.
+     */
     public static synchronized DatabaseManager getInstance() {
         if (instance == null) {
             instance = new DatabaseManager();
@@ -42,6 +59,11 @@ public class DatabaseManager {
         return instance;
     }
 
+    /**
+     * Initialise les tables de la base de données.
+     *
+     * @throws SQLException Si une erreur survient lors de l'initialisation des tables.
+     */
     private void initializeTables() throws SQLException {
         try (Statement stmt = connection.createStatement()) {
             // Create residents table
@@ -99,7 +121,9 @@ public class DatabaseManager {
         }
     }
 
-
+    /**
+     * Vide les tables de la base de données.
+     */
     public void clearTables() {
         try (Statement stmt = connection.createStatement()) {
             stmt.execute("DELETE FROM residents");
