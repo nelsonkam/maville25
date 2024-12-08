@@ -82,6 +82,20 @@ public class DatabaseManager {
                     FOREIGN KEY (resident_email) REFERENCES residents(email) ON DELETE CASCADE
                 )
             """);
+
+            // Create candidatures table
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS candidatures (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    work_request_id INTEGER NOT NULL,
+                    intervenant_email TEXT NOT NULL,
+                    status TEXT NOT NULL,
+                    resident_message TEXT,
+                    confirmed_by_intervenant BOOLEAN NOT NULL DEFAULT 0,
+                    FOREIGN KEY (work_request_id) REFERENCES work_requests(id) ON DELETE CASCADE,
+                    FOREIGN KEY (intervenant_email) REFERENCES intervenants(email) ON DELETE CASCADE
+                )
+            """);
         }
     }
 

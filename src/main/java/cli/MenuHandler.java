@@ -6,14 +6,27 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
+import api.services.CandidatureService;
+import api.repositories.CandidatureRepository;
+import api.repositories.IntervenantRepository;
+import api.repositories.WorkRequestRepository;
+import api.DatabaseManager;
 
 public class MenuHandler {
     private final Scanner scanner;
     private final ApiClient apiClient;
+    private final CandidatureService candidatureService;
 
-    public MenuHandler(Scanner scanner, ApiClient apiClient) {
+    
+
+   public MenuHandler(Scanner scanner, ApiClient apiClient) {
         this.scanner = scanner;
         this.apiClient = apiClient;
+        DatabaseManager db = DatabaseManager.getInstance();
+        CandidatureRepository candidatureRepo = new CandidatureRepository(db);
+        WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
+        IntervenantRepository intervenantRepo = new IntervenantRepository(db);
+        this.candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
     }
 
     public void showMenu(User user) {
@@ -40,6 +53,9 @@ public class MenuHandler {
         System.out.println("\nMenu Intervenant:");
         System.out.println("1. Voir les demandes de travaux disponibles");
         System.out.println("2. Voir toutes les demandes de travaux");
+        System.out.println("3. Soumettre une candidature");       
+        System.out.println("4. Retirer une candidature");        
+        System.out.println("5. Suivre mes candidatures"); 
         System.out.println("0. Se déconnecter");
     }
 
@@ -47,7 +63,7 @@ public class MenuHandler {
         if (user instanceof Resident) {
             handleResidentChoice(user, choice);
         } else if (user instanceof Intervenant) {
-            handleIntervenantChoice(choice);
+            handleIntervenantChoice((Intervenant) user, choice); 
         }
     }
 
@@ -86,12 +102,15 @@ public class MenuHandler {
         }
     }
 
-    private void handleIntervenantChoice(int choice) {
+    private void handleIntervenantChoice(Intervenant intervenant ,int choice) {
         try {
             switch (choice) {
                 case 0 -> handleLogout();
                 case 1 -> viewAvailableWorkRequests();
                 case 2 -> viewAllWorkRequests();
+                case 3 -> submitCandidature(intervenant);
+                case 4 -> withdrawCandidature(intervenant);
+                case 5 -> followCandidatures(intervenant);
                 default -> System.out.println("Option invalide");
             }
         } catch (Exception e) {
@@ -115,6 +134,60 @@ public class MenuHandler {
             System.out.println("Erreur lors de la récupération des demandes: " + e.getMessage());
         }
     }
+
+    private void submitCandidature(Intervenant intervenant) {
+        System.out.print("Entrez l'ID de la WorkRequest: ");
+        String input = scanner.nextLine();
+        long workRequestId;
+        try {
+            workRequestId = Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            System.out.println("ID invalide.");
+            return;
+        }
+
+        try {
+            candidatureService.submitCandidature(workRequestId, intervenant.getEmail());
+            System.out.println("Candidature soumise avec succès!");
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
+    private void withdrawCandidature(Intervenant intervenant) {
+        System.out.print("Entrez l'ID de la WorkRequest: ");
+        String input = scanner.nextLine();
+        long workRequestId;
+        try {
+            workRequestId = Long.parseLong(input);
+        } catch (NumberFormatException e) {
+            System.out.println("ID invalide.");
+            return;
+        }
+
+        try {
+            candidatureService.withdrawCandidature(workRequestId, intervenant.getEmail());
+            System.out.println("Candidature retirée avec succès!");
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
+     private void followCandidatures(Intervenant intervenant) {
+        try {
+            List<Candidature> candidatures = candidatureService.getCandidaturesByIntervenant(intervenant.getEmail());
+            if (candidatures.isEmpty()) {
+                System.out.println("Aucune candidature trouvée.");
+            } else {
+                for (Candidature c : candidatures) {
+                    System.out.println(c);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
 
     private void handleLogout() {
         System.out.println("Déconnexion réussie");
