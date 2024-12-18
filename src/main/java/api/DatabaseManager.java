@@ -130,6 +130,17 @@ public class DatabaseManager {
                     FOREIGN KEY (intervenant_email) REFERENCES intervenants(email) ON DELETE CASCADE
                 )
             """);
+
+            // Create projects table
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS projects (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    title TEXT NOT NULL,
+                    description TEXT,
+                    status TEXT NOT NULL,
+                    desired_start_date TEXT NOT NULL
+                )
+            """);
         }
     }
 
@@ -141,6 +152,9 @@ public class DatabaseManager {
             stmt.execute("DELETE FROM residents");
             stmt.execute("DELETE FROM intervenants");
             stmt.execute("DELETE FROM work_requests");
+            stmt.execute("DELETE FROM projects");
+            stmt.execute("DELETE FROM notifications");
+            stmt.execute("DELETE FROM candidatures");
         } catch (SQLException e) {
             throw new RuntimeException("Failed to clear tables", e);
         }
