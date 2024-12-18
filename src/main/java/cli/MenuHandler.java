@@ -19,6 +19,7 @@ public class MenuHandler {
     private final Scanner scanner;
     private final ApiClient apiClient;
     private final CandidatureService candidatureService;
+    private final NotificationService notificationService;
 
     /**
      * Constructeur de la classe MenuHandler.
@@ -33,7 +34,9 @@ public class MenuHandler {
         CandidatureRepository candidatureRepo = new CandidatureRepository(db);
         WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
         IntervenantRepository intervenantRepo = new IntervenantRepository(db);
+        NotificationRepository notificationRepo = new NotificationRepository(db);
         this.candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
+        this.notificationService = new NotificationService(notificationRepo);
     }
 
     /**
@@ -53,6 +56,16 @@ public class MenuHandler {
      * Affiche le menu pour les résidents.
      */
     private void showResidentMenu() {
+        // Afficher le nombre de notifications non lues
+        try {
+            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(currentUser.getEmail());
+            if (!unreadNotifications.isEmpty()) {
+                System.out.println("\n[" + unreadNotifications.size() + " nouvelle(s) notification(s)]");
+            }
+        } catch (Exception e) {
+            System.out.println("\n[Erreur lors de la récupération des notifications]");
+        }
+
         System.out.println("\nMenu Résident:");
         System.out.println("1. Voir les travaux en cours");
         System.out.println("2. Filtrer les travaux par arrondissement");
@@ -61,6 +74,7 @@ public class MenuHandler {
         System.out.println("5. Chercher les entraves par rue");
         System.out.println("6. Soumettre une demande de travaux");
         System.out.println("7. Voir mes demandes de travaux");
+        System.out.println("8. Voir mes notifications");
         System.out.println("0. Se déconnecter");
     }
 
@@ -125,6 +139,7 @@ public class MenuHandler {
                 }
                 case 6 -> submitWorkRequest(resident);
                 case 7 -> viewResidentWorkRequests(resident);
+                case 8 -> viewNotifications(resident);
                 default -> System.out.println("Option invalide");
             }
         } catch (Exception e) {
@@ -381,6 +396,26 @@ public class MenuHandler {
             }
         } catch (Exception e) {
             System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
+    private void viewNotifications(Resident resident) {
+        try {
+            List<Notification> notifications = notificationService.getAllNotifications(resident.getEmail());
+            if (notifications.isEmpty()) {
+                System.out.println("Vous n'avez aucune notification");
+                return;
+            }
+
+            System.out.println("\nVos notifications:");
+            for (Notification notification : notifications) {
+                System.out.println("\n" + notification.toString());
+            }
+
+            // Marquer toutes les notifications comme lues
+            notificationService.markAllAsRead(resident.getEmail());
+        } catch (Exception e) {
+            System.out.println("Erreur lors de la récupération des notifications: " + e.getMessage());
         }
     }
 }

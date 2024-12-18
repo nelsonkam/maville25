@@ -105,6 +105,18 @@ public class DatabaseManager {
                 )
             """);
 
+            // Create notifications table
+            stmt.execute("""
+                CREATE TABLE IF NOT EXISTS notifications (
+                    id INTEGER PRIMARY KEY AUTOINCREMENT,
+                    resident_email TEXT NOT NULL,
+                    message TEXT NOT NULL,
+                    date_created TEXT NOT NULL,
+                    is_read BOOLEAN NOT NULL DEFAULT 0,
+                    FOREIGN KEY (resident_email) REFERENCES residents(email) ON DELETE CASCADE
+                )
+            """);
+
             // Create candidatures table
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS candidatures (
