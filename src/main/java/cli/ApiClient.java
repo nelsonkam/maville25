@@ -162,6 +162,52 @@ public class ApiClient {
         );
     }
 
+    public List<Notification> getUnreadNotifications(String email) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_BASE_URL + "/notifications/unread/" + email))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Failed to fetch unread notifications: " + response.body());
+        }
+
+        return JSON_MAPPER.readValue(
+            response.body(),
+            JSON_MAPPER.getTypeFactory().constructCollectionType(List.class, Notification.class)
+        );
+    }
+
+    public List<Notification> getAllNotifications(String email) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_BASE_URL + "/notifications/" + email))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Failed to fetch notifications: " + response.body());
+        }
+
+        return JSON_MAPPER.readValue(
+            response.body(),
+            JSON_MAPPER.getTypeFactory().constructCollectionType(List.class, Notification.class)
+        );
+    }
+
+    public void markNotificationsAsRead(String email) throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_BASE_URL + "/notifications/" + email + "/mark-read"))
+                .POST(HttpRequest.BodyPublishers.noBody())
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Failed to mark notifications as read: " + response.body());
+        }
+    }
+
     /**
      * Récupère les entraves routières via l'API.
      *

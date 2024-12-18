@@ -1,10 +1,7 @@
 package api;
 
 import api.controllers.*;
-import api.repositories.CandidatureRepository;
-import api.repositories.IntervenantRepository;
-import api.repositories.ResidentRepository;
-import api.repositories.WorkRequestRepository;
+import api.repositories.*;
 import api.services.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
@@ -37,6 +34,7 @@ public class MaVilleServer {
         RoadImpactService roadImpactService = new RoadImpactService();
         WorkRequestService workRequestService = new WorkRequestService(workRequestRepo);
         CandidatureService candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
+        NotificationService notificationService = new NotificationService(new NotificationRepository(db));
 
         // Controllers
         ResidentController residentController = new ResidentController(residentService, JSON_MAPPER);
@@ -45,6 +43,7 @@ public class MaVilleServer {
         RoadImpactController roadImpactController = new RoadImpactController(roadImpactService);
         WorkRequestController workRequestController = new WorkRequestController(workRequestService, JSON_MAPPER);
         CandidatureController candidatureController = new CandidatureController(candidatureService, JSON_MAPPER);
+        NotificationController notificationController = new NotificationController(notificationService, JSON_MAPPER);
 
         // Javalin app
         Javalin app = Javalin.create();
@@ -72,6 +71,12 @@ public class MaVilleServer {
         app.get("/work-requests/{id}/candidatures", candidatureController::getCandidatures);
         app.post("/work-requests/{id}/candidatures/{candidatureId}/select", candidatureController::selectCandidature);
         app.post("/work-requests/{id}/candidatures/{candidatureId}/confirm", candidatureController::confirmCandidature);
+
+        // Notifications
+        app.post("/notifications", notificationController::sendNotification);
+        app.get("/notifications/unread/{email}", notificationController::getUnreadNotifications);
+        app.get("/notifications/{email}", notificationController::getAllNotifications);
+        app.post("/notifications/{email}/mark-read", notificationController::markAsRead);
 
         return app;
     }

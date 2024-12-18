@@ -7,8 +7,10 @@ import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Scanner;
 import api.services.CandidatureService;
+import api.services.NotificationService;
 import api.repositories.CandidatureRepository;
 import api.repositories.IntervenantRepository;
+import api.repositories.NotificationRepository;
 import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
@@ -19,7 +21,6 @@ public class MenuHandler {
     private final Scanner scanner;
     private final ApiClient apiClient;
     private final CandidatureService candidatureService;
-    private final NotificationService notificationService;
 
     /**
      * Constructeur de la classe MenuHandler.
@@ -34,9 +35,7 @@ public class MenuHandler {
         CandidatureRepository candidatureRepo = new CandidatureRepository(db);
         WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
         IntervenantRepository intervenantRepo = new IntervenantRepository(db);
-        NotificationRepository notificationRepo = new NotificationRepository(db);
         this.candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
-        this.notificationService = new NotificationService(notificationRepo);
     }
 
     /**
@@ -46,7 +45,7 @@ public class MenuHandler {
      */
     public void showMenu(User user) {
         if (user instanceof Resident) {
-            showResidentMenu();
+            showResidentMenu(user);
         } else if (user instanceof Intervenant) {
             showIntervenantMenu();
         }
@@ -54,11 +53,13 @@ public class MenuHandler {
 
     /**
      * Affiche le menu pour les résidents.
+     * 
+     * @param user L'utilisateur courant.
      */
-    private void showResidentMenu() {
+    private void showResidentMenu(User user) {
         // Afficher le nombre de notifications non lues
         try {
-            List<Notification> unreadNotifications = notificationService.getUnreadNotifications(currentUser.getEmail());
+            List<Notification> unreadNotifications = apiClient.getUnreadNotifications(user.getEmail());
             if (!unreadNotifications.isEmpty()) {
                 System.out.println("\n[" + unreadNotifications.size() + " nouvelle(s) notification(s)]");
             }
@@ -401,7 +402,7 @@ public class MenuHandler {
 
     private void viewNotifications(Resident resident) {
         try {
-            List<Notification> notifications = notificationService.getAllNotifications(resident.getEmail());
+            List<Notification> notifications = apiClient.getAllNotifications(resident.getEmail());
             if (notifications.isEmpty()) {
                 System.out.println("Vous n'avez aucune notification");
                 return;
@@ -413,7 +414,7 @@ public class MenuHandler {
             }
 
             // Marquer toutes les notifications comme lues
-            notificationService.markAllAsRead(resident.getEmail());
+            apiClient.markNotificationsAsRead(resident.getEmail());
         } catch (Exception e) {
             System.out.println("Erreur lors de la récupération des notifications: " + e.getMessage());
         }
