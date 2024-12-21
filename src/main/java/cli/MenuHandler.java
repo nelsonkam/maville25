@@ -76,6 +76,7 @@ public class MenuHandler {
         System.out.println("6. Soumettre une demande de travaux");
         System.out.println("7. Voir mes demandes de travaux");
         System.out.println("8. Voir mes notifications");
+        System.out.println("9. Suivi de candidatures pour mes travaux");
         System.out.println("0. Se déconnecter");
     }
 
@@ -141,6 +142,7 @@ public class MenuHandler {
                 case 6 -> submitWorkRequest(resident);
                 case 7 -> viewResidentWorkRequests(resident);
                 case 8 -> viewNotifications(resident);
+                case 9 -> followCandidatures(resident);
                 default -> System.out.println("Option invalide");
             }
         } catch (Exception e) {
@@ -196,6 +198,9 @@ public class MenuHandler {
      * @param intervenant L'intervenant soumettant la candidature.
      */
     private void submitCandidature(Intervenant intervenant) {
+
+        viewAllWorkRequests();
+
         System.out.print("Entrez l'ID de la WorkRequest: ");
         String input = scanner.nextLine();
         long workRequestId;
@@ -419,4 +424,27 @@ public class MenuHandler {
             System.out.println("Erreur lors de la récupération des notifications: " + e.getMessage());
         }
     }
+
+    /**
+     * Affiche les candidatures pour les travaux soumis par le résident en cours.
+     *
+     * @param resident Le résident courant.
+     */
+
+     private void followCandidatures(Resident resident) {
+        try {
+            List<Candidature> candidatures = candidatureService.getCandidaturesByWorkRequestAndResidentEmail(resident.getEmail());
+            
+            if (candidatures.isEmpty()) {
+                System.out.println("Aucune candidature trouvée.");
+            } else {
+                for (Candidature c : candidatures) {
+                    System.out.println(c);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
+
 }

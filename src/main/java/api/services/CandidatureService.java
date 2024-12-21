@@ -219,4 +219,20 @@ public class CandidatureService {
         // Ici, vous pourriez ajouter d'autres validations, par exemple vérifier un pattern regex
         return email;
     }
+
+    /**
+     * Cette méthode permet à un résident de faire le suivi 
+     *  des candidatures pour les travaux qu'il a soumis
+     * 
+     */
+
+    public List<Candidature> getCandidaturesByWorkRequestAndResidentEmail(String residentEmail) {
+        residentEmail = validateAndNormalizeEmail(residentEmail);
+    
+        try {
+            return candidatureRepository.findByWorkRequestAndResidentEmail(residentEmail);
+        } catch (SQLException e) {
+            throw new RuntimeException("Erreur lors de la récupération des candidatures : " + e.getMessage(), e);
+        }
+    }
 }

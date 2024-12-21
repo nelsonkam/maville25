@@ -145,6 +145,6 @@ public class Candidature {
     @Override
     public String toString() {
         return String.format("Candidature #%d\nIntervenant: %s\nStatut: %s\nMessage Résident: %s\nConfirmée par Intervenant: %s",
-        id, intervenantEmail, status, residentMessage == null ? "Aucun" : residentMessage, confirmedByIntervenant ? "Oui" : "Non");
+        id, intervenantEmail, status, residentMessage == null ? "Aucun" : residentMessage, confirmedByIntervenant ? "Oui" : "Non" + "\n");
     }
 }

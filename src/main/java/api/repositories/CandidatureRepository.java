@@ -134,6 +134,32 @@ public class CandidatureRepository {
     }
 
     /**
+     * Trouve les candidatures pour les travaux soumis par l'email du résident connecté.
+     *
+     * @param residentEmail L'email de l'intervenant.
+     * @return La liste des candidatures pour les travaux soumis par le résident connecté.
+     * @throws SQLException Si une erreur survient lors de la recherche.
+     */
+
+    public List<Candidature> findByWorkRequestAndResidentEmail(String residentEmail) throws SQLException {
+        String sql = """
+                SELECT * FROM candidatures WHERE work_request_id IN (
+                    SELECT id FROM work_requests WHERE resident_email = ?)
+                """;
+
+        List <Candidature> result = new ArrayList<>();
+
+        try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
+            pstmt.setString(1, residentEmail);
+            ResultSet rs = pstmt.executeQuery();
+            while (rs.next()) {
+                result.add(mapResultSet(rs));
+            }
+        return result;
+        }
+    }
+
+    /**
      * Met à jour une candidature dans la base de données.
      *
      * @param candidature La candidature à mettre à jour.
