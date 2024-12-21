@@ -17,7 +17,7 @@ public abstract class BaseControllerTest {
      * Configure l'environnement de test avant tous les tests.
      */
     @BeforeAll
-    public void setUp() {
+    public static void setUp() {
         System.setProperty("test.database", "true");
     }
 
@@ -25,7 +25,7 @@ public abstract class BaseControllerTest {
      * Nettoie l'environnement de test après tous les tests.
      */
     @AfterAll
-    public void tearDown() {
+    public static void tearDown() {
         System.clearProperty("test.database");
         File[] files = new File(".").listFiles((dir, name) -> name.startsWith("maville-test.db"));
         if (files != null) {

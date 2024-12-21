@@ -25,8 +25,7 @@ public class NotificationControllerTest extends BaseControllerTest {
 
     private static final String TEST_EMAIL = "test.resident@example.com";
     private static final String TEST_PASSWORD = "password123";
-    @BeforeEach
-     void createTestResident() throws Exception {
+     void createTestResident()  {
         Resident resident = new Resident(
             "Test Resident",
             LocalDate.now().minusYears(25),
@@ -43,6 +42,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testSendNotification() {
+        createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             String notificationJson = """
@@ -53,7 +53,6 @@ public class NotificationControllerTest extends BaseControllerTest {
                 """.formatted(TEST_EMAIL);
 
             var response = client.post("/notifications", notificationJson);
-            assertEquals("test", response.body().string());
             assertEquals(201, response.code());
         });
     }
@@ -63,6 +62,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testGetUnreadNotifications() {
+        createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer quelques notifications
@@ -92,6 +92,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testMarkNotificationsAsRead() {
+        createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer une notification
@@ -119,6 +120,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testGetAllNotifications() {
+        createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer quelques notifications
