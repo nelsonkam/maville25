@@ -173,7 +173,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertProject(Connection conn, String title, String description, String borough , LocalDate startDate, String status) throws Exception {
-        String sql = "INSERT INTO projects (title, description, desired_start_date, status) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO projects (title, description, borough , desired_start_date, status) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, title);
             pstmt.setString(2, description);

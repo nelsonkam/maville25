@@ -8,6 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.time.LocalDate;
+
 /**
  * Cette classe gère les opérations de base de données pour les projets.
  */

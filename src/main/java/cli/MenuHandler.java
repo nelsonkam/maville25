@@ -166,6 +166,8 @@ public class MenuHandler {
                 case 3 -> submitCandidature(intervenant);
                 case 4 -> withdrawCandidature(intervenant);
                 case 5 -> followCandidatures(intervenant);
+                case 6 -> addProject();
+                case 7 -> updateProject();
                 default -> System.out.println("Option invalide");
             }
         } catch (Exception e) {
@@ -448,4 +450,61 @@ public class MenuHandler {
         }
     }
 
+    /**
+     * Permet d'ajouter un projet.
+     *
+     */
+    public void addProject() {
+        try{
+            System.out.print("\nSoumission d'un projet");
+
+            System.out.print("Titre: ");
+            String title = scanner.nextLine();
+
+            System.out.print("Description: ");
+            String description = scanner.nextLine();
+
+            /* Liste non exaustive des arrondissements de Montréal */
+            System.out.print("Arrondissement: ");
+            System.out.println("1. Le Plateau-Mont-Royal");
+            System.out.println("2. Outremont");
+            System.out.println("3. Rosemont-La-Petite-Patrie");
+            System.out.println("4. Verdun");
+            System.out.println("5. Villeray-Saint-Michel-Parc-Extension");
+            System.out.print("Choisissez une option: ");  
+            
+            String borough = switch (Integer.parseInt(scanner.nextLine())) {
+                case 1 -> "Le Plateau-Mont-Royal";
+                case 2 -> "Outremont";
+                case 3 -> "Rosemont-La-Petite-Patrie";
+                case 4 -> "Verdun";
+                case 5 -> "Villeray-Saint-Michel-Parc-Extension";
+                default -> throw new IllegalArgumentException("Option invalide");
+                };
+
+            System.out.print("Date de début désirée (JJ/MM/AAAA)");
+            LocalDate startDate = LocalDate.parse(
+                scanner.nextLine(),
+                DateTimeFormatter.ofPattern("dd/MM/yyyy")
+            );
+
+            Project project = new Project(title, description, borough, startDate);
+
+            //apiClient.submitProject(project);
+            //System.out.println("Projet soumis avec succès");
+            
+            } catch (Exception e){
+                System.out.println("Erreur lors de la soumission: " + e.getMessage());
+            }
+        }
+    
+    
+    /**
+     * Permet de mettre à jour le statut d'un projet.
+     *
+     */
+
 }
+
+
+
