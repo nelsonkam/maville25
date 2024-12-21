@@ -9,6 +9,7 @@ import java.time.LocalDate;
 
 public class Project {
 
+    private Long id;
     private String title;
     private String description;
     private ProjectStatus projectStatus;
@@ -32,6 +33,15 @@ public class Project {
         this.description = description;
         this.projectStatus = ProjectStatus.PLANNED;
         this.desiredStartDate = desiredStartDate;
+    }
+
+    /**
+     * Retourne le id du projet.
+     *
+     * @return Le id du projet.
+     */
+    public Long getId() {
+        return id;
     }
 
     /**
@@ -69,6 +79,15 @@ public class Project {
     public LocalDate getDesiredStartDate() {
         return desiredStartDate;
     }
+
+    /**
+     * Définit le id du projet.
+     *
+     * @param id Le id du projet.
+     */    
+    public void setId(Long id) {
+        this.id = id;
+    }    
 
     /**
      * Définit le titre du projet.
