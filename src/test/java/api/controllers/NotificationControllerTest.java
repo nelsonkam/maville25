@@ -1,10 +1,14 @@
 package api.controllers;
 
+import api.DatabaseManager;
+import api.repositories.ResidentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import io.javalin.testtools.JavalinTest;
 import models.Notification;
 import models.Resident;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 
@@ -21,8 +25,8 @@ public class NotificationControllerTest extends BaseControllerTest {
 
     private static final String TEST_EMAIL = "test.resident@example.com";
     private static final String TEST_PASSWORD = "password123";
-
-    private void createTestResident(io.javalin.testtools.HttpClient client) throws Exception {
+    @BeforeEach
+     void createTestResident() throws Exception {
         Resident resident = new Resident(
             "Test Resident",
             LocalDate.now().minusYears(25),
@@ -31,8 +35,7 @@ public class NotificationControllerTest extends BaseControllerTest {
             "514-555-0123",
             "123 Test Street"
         );
-        var response = client.post("/residents", JSON_MAPPER.writeValueAsString(resident));
-        assertEquals(201, response.code());
+        new ResidentRepository(DatabaseManager.getInstance()).save(resident);
     }
 
     /**
@@ -41,7 +44,6 @@ public class NotificationControllerTest extends BaseControllerTest {
     @Test
     public void testSendNotification() {
         JavalinTest.test(createTestApp(), (server, client) -> {
-            createTestResident(client);
 
             String notificationJson = """
                 {
@@ -61,7 +63,6 @@ public class NotificationControllerTest extends BaseControllerTest {
     @Test
     public void testGetUnreadNotifications() {
         JavalinTest.test(createTestApp(), (server, client) -> {
-            createTestResident(client);
 
             // Envoyer quelques notifications
             for (int i = 1; i <= 3; i++) {
@@ -91,7 +92,6 @@ public class NotificationControllerTest extends BaseControllerTest {
     @Test
     public void testMarkNotificationsAsRead() {
         JavalinTest.test(createTestApp(), (server, client) -> {
-            createTestResident(client);
 
             // Envoyer une notification
             String notificationJson = """
@@ -119,7 +119,6 @@ public class NotificationControllerTest extends BaseControllerTest {
     @Test
     public void testGetAllNotifications() {
         JavalinTest.test(createTestApp(), (server, client) -> {
-            createTestResident(client);
 
             // Envoyer quelques notifications
             for (int i = 1; i <= 3; i++) {

@@ -82,7 +82,7 @@ public class DataInitializer {
             pstmt.setString(1, name);
             pstmt.setString(2, email);
             pstmt.setString(3, password);
-            pstmt.setDate(4, Date.valueOf(dob));
+            pstmt.setString(4, Date.valueOf(dob).toString());
             pstmt.setString(5, phone);
             pstmt.setString(6, address);
             pstmt.executeUpdate();
@@ -132,7 +132,7 @@ public class DataInitializer {
             pstmt.setString(2, title);
             pstmt.setString(3, description);
             pstmt.setString(4, workType);
-            pstmt.setDate(5, Date.valueOf(startDate));
+            pstmt.setString(5, Date.valueOf(startDate).toString());
             pstmt.setString(6, status);
             pstmt.setString(7, residentEmail);
             pstmt.executeUpdate();
@@ -177,7 +177,7 @@ public class DataInitializer {
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, title);
             pstmt.setString(2, description);
-            pstmt.setDate(3, Date.valueOf(startDate));
+            pstmt.setString(3, Date.valueOf(startDate).toString());
             pstmt.setString(4, status);
             pstmt.executeUpdate();
         }
