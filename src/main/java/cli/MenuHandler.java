@@ -503,6 +503,9 @@ public class MenuHandler {
      * Permet de mettre à jour le statut d'un projet.
      *
      */
+    public void updateProject() {
+        
+    }
 
 }
 
