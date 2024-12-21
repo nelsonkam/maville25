@@ -26,22 +26,23 @@ public class ProjectRepository {
     }
 
     /**
-     * Enregistre une nouvelle candidature dans la base de données.
+     * Enregistre un nouveau projet dans la base de données.
      *
-     * @param candidature La candidature à enregistrer.
+     * @param candidature Le projet à enregistrer.
      * @throws SQLException Si une erreur survient lors de l'enregistrement.
      */
     public void save (Project project) throws SQLException {
         String sql = """
-                INSERT INTO projects (title, description, status, desired_start_date)
+                INSERT INTO projects (title, description, borough, status, desired_start_date)
                 VALUES (?, ?, ?, ?)
                 """;
 
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
             pstmt.setString(1, project.getTitle());
             pstmt.setString(2, project.getDescription());
-            pstmt.setString(3, project.getProjectStatus());
-            pstmt.setString(4, project.getDesiredStartDate().toString());
+            pstmt.setString(3, project.getBorough());
+            pstmt.setString(4, project.getProjectStatus());
+            pstmt.setString(5, project.getDesiredStartDate().toString());
 
             pstmt.executeUpdate();
 
@@ -87,15 +88,16 @@ public class ProjectRepository {
     public void update(Project project) throws SQLException {
         String sql = """
             UPDATE projects
-            SET title = ?, description = ?, status = ?, desired_start_date = ?
+            SET title = ?, description = ?, borough = ?, status = ?, desired_start_date = ?
             WHERE id  = ?
         """;
 
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
             pstmt.setString(1, project.getTitle());
             pstmt.setString(2, project.getDescription());
-            pstmt.setString(3, project.getProjectStatus());
-            pstmt.setString(4, project.getDesiredStartDate().toString());
+            pstmt.setString(3, project.getBorough());
+            pstmt.setString(4, project.getProjectStatus());
+            pstmt.setString(5, project.getDesiredStartDate().toString());
 
             pstmt.executeUpdate();
         }
@@ -114,6 +116,7 @@ public class ProjectRepository {
         project.setId(rs.getLong("id"));
         project.setTitle(rs.getString("title"));
         project.setDescription(rs.getString("description"));
+        project.setBorough(rs.getString("borough"));
         project.setProjectStatus(ProjectStatus.valueOf(rs.getString("status")));
         project.setDesiredStartDate(LocalDate.parse(rs.getString("desired_start_date")));
 

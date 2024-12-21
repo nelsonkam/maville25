@@ -12,6 +12,7 @@ public class Project {
     private Long id;
     private String title;
     private String description;
+    private String borough;
     private ProjectStatus projectStatus;
     private LocalDate desiredStartDate;
 
@@ -28,9 +29,10 @@ public class Project {
      * @param projectStatus Le statut du projet
      * @param desiredStartDate La date désirée de début du projet
      */
-    public Project(String title, String description, LocalDate desiredStartDate){
+    public Project(String title, String description, String borough,LocalDate desiredStartDate){
         this.title = title;
         this.description = description;
+        this.borough = borough;
         this.projectStatus = ProjectStatus.PLANNED;
         this.desiredStartDate = desiredStartDate;
     }
@@ -60,6 +62,15 @@ public class Project {
      */
     public String getDescription() {
         return description;
+    }
+
+    /**
+     * Retourne l'arrondissement où se situe le projet.
+     *
+     * @return L'arrondissement du projet.
+     */
+    public String getBorough() {
+        return borough;
     }
 
     /**
@@ -105,6 +116,16 @@ public class Project {
      */    
     public void setDescription(String description) {
         this.description = description;
+    }
+
+
+    /**
+     * Définit l'arrondissement où se situe le projet.
+     *
+     * @param description L'arrondissement du projet.
+     */    
+    public void setBorough(String borough) {
+        this.borough = borough;
     }
 
     /**
