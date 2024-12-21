@@ -4,6 +4,7 @@ import api.DatabaseManager;
 import api.repositories.ResidentRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.github.javafaker.Faker;
 import io.javalin.testtools.JavalinTest;
 import models.Notification;
 import models.Resident;
@@ -22,19 +23,20 @@ import static org.junit.jupiter.api.Assertions.*;
 public class NotificationControllerTest extends BaseControllerTest {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
             .registerModule(new JavaTimeModule());
+    private static final Faker faker = new Faker();
 
-    private static final String TEST_EMAIL = "test.resident@example.com";
-    private static final String TEST_PASSWORD = "password123";
-     void createTestResident()  {
+
+    Resident createTestResident()  {
         Resident resident = new Resident(
             "Test Resident",
             LocalDate.now().minusYears(25),
-            TEST_EMAIL,
-            TEST_PASSWORD,
+            faker.internet().emailAddress(),
+                "password123",
             "514-555-0123",
             "123 Test Street"
         );
         new ResidentRepository(DatabaseManager.getInstance()).save(resident);
+        return resident;
     }
 
     /**
@@ -42,7 +44,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testSendNotification() {
-        createTestResident();
+        Resident resident = createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             String notificationJson = """
@@ -50,7 +52,7 @@ public class NotificationControllerTest extends BaseControllerTest {
                     "residentEmail": "%s",
                     "message": "Test notification message"
                 }
-                """.formatted(TEST_EMAIL);
+                """.formatted(resident.getEmail());
 
             var response = client.post("/notifications", notificationJson);
             assertEquals(201, response.code());
@@ -62,7 +64,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testGetUnreadNotifications() {
-        createTestResident();
+        Resident resident = createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer quelques notifications
@@ -72,12 +74,12 @@ public class NotificationControllerTest extends BaseControllerTest {
                         "residentEmail": "%s",
                         "message": "Test notification %d"
                     }
-                    """.formatted(TEST_EMAIL, i);
+                    """.formatted(resident.getEmail(), i);
                 client.post("/notifications", notificationJson);
             }
 
             // Récupérer les notifications non lues
-            var response = client.get("/notifications/unread/" + TEST_EMAIL);
+            var response = client.get("/notifications/unread/" + resident.getEmail());
             assertEquals(200, response.code());
             
             String responseBody = response.body().string();
@@ -92,7 +94,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testMarkNotificationsAsRead() {
-        createTestResident();
+        Resident resident = createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer une notification
@@ -101,15 +103,15 @@ public class NotificationControllerTest extends BaseControllerTest {
                     "residentEmail": "%s",
                     "message": "Test notification"
                 }
-                """.formatted(TEST_EMAIL);
+                """.formatted(resident.getEmail());
             client.post("/notifications", notificationJson);
 
             // Marquer comme lue
-            var markResponse = client.post("/notifications/" + TEST_EMAIL + "/mark-read", "");
+            var markResponse = client.post("/notifications/" + resident.getEmail() + "/mark-read", "");
             assertEquals(200, markResponse.code());
 
             // Vérifier qu'il n'y a plus de notifications non lues
-            var unreadResponse = client.get("/notifications/unread/" + TEST_EMAIL);
+            var unreadResponse = client.get("/notifications/unread/" + resident.getEmail());
             assertEquals(200, unreadResponse.code());
             assertEquals("[]", unreadResponse.body().string());
         });
@@ -120,7 +122,7 @@ public class NotificationControllerTest extends BaseControllerTest {
      */
     @Test
     public void testGetAllNotifications() {
-        createTestResident();
+        Resident resident = createTestResident();
         JavalinTest.test(createTestApp(), (server, client) -> {
 
             // Envoyer quelques notifications
@@ -130,15 +132,15 @@ public class NotificationControllerTest extends BaseControllerTest {
                         "residentEmail": "%s",
                         "message": "Test notification %d"
                     }
-                    """.formatted(TEST_EMAIL, i);
+                    """.formatted(resident.getEmail(), i);
                 client.post("/notifications", notificationJson);
             }
 
             // Marquer certaines comme lues
-            client.post("/notifications/" + TEST_EMAIL + "/mark-read", "");
+            client.post("/notifications/" + resident.getEmail() + "/mark-read", "");
 
             // Récupérer toutes les notifications
-            var response = client.get("/notifications/" + TEST_EMAIL);
+            var response = client.get("/notifications/" + resident.getEmail());
             assertEquals(200, response.code());
             
             String responseBody = response.body().string();
