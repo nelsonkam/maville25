@@ -53,6 +53,7 @@ public class NotificationControllerTest extends BaseControllerTest {
                 """.formatted(TEST_EMAIL);
 
             var response = client.post("/notifications", notificationJson);
+            System.out.println(response.body().string());
             assertEquals(201, response.code());
         });
     }

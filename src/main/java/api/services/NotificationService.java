@@ -25,7 +25,7 @@ public class NotificationService {
             Notification notification = new Notification(residentEmail, message);
             repository.save(notification);
         } catch (SQLException e) {
-            throw new RuntimeException("Failed to send notification", e);
+            throw new RuntimeException("Failed to send notification: " + e.getMessage(), e);
         }
     }
 
