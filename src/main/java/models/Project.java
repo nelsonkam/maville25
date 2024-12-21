@@ -69,4 +69,41 @@ public class Project {
     public LocalDate getDesiredStartDate() {
         return desiredStartDate;
     }
+
+    /**
+     * Définit le titre du projet.
+     *
+     * @param title Le titre du projet.
+     */    
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    /**
+     * Définit la description du projet.
+     *
+     * @param description La description du projet.
+     */    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    /**
+     * Définit le status du projet.
+     *
+     * @param projectStatus Le status du projet.
+     */
+    public void setProjectStatus(ProjectStatus projectStatus) {
+        this.projectStatus = projectStatus;
+    }
+
+    
+    /**
+     * Définit la date de début désirée du projet.
+     *
+     * @param desiredStartDate La date de début désirée du projet.
+     */
+    public void setDesiredStartDate(LocalDate desiredStartDate) {
+        this.desiredStartDate = desiredStartDate;
+    }
 }
