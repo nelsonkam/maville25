@@ -137,6 +137,7 @@ public class DatabaseManager {
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
                     title TEXT NOT NULL,
                     description TEXT,
+                    borough TEXT,
                     status TEXT NOT NULL,
                     desired_start_date TEXT NOT NULL
                 )

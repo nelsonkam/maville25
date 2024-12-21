@@ -90,6 +90,7 @@ public class MenuHandler {
         System.out.println("3. Soumettre une candidature");
         System.out.println("4. Retirer une candidature");
         System.out.println("5. Suivre mes candidatures");
+        System.out.println("6. Soumettre un projet");
         System.out.println("0. Se déconnecter");
     }
 

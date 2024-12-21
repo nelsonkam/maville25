@@ -55,11 +55,11 @@ public class DataInitializer {
         insertCandidature(conn, 2L, "int3@example.com", "SUBMITTED", null, false);
 
         // 4. Insérer 5 projets
-        insertProject(conn, "Projet Voirie A", "Refaire chaussée", LocalDate.now().plusDays(10), "Prévu");
-        insertProject(conn, "Projet Aqueduc B", "Remplacer conduite principale", LocalDate.now().plusDays(20), "Prévu");
-        insertProject(conn, "Projet Égouts C", "Élargir égout", LocalDate.now().plusDays(25), "Prévu");
-        insertProject(conn, "Projet Signalisation D", "Nouvelles pancartes", LocalDate.now().plusDays(5), "Prévu");
-        insertProject(conn, "Projet Spécial E", "Grand chantier sur 3 mois", LocalDate.now().plusDays(90), "Prévu");
+        insertProject(conn, "Projet Voirie A", "Refaire chaussée", "Villeray-Saint-Michel-Parc-Extension" ,LocalDate.now().plusDays(10), "Prévu");
+        insertProject(conn, "Projet Aqueduc B", "Remplacer conduite principale", "Rosemont-La-Petite-Patrie",LocalDate.now().plusDays(20), "Prévu");
+        insertProject(conn, "Projet Égouts C", "Élargir égout", "Le Plateau-Mont-Royal" ,LocalDate.now().plusDays(25), "Prévu");
+        insertProject(conn, "Projet Signalisation D", "Nouvelles pancartes", "Outremont" ,LocalDate.now().plusDays(5), "Prévu");
+        insertProject(conn, "Projet Spécial E", "Grand chantier sur 3 mois", "Outremont" , LocalDate.now().plusDays(90), "Prévu");
 
         conn.close();
     }
@@ -172,13 +172,14 @@ public class DataInitializer {
      * @param status Le statut du projet.
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
-    private void insertProject(Connection conn, String title, String description, LocalDate startDate, String status) throws Exception {
+    private void insertProject(Connection conn, String title, String description, String borough , LocalDate startDate, String status) throws Exception {
         String sql = "INSERT INTO projects (title, description, desired_start_date, status) VALUES (?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, title);
             pstmt.setString(2, description);
-            pstmt.setString(3, Date.valueOf(startDate).toString());
-            pstmt.setString(4, status);
+            pstmt.setString(3, borough);
+            pstmt.setString(4, Date.valueOf(startDate).toString());
+            pstmt.setString(5, status);
             pstmt.executeUpdate();
         }
     }
