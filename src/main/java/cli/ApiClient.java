@@ -309,4 +309,48 @@ public class ApiClient {
         }
         return JSON_MAPPER.readValue(response.body(), Intervenant.class);
     }
+
+    /**
+     * Soumet un projet via l'API.
+     *
+     * @param project La demande de travaux à soumettre.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
+    public void submitProject(Project project) throws IOException, InterruptedException {
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(URI.create(API_BASE_URL + "/projects"))
+                .header("Content-Type", "application/json")
+                .POST(HttpRequest.BodyPublishers.ofString(JSON_MAPPER.writeValueAsString(project)))
+                .build();
+
+        HttpResponse<String> response = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 201) {
+            throw new RuntimeException("Failed to submit project: " + response.body());
+        }
+    }
+
+    /**
+     * Récupère tous les projets via l'API.
+     *
+     * @return La liste de toutes les demandes de travaux.
+     * @throws IOException Si une erreur d'entrée/sortie survient.
+     * @throws InterruptedException Si l'opération est interrompue.
+     */
+    public List<Project> getAllProjects() throws IOException, InterruptedException {
+        HttpRequest request = HttpRequest.newBuilder()
+                .uri(URI.create(API_BASE_URL + "/projects"))
+                .GET()
+                .build();
+
+        HttpResponse<String> response = httpClient.send(request, HttpResponse.BodyHandlers.ofString());
+        if (response.statusCode() != 200) {
+            throw new RuntimeException("Failed to fetch projects: " + response.body());
+        }
+
+        return JSON_MAPPER.readValue(
+            response.body(),
+            JSON_MAPPER.getTypeFactory().constructCollectionType(List.class, Project.class)
+        );
+    }
 }

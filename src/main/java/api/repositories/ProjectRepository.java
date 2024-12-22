@@ -42,7 +42,7 @@ public class ProjectRepository {
             pstmt.setString(1, project.getTitle());
             pstmt.setString(2, project.getDescription());
             pstmt.setString(3, project.getBorough());
-            pstmt.setString(4, project.getProjectStatus());
+            pstmt.setString(4, project.getProjectStatus().name());
             pstmt.setString(5, project.getDesiredStartDate().toString());
 
             pstmt.executeUpdate();
@@ -64,7 +64,7 @@ public class ProjectRepository {
      * @return La liste des projets.
      * @throws SQLException Si une erreur survient lors de la récupération.
      */    
-    public List<Project> findProject() throws SQLException{
+    public List<Project> findAll() throws SQLException{
         String sql = "SELECT * from projects";
         List<Project> projects = new ArrayList<>();
 
@@ -97,7 +97,7 @@ public class ProjectRepository {
             pstmt.setString(1, project.getTitle());
             pstmt.setString(2, project.getDescription());
             pstmt.setString(3, project.getBorough());
-            pstmt.setString(4, project.getProjectStatus());
+            pstmt.setString(4, project.getProjectStatus().name());
             pstmt.setString(5, project.getDesiredStartDate().toString());
 
             pstmt.executeUpdate();

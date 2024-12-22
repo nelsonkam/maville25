@@ -26,6 +26,7 @@ public class MaVilleServer {
         IntervenantRepository intervenantRepo = new IntervenantRepository(db);
         WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
         CandidatureRepository candidatureRepo = new CandidatureRepository(db);
+        ProjectRepository projectRepo = new ProjectRepository(db);
 
         // Services
         ResidentService residentService = new ResidentService(residentRepo);
@@ -35,6 +36,7 @@ public class MaVilleServer {
         WorkRequestService workRequestService = new WorkRequestService(workRequestRepo);
         CandidatureService candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
         NotificationService notificationService = new NotificationService(new NotificationRepository(db));
+        ProjectService projectService = new ProjectService(projectRepo);
 
         // Controllers
         ResidentController residentController = new ResidentController(residentService, JSON_MAPPER);
@@ -44,6 +46,7 @@ public class MaVilleServer {
         WorkRequestController workRequestController = new WorkRequestController(workRequestService, JSON_MAPPER);
         CandidatureController candidatureController = new CandidatureController(candidatureService, JSON_MAPPER);
         NotificationController notificationController = new NotificationController(notificationService, JSON_MAPPER);
+        ProjectController projectController = new ProjectController(projectService, JSON_MAPPER);
 
         // Javalin app
         Javalin app = Javalin.create();
@@ -77,6 +80,10 @@ public class MaVilleServer {
         app.get("/notifications/unread/{email}", notificationController::getUnreadNotifications);
         app.get("/notifications/{email}", notificationController::getAllNotifications);
         app.post("/notifications/{email}/mark-read", notificationController::markAsRead);
+
+        //Projets
+        app.post("/projects", projectController::submitProject);
+        app.get("/projects", projectController::getAllProjects);
 
         return app;
     }

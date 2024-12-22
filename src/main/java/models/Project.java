@@ -78,8 +78,8 @@ public class Project {
      *
      * @return Le statut du projet.
      */
-    public String getProjectStatus() {
-        return projectStatus.toString();
+    public ProjectStatus getProjectStatus() {
+        return projectStatus;
     }
 
     /**
@@ -145,5 +145,18 @@ public class Project {
      */
     public void setDesiredStartDate(LocalDate desiredStartDate) {
         this.desiredStartDate = desiredStartDate;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("""
+                Project #%d
+                Titre: %s
+                Description: %s
+                Arrondissement: %s
+                Statut: %s
+                Date souhaitée: %s
+                """,
+                id, title, description, borough, projectStatus, desiredStartDate);
     }
 }

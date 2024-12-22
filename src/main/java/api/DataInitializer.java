@@ -55,11 +55,11 @@ public class DataInitializer {
         insertCandidature(conn, 2L, "int3@example.com", "SUBMITTED", null, false);
 
         // 4. Insérer 5 projets
-        insertProject(conn, "Projet Voirie A", "Refaire chaussée", "Villeray-Saint-Michel-Parc-Extension" ,LocalDate.now().plusDays(10), "Prévu");
-        insertProject(conn, "Projet Aqueduc B", "Remplacer conduite principale", "Rosemont-La-Petite-Patrie",LocalDate.now().plusDays(20), "Prévu");
-        insertProject(conn, "Projet Égouts C", "Élargir égout", "Le Plateau-Mont-Royal" ,LocalDate.now().plusDays(25), "Prévu");
-        insertProject(conn, "Projet Signalisation D", "Nouvelles pancartes", "Outremont" ,LocalDate.now().plusDays(5), "Prévu");
-        insertProject(conn, "Projet Spécial E", "Grand chantier sur 3 mois", "Outremont" , LocalDate.now().plusDays(90), "Prévu");
+        insertProject(conn, "Projet Voirie A", "Refaire chaussée", "Villeray-Saint-Michel-Parc-Extension" ,LocalDate.now().plusDays(10), "PLANNED");
+        insertProject(conn, "Projet Aqueduc B", "Remplacer conduite principale", "Rosemont-La-Petite-Patrie",LocalDate.now().plusDays(20), "PLANNED");
+        insertProject(conn, "Projet Égouts C", "Élargir égout", "Le Plateau-Mont-Royal" ,LocalDate.now().plusDays(25), "PLANNED");
+        insertProject(conn, "Projet Signalisation D", "Nouvelles pancartes", "Outremont" ,LocalDate.now().plusDays(5), "PLANNED");
+        insertProject(conn, "Projet Spécial E", "Grand chantier sur 3 mois", "Outremont" , LocalDate.now().plusDays(90), "PLANNED");
 
         conn.close();
     }

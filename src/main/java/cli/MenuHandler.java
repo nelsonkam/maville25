@@ -91,6 +91,7 @@ public class MenuHandler {
         System.out.println("4. Retirer une candidature");
         System.out.println("5. Suivre mes candidatures");
         System.out.println("6. Soumettre un projet");
+        System.out.println("7. Voir les projets/Mise à jour d'un projet");
         System.out.println("0. Se déconnecter");
     }
 
@@ -167,7 +168,7 @@ public class MenuHandler {
                 case 4 -> withdrawCandidature(intervenant);
                 case 5 -> followCandidatures(intervenant);
                 case 6 -> addProject();
-                case 7 -> updateProject();
+                case 7 -> viewAndUpdateProject();
                 default -> System.out.println("Option invalide");
             }
         } catch (Exception e) {
@@ -454,9 +455,9 @@ public class MenuHandler {
      * Permet d'ajouter un projet.
      *
      */
-    public void addProject() {
+    private void addProject() {
         try{
-            System.out.print("\nSoumission d'un projet");
+            System.out.println("\nSoumission d'un projet");
 
             System.out.print("Titre: ");
             String title = scanner.nextLine();
@@ -465,7 +466,7 @@ public class MenuHandler {
             String description = scanner.nextLine();
 
             /* Liste non exaustive des arrondissements de Montréal */
-            System.out.print("Arrondissement: ");
+            System.out.println("Arrondissement: ");
             System.out.println("1. Le Plateau-Mont-Royal");
             System.out.println("2. Outremont");
             System.out.println("3. Rosemont-La-Petite-Patrie");
@@ -482,7 +483,7 @@ public class MenuHandler {
                 default -> throw new IllegalArgumentException("Option invalide");
                 };
 
-            System.out.print("Date de début désirée (JJ/MM/AAAA)");
+            System.out.print("Date de début désirée (JJ/MM/AAAA): ");
             LocalDate startDate = LocalDate.parse(
                 scanner.nextLine(),
                 DateTimeFormatter.ofPattern("dd/MM/yyyy")
@@ -490,8 +491,8 @@ public class MenuHandler {
 
             Project project = new Project(title, description, borough, startDate);
 
-            //apiClient.submitProject(project);
-            //System.out.println("Projet soumis avec succès");
+            apiClient.submitProject(project);
+            System.out.println("Projet soumis avec succès");
             
             } catch (Exception e){
                 System.out.println("Erreur lors de la soumission: " + e.getMessage());
@@ -500,14 +501,27 @@ public class MenuHandler {
     
     
     /**
-     * Permet de mettre à jour le statut d'un projet.
+     * Permet de voir les projets et mettre à jour le statut d'un projet.
      *
      */
-    public void updateProject() {
-        
-    }
+    private void viewAndUpdateProject() {
+        try {
+            List<Project> projects = apiClient.getAllProjects();
+            if (projects.isEmpty()) {
+                System.out.println("Aucun projet existant.");
+                return;
+            }
 
+            System.out.println("\nProjets existants:");
+            for (Project project : projects) {
+                System.out.println("\n" + project.toString());
+            }
+        } catch (Exception e) {
+            System.out.println("Erreur: " + e.getMessage());
+        }
+    }
 }
+
 
 
 
