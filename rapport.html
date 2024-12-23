@@ -2477,6 +2477,91 @@
     </li>
 </ol>
 
+<div>
+    <h2>Discussion du Design</h2>
+    <ul>
+      <li>
+        <strong>Séparation des responsabilités :</strong>
+        Chaque composant gère une tâche bien définie, réduisant les dépendances et rendant le système modulaire.
+        <br>
+        <em>Exemple :</em> 
+        Dans le code, la classe <code>WorkRequestRepository</code> est exclusivement responsable de gérer les requêtes SQL pour les demandes de travaux. 
+        Elle n'interfère pas avec la logique métier gérée par <code>WorkRequestService</code>.
+      </li>
+      <li>
+        <strong>Utilisation des standards :</strong>
+        Les interactions entre les composants suivent des formats standards pour assurer la compatibilité et la clarté.
+        <br>
+        <em>Exemple :</em> 
+        Le backend utilise le format JSON pour transmettre des données. Dans le code, lorsqu'une requête est sauvegardée, les données comme le titre, la description et la date de début 
+        sont envoyées sous forme JSON.
+      </li>
+      <li>
+        <strong>Évolutivité :</strong>
+        Le design facilite l’ajout de nouvelles fonctionnalités sans impact majeur sur les composants existants.
+        <br>
+        <em>Exemple :</em> 
+        Le diagramme inclut des modules distincts, comme le module de gestion des préférences, qui pourrait être enrichi sans affecter le module de notification. Dans le code, des méthodes comme <code>save</code> 
+        dans <code>WorkRequestRepository</code> peuvent facilement être étendues pour inclure d’autres champs.
+      </li>
+      <li>
+        <strong>Gestion des dépendances :</strong>
+        Les dépendances externes comme les API ou la base de données sont isolées du système principal pour faciliter leur gestion.
+        <br>
+        <em>Exemple :</em> 
+        Dans le code, le <code>DatabaseManager</code> gère la connexion à SQLite, tandis que les classes comme <code>WorkRequestRepository</code> interagissent uniquement via des méthodes clairement définies.
+      </li>
+      <li>
+        <strong>Gestion des erreurs :</strong>
+        Des mécanismes pour gérer les erreurs et assurer une expérience utilisateur fluide sont intégrés.
+        <br>
+        <em>Exemple :</em> 
+        Dans <code>WorkRequestRepository</code>, une exception SQL est levée si une insertion ou une requête échoue, ce qui permet au système d’afficher un message approprié à l'utilisateur.
+      </li>
+      <li>
+        <strong>Modularité :</strong>
+        Les fonctionnalités sont réparties dans des modules distincts pour faciliter la maintenance.
+        <br>
+        <em>Exemple :</em> 
+        Dans le diagramme d'architecture, le gestionnaire de requêtes est distinct du gestionnaire de travaux. Cette séparation est reflétée dans le code où les classes <code>WorkRequestService</code> 
+        et <code>ProjectService</code> gèrent des fonctionnalités spécifiques.
+      </li>
+      <li>
+        <strong>Clarté du code :</strong>
+        Les noms des classes et des méthodes sont explicites et reflètent leur rôle.
+        <br>
+        <em>Exemple :</em> 
+        La méthode <code>findByResidentEmail</code> dans <code>WorkRequestRepository</code> indique clairement qu'elle récupère des requêtes associées à un email de résident.
+      </li>
+      <li>
+        <strong>Utilisation des bonnes pratiques :</strong>
+        Les modèles comme le Data Access Object sont utilisés pour structurer l’accès aux données.
+        <br>
+        <em>Exemple :</em> 
+        La classe <code>WorkRequestRepository</code> encapsule toutes les interactions avec la base de données, respectant ainsi le principe de responsabilité unique.
+      </li>
+      <li>
+        <strong>Documentation :</strong>
+        Les diagrammes et les commentaires dans le code décrivent clairement les relations entre les composants et leurs responsabilités.
+        <br>
+        <em>Exemple :</em> 
+        Le diagramme d'architecture illustre les interactions entre le module d'authentification et le backend via des requêtes HTTP. Les commentaires dans <code>WorkRequestRepository</code> expliquent les requêtes SQL associées.
+      </li>
+      <li>
+        <strong>Stockage des données :</strong>
+        Le système utilise SQLite pour persister les données.
+        <br>
+        <em>Exemple :</em> 
+        Dans le code, la méthode <code>save</code> utilise permet d'insérer des données dans la table <code>work_requests</code> dans un fichier de base de données SQLite.
+      </li>
+     
+    </ul>
+  </div>
+  
+  
+
+    
+
                 </div>
             </section>
 
@@ -2500,6 +2585,8 @@
                 </p>
             </section>
         </div>
+
+        
     </main>
     <footer class="report-footer">
         <p>
