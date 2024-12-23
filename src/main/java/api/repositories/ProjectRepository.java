@@ -99,6 +99,7 @@ public class ProjectRepository {
             pstmt.setString(3, project.getBorough());
             pstmt.setString(4, project.getProjectStatus().name());
             pstmt.setString(5, project.getDesiredStartDate().toString());
+            pstmt.setLong(6, project.getId());
 
             pstmt.executeUpdate();
         }

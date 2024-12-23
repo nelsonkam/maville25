@@ -8,9 +8,11 @@ import java.util.List;
 import java.util.Scanner;
 import api.services.CandidatureService;
 import api.services.NotificationService;
+import api.services.ProjectService;
 import api.repositories.CandidatureRepository;
 import api.repositories.IntervenantRepository;
 import api.repositories.NotificationRepository;
+import api.repositories.ProjectRepository;
 import api.repositories.WorkRequestRepository;
 import api.DatabaseManager;
 
@@ -21,6 +23,7 @@ public class MenuHandler {
     private final Scanner scanner;
     private final ApiClient apiClient;
     private final CandidatureService candidatureService;
+    private final ProjectService projectService;
 
     /**
      * Constructeur de la classe MenuHandler.
@@ -35,7 +38,9 @@ public class MenuHandler {
         CandidatureRepository candidatureRepo = new CandidatureRepository(db);
         WorkRequestRepository workRequestRepo = new WorkRequestRepository(db);
         IntervenantRepository intervenantRepo = new IntervenantRepository(db);
+        ProjectRepository projectRepo = new ProjectRepository(db);
         this.candidatureService = new CandidatureService(candidatureRepo, workRequestRepo, intervenantRepo);
+        this.projectService = new ProjectService(projectRepo);
     }
 
     /**
@@ -505,20 +510,54 @@ public class MenuHandler {
      *
      */
     private void viewAndUpdateProject() {
-        try {
+
+        try{
             List<Project> projects = apiClient.getAllProjects();
+
             if (projects.isEmpty()) {
                 System.out.println("Aucun projet existant.");
                 return;
             }
 
-            System.out.println("\nProjets existants:");
             for (Project project : projects) {
                 System.out.println("\n" + project.toString());
             }
-        } catch (Exception e) {
-            System.out.println("Erreur: " + e.getMessage());
+
+            System.out.println("Pour revenir au menu précédent, appuyer <ENTRÉE>.");
+            System.out.print("Pour mettre à jour un projet, saisir le id: ");
+            int input = scanner.nextInt();
+        
+            for (Project project : projects) {
+                if(project.getId() == input) {
+
+                    if (project.getProjectStatus() == ProjectStatus.CANCELLED || project.getProjectStatus() == ProjectStatus.COMPLETED){
+                        System.out.println("Le projet " + project.getTitle() + " un statut Annulé ou Complété et ne peut être changé.");
+                        return;
+                    }
+
+                    System.out.println("\nProjet sélectionné: "+ project.getTitle());
+                    System.out.println("1. En cours");
+                    System.out.println("2. Terminé");
+                    System.out.println("3. Annulé");
+                    System.out.print("Nouveau statut du projet: ");
+                    scanner.nextLine();
+
+                    String status = switch (Integer.parseInt(scanner.nextLine())) {
+                        case 1 -> "IN_PROGRESS";
+                        case 2 -> "COMPLETED";
+                        case 3 -> "CANCELLED";
+                        default -> throw new IllegalArgumentException("Option invalide.");
+                    };
+
+                    project.setProjectStatus(ProjectStatus.valueOf(status));
+                    System.out.println(project);
+                    projectService.updateProjectStatus(project);
+                }
+            }
+        } catch (Exception e){
+            System.out.println("Erreur lors de la récupération des projets: " + e.getMessage());
         }
+        
     }
 }
 

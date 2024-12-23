@@ -55,4 +55,21 @@ public class ProjectService {
             throw new RuntimeException("Failed to fetch work projects", e);
         }
     }
+
+    /**
+     * Met à jour le statut d'un projet.
+     *
+     * @return La liste de tous les projets.
+     * @throws RuntimeException Si une erreur survient lors de la récupération des demandes.
+     */
+
+     public void updateProjectStatus(Project updatedProject) {
+        try{
+            repository.update(updatedProject);
+        } catch (SQLException e) {
+            throw new RuntimeException("Database error while updating project status: " + e.getMessage());
+        }
+     }
+
+    
 }
