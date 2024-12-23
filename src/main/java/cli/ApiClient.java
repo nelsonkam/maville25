@@ -16,7 +16,7 @@ import java.util.List;
  * Cette classe gère les appels API pour l'application MaVille.
  */
 public class ApiClient {
-    private static final String API_BASE_URL = "http://localhost:7000";
+    private static final String API_BASE_URL = "http://localhost:9090";
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper()
             .registerModule(new JavaTimeModule());
     private final HttpClient httpClient;

@@ -10,6 +10,6 @@ WORKDIR /app
 COPY --from=builder /build/target/maville-app-1.0-SNAPSHOT.jar /app/maville-app.jar
 COPY --from=builder /build/target/lib/* /app/lib/
 
-EXPOSE 7000
+EXPOSE 9090
 
 CMD ["java", "-cp", "maville-app.jar:lib/*", "api.MaVilleServer"]

@@ -104,7 +104,7 @@ public class MaVilleServer {
         }
 
         Javalin app = createApp();
-        app.start(7000);
-        System.out.println("Server started on port 7000");
+        app.start(9090);
+        System.out.println("Server started on port 9090");
     }
 }
