@@ -27,12 +27,6 @@ public abstract class BaseControllerTest {
     @AfterAll
     public static void tearDown() {
         System.clearProperty("test.database");
-        File[] files = new File(".").listFiles((dir, name) -> name.startsWith("maville-test.db"));
-        if (files != null) {
-            for (File file : files) {
-                file.delete();
-            }
-        }
     }
 
     /**

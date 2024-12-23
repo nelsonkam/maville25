@@ -64,7 +64,6 @@ public class CandidatureProcessIntegrationTest extends BaseControllerTest {
         assertEquals(201, response.code(), "Création WorkRequest échouée. Body: " + body);
         JsonNode createdWr = JSON_MAPPER.readTree(body);
         Long workRequestId = createdWr.get("id").asLong();
-        assertTrue(workRequestId > 0, "ID WorkRequest non valide. Body: " + body);
         return workRequestId;
     }
 

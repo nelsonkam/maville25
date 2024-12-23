@@ -36,6 +36,7 @@ public class ProjectRepository {
         String sql = """
                 INSERT INTO projects (title, description, borough, status, desired_start_date)
                 VALUES (?, ?, ?, ?, ?)
+                RETURNING id
                 """;
 
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
@@ -45,14 +46,10 @@ public class ProjectRepository {
             pstmt.setString(4, project.getProjectStatus().name());
             pstmt.setString(5, project.getDesiredStartDate().toString());
 
-            pstmt.executeUpdate();
-
-            // Get the last inserted ID
-            try (Statement stmt = db.getConnection().createStatement()) {
-                ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()");
+            try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     project.setId(rs.getLong(1));
-                }            
+                }
             }
         }
     }

@@ -35,10 +35,12 @@ public class WorkRequestRepository {
      * @throws SQLException Si une erreur survient lors de l'enregistrement.
      */
     public void save(WorkRequest request) throws SQLException {
+        db.getConnection().setAutoCommit(false);
         String sql = """
             INSERT INTO work_requests 
             (title, description, work_type, desired_start_date, status, resident_email)
             VALUES (?, ?, ?, ?, ?, ?)
+            RETURNING id
         """;
         
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
@@ -49,11 +51,7 @@ public class WorkRequestRepository {
             pstmt.setString(5, request.getStatus().name());
             pstmt.setString(6, request.getResidentEmail());
 
-            pstmt.executeUpdate();
-            
-            // Get the last inserted ID
-            try (Statement stmt = db.getConnection().createStatement()) {
-                ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()");
+            try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
                     request.setId(rs.getLong(1));
                 }

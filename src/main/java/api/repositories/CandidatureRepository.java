@@ -34,6 +34,7 @@ public class CandidatureRepository {
         String sql = """
             INSERT INTO candidatures (work_request_id, intervenant_email, status, resident_message, confirmed_by_intervenant)
             VALUES (?, ?, ?, ?, ?)
+            RETURNING id;
         """;
 
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
@@ -42,15 +43,13 @@ public class CandidatureRepository {
             pstmt.setString(3, candidature.getStatus().name());
             pstmt.setString(4, candidature.getResidentMessage());
             pstmt.setInt(5, candidature.isConfirmedByIntervenant() ? 1 : 0);
-            pstmt.executeUpdate();
-        }
-
-        try (Statement stmt = db.getConnection().createStatement();
-             ResultSet rs = stmt.executeQuery("SELECT last_insert_rowid()")) {
-            if (rs.next()) {
-                candidature.setId(rs.getLong(1));
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    candidature.setId(rs.getLong(1));
+                }
             }
         }
+
     }
 
     /**

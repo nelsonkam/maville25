@@ -68,7 +68,7 @@ public class MaVilleServer {
         app.get("/work-requests/resident/{email}", workRequestController::getResidentRequests);
         app.get("/work-requests", workRequestController::getAllRequests);
 
-        // Candidatures (mise à jour avec la syntaxe {id} et {candidatureId} pour Javalin 4)
+        // Candidatures
         app.post("/work-requests/{id}/candidatures", candidatureController::submitCandidature);
         app.delete("/work-requests/{id}/candidatures", candidatureController::withdrawCandidature);
         app.get("/work-requests/{id}/candidatures", candidatureController::getCandidatures);
