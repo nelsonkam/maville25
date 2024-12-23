@@ -77,7 +77,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertResident(Connection conn, String name, String email, String password, LocalDate dob, String phone, String address) throws Exception {
-        String sql = "INSERT INTO residents (name, email, password, date_of_birth, phone_number, address) VALUES (?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT OR IGNORE INTO residents (name, email, password, date_of_birth, phone_number, address) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, email);
@@ -101,7 +101,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertIntervenant(Connection conn, String name, String email, String password, String type, String cityId) throws Exception {
-        String sql = "INSERT INTO intervenants (name, email, password, type, city_identifier) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT OR IGNORE INTO intervenants (name, email, password, type, city_identifier) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, name);
             pstmt.setString(2, email);
@@ -126,7 +126,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertWorkRequest(Connection conn, long id, String title, String description, String workType, LocalDate startDate, String status, String residentEmail) throws Exception {
-        String sql = "INSERT INTO work_requests (id, title, description, work_type, desired_start_date, status, resident_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT OR IGNORE INTO work_requests (id, title, description, work_type, desired_start_date, status, resident_email) VALUES (?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setLong(1, id);
             pstmt.setString(2, title);
@@ -151,7 +151,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertCandidature(Connection conn, long workRequestId, String intervenantEmail, String status, String residentMessage, boolean confirmed) throws Exception {
-        String sql = "INSERT INTO candidatures (work_request_id, intervenant_email, status, resident_message, confirmed_by_intervenant) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT OR IGNORE INTO candidatures (work_request_id, intervenant_email, status, resident_message, confirmed_by_intervenant) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setLong(1, workRequestId);
             pstmt.setString(2, intervenantEmail);
@@ -173,7 +173,7 @@ public class DataInitializer {
      * @throws Exception Si une erreur survient lors de l'insertion.
      */
     private void insertProject(Connection conn, String title, String description, String borough , LocalDate startDate, String status) throws Exception {
-        String sql = "INSERT INTO projects (title, description, borough , desired_start_date, status) VALUES (?, ?, ?, ?, ?)";
+        String sql = "INSERT OR IGNORE INTO projects (title, description, borough , desired_start_date, status) VALUES (?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = conn.prepareStatement(sql)) {
             pstmt.setString(1, title);
             pstmt.setString(2, description);

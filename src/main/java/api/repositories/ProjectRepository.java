@@ -29,13 +29,13 @@ public class ProjectRepository {
     /**
      * Enregistre un nouveau projet dans la base de données.
      *
-     * @param candidature Le projet à enregistrer.
+     * @param project Le projet à enregistrer.
      * @throws SQLException Si une erreur survient lors de l'enregistrement.
      */
     public void save (Project project) throws SQLException {
         String sql = """
                 INSERT INTO projects (title, description, borough, status, desired_start_date)
-                VALUES (?, ?, ?, ?)
+                VALUES (?, ?, ?, ?, ?)
                 """;
 
         try (PreparedStatement pstmt = db.getConnection().prepareStatement(sql)) {
