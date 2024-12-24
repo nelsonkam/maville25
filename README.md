@@ -17,6 +17,8 @@ Exécuter les commandes suivantes pour lancer l'application:
 
 Pour Mac
 ```
+    --Cette commande crée l'exécutable maville-app-1.0-SNAPSHOT.jar
+    --Disponible dans: maville25\src\target
     mvn clean install
 
     --Pour lancer l'interface en ligne de commande:
@@ -30,6 +32,8 @@ Pour Mac
 
 Pour Windows
 ```
+    --Cette commande crée l'exécutable maville-app-1.0-SNAPSHOT.jar
+    --Disponible dans: maville25\src\target
     mvn clean install
 
     --Pour lancer l'interface en ligne de commande:
