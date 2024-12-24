@@ -6,6 +6,7 @@ import models.WorkPreference;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.time.LocalTime;
 
 /**
  * Dépôt pour gérer les préférences horaires des résidents dans la base de données.
