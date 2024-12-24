@@ -76,3 +76,11 @@ Mot de passe: `password123` (pour tous les comptes)
 | Panneau stop manquant | Panneau stop disparu après accident | Signalisation    | 2024-04-10 | ASSIGNED    | marie.lavoie@email.com  |
 | Égout bouché          | Égout bouché causant des refoulements | Égouts           | 2024-05-15 | PENDING     | jean.tremblay@email.com |
 
+### Projets
+|Titre                  | Description | Arrondissement | Date désirée de début | Statut |
+|-----------------------|-------------|----------------|-----------------------|--------|
+|Projet Voirie A        | Refaire chaussée | Villeray-Saint-Michel-Parc-Extension| (Aujourd'hui + 10 jours) |PLANNED |
+|Projet Aqueduc B       | Remplacer conduite principale | Rosemont-La-Petite-Patrie| Aujourd'hui + 20 jours | PLANNED|
+|Projet Égouts C        | Élargir égout | Le Plateau-Mont-Royal| (Aujourd'hui + 25 jours) | PLANNED |
+|Projet Signalisation D | Nouvelles pancartes | Outremont | (Aujourd'hui + 5 jours) |CANCELLED |
+|Projet Spécial         | Grand chantier sur 3 mois | Outremont | (Aujourd'hui + 90 jours)| COMPLETED|
