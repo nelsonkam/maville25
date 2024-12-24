@@ -523,7 +523,7 @@ public class MenuHandler {
                 System.out.println("\n" + project.toString());
             }
 
-            System.out.println("Pour revenir au menu précédent, appuyer <ENTRÉE>.");
+            System.out.println("Pour revenir au menu précédent, appuyer 0.");
             System.out.print("Pour mettre à jour un projet, saisir le id: ");
             int input = scanner.nextInt();
         

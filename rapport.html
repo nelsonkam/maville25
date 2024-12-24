@@ -302,6 +302,7 @@
 
         .main-section {
             margin-bottom: 24px;
+            max-width: 1068px;
         }
 
         .nav {
@@ -681,11 +682,17 @@
                 <h2 id="plan" class="section-title">Cadre du projet</h2>
                 <h3 class="subsection-title">Introduction</h3>
                 <p>
-                    <em>
-                        Le projet "MaVille" vise à créer une application facilitant la gestion et la communication  des travaux publics et privés à Montréal, <br>
+                        Le projet "MaVille" vise à créer une application facilitant la gestion et la communication  des travaux publics et privés à Montréal,
                         en améliorant la coordination entre les parties prenantes et en informant les citoyens des impacts sur leur quotidien.
-                    </em>
-                </p>
+
+                        Un résident de la Ville de Montréal, une fois inscrit avec son courriel, peut consulter les travaux en cours, filtrer ceux-ci par arrondissement ou par type.
+                        Les données sur les entraves routières que les travaux causent sont aussi à la disposition des résidents et peuvent être cherchées par nom de rue. 
+                        Un formulaire de soumission de travaux est disponible poru les résidents et peut y faire un suivi à tout moment.
+                    </p>
+                    <p>
+                        Un intervenant est soit une entreprise publique, un entrepreneur privé ou un particulier qui participe à la réalisation des travaux et des projets. L'intervenant inscrit, en ayant un identifiant à la Ville et un courriel, peut consulter les demandes de travaux disponibles, soumettre/retirer sa candidature à un travail ou projet, soumettre des projets ainsi que les mettre à jour.
+                    </p>
+                        
                 <h3 class="subsection-title">Échéancier</h3>
 
                 <h4>Échéancier du projet MaVille</h4>
@@ -813,7 +820,7 @@
                     <dt class="glossary-term">Menu principal</dt>
                     <dd class="glossary-def">Interface de l'application affichant les options disponibles pour l'utilisateur après l'authentification, permettant de naviguer vers différentes fonctionnalités de l'application.</dd>
                     <dt class="glossary-term">Code de la ville</dt>
-                    <dd class="glossary-def"></dd>
+                    <dd class="glossary-def">Identifiant unique à 8 chiffres d'un intervenant fourni par la Ville</dd>
                     <dt class="glossary-term">Notifications personnalisées</dt>
                     <dd class="glossary-def">Alertes spécifiques envoyées aux résidents en fonction de leurs préférences et de leur localisation, les informant des travaux ou des changements affectant leur quartier ou les rues qu'ils suivent.</dd>
                     <dt class="glossary-term">Info Entraves et Travaux</dt>
@@ -1923,7 +1930,7 @@
                     </ol>
 
                     <h3>Illustration de l'Architecture</h3>
-                    <img src="img/Architecture.svg" alt="Diagramme de l'Architecture de l'Application ">
+                    <img width="1100" src="img/Architecture.svg" alt="Diagramme de l'Architecture de l'Application ">
 
                     <h3>Communications entre les Composantes</h3>
                     <ul>
@@ -1992,7 +1999,7 @@
                     <h2>Diagramme de Classes</h2>
 
                     <h3>Illustration du Diagramme de Classes</h3>
-                    <img src="img/Diagramme de classes1.svg" alt="Diagramme de Classes MaVille" >
+                    <img width="1100" src="img/Diagramme de classes1.svg" alt="Diagramme de Classes MaVille" >
 
                     <h3>Explication des Classes</h3>
                     <ul>
@@ -2558,11 +2565,7 @@
     </ul>
   </div>
   
-  
-
-    
-
-                </div>
+        </div>
             </section>
 
             <section class="main-section">
@@ -2570,17 +2573,8 @@
 
                 <p>
                     <em>
-                        Le prototype en fichier .jar contient l'interface du côté résident et intervenant. <br><br>
-
-                        Informations de connection: <br>
-                        Utilisateur: <b>citoyen</b> ou <b>intervenant</b> <br>
-                        Mot de passe: <b>maVille25</b>. <br><br>
-
-                        Le cas d'utilisation couvert par ce prototype est la consultation des travaux en cours. <br><br>
-
-                        Commande pour exécuter le prototype sur un terminal: <br>
-                        <b>java -jar MaVille.jar</b>
-
+                        Un prototype en interface ligne de commande est disponible.
+                        Consulter le README.md pour les détails d'installation et d'exécution.
                     </em>
                 </p>
             </section>
@@ -2590,14 +2584,9 @@
     </main>
     <footer class="report-footer">
         <p>
-            Devoir 1 &ndash; Analyse des exigences<br>
+            Devoir 3 &ndash; Implémentation<br>
             IFT2255 (Génie logiciel) <br>
             Automne 2024
-        </p>
-        <p>
-            <em>
-                Ajoutez tous les liens additionnels nécessaires à la compréhension du rapport ici
-            </em>
         </p>
     </footer>
 </body>
